@@ -4,7 +4,7 @@
 <h2>Jobs</h2>
 <div class="jobs">
     <div class="col-sm-12">
-    @if($jobs)
+    @if(!$jobs->count())
         <div class="text-center">There are currently no jobs posted within the last 30 days.</div>
     @else
         <div class="list-group job-list">
