@@ -17,7 +17,7 @@ class Job extends Model
         'logo',
         'email',
         'title',
-        'headquarters',
+        'location',
         'description',
         'application_method',
         'is_featured',

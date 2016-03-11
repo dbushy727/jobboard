@@ -19,7 +19,7 @@ class CreateJobsTable extends Migration
             $table->string('logo');
             $table->string('email');
             $table->string('title');
-            $table->string('headquarters');
+            $table->string('location');
             $table->text('description');
             $table->string('application_method');
             $table->boolean('is_featured');
