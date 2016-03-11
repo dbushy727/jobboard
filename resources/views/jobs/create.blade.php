@@ -42,7 +42,7 @@
                 <div class="form-group col-sm-12">
                     <label for="application_method">How to apply*</label>
                     <input type="text" name="application_method" class="form-control" required>
-                    <span class="help-block">Example: Email your CV at jobs@example.com</span>
+                    <span class="help-block">Example: Email your CV to jobs@example.com</span>
                 </div>
 
                 <div class="form-group col-sm-12">

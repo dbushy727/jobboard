@@ -1,0 +1,38 @@
+/*.job-list .job-list-item {
+    display: inline-block;
+    width: 24%;
+    padding: 0.5em 1em;
+}*/
+
+.job-posting-section {
+    padding: 1em;
+}
+
+.job-posting-logo {
+    width: 100px;
+}
+
+.job-list .featured {
+    background: #FBFBD3;
+}
+
+.job-list-info {
+    width: 50%;
+    display: inline-block;
+    padding: 0 1em;
+}
+
+.job-list-title {
+    font-size: 1.5em;
+    font-weight: 500;
+    max-width: 20em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+@media (max-width: 500px) {
+    .job-posting-logo {
+        display: none;
+    }
+}
