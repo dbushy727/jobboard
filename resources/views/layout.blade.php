@@ -13,10 +13,10 @@
         <div class="header clearfix">
             <nav>
                 <ul class="nav nav-pills pull-right">
-                    <li role="presentation" class="active"><a href="#">Post a Job</a></li>
+                    <li role="presentation" class="active"><a href="/jobs/create">Post a Job</a></li>
                 </ul>
             </nav>
-            <h3 class="text-muted">Jobboard</h3>
+            <h3 class="text-muted"><a href="/">Jobboard</a></h3>
         </div>
 
         @yield('content')
@@ -27,6 +27,7 @@
 
     </div> <!-- /container -->
 
+    <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 </body>
 </html>

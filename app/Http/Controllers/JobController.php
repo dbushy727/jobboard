@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Job;
+use Illuminate\Http\Request;
 
 class JobController extends Controller
 {
@@ -18,5 +19,15 @@ class JobController extends Controller
         $job = Job::find($id);
 
         return view('jobs.show', compact('job'));
+    }
+
+    public function create()
+    {
+        return view('jobs.create');
+    }
+
+    public function store(Request $request)
+    {
+        return $request->all();
     }
 }
