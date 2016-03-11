@@ -2,12 +2,14 @@
 
 @section('content')
 <div class="job">
+    <h2>Post a Job</h2>
     <div class="panel panel-default">
         <div class="panel-body">
             <form action="/jobs" method="POST" name="createJob">
+                <div class="form-group col-sm-12 text-right">* Required fields</div>
                 <div class="form-group col-sm-12">
-                    <label for="title">Title</label>
-                    <input type="text" name="title" class="form-control">
+                    <label for="title">Title*</label>
+                    <input type="text" name="title" class="form-control" required>
                     <span class="help-block">Example: "DevOps Engineer, Senior Keyboard Jockey, Jenkins Genius, etc."</span>
                 </div>
 
@@ -22,8 +24,8 @@
                 </div>
 
                 <div class="form-group col-sm-6">
-                    <label for="location">Location</label>
-                    <input type="text" name="location" class="form-control">
+                    <label for="location">Location*</label>
+                    <input type="text" name="location" class="form-control" required>
                     <span class="help-block">Example: "New York, NY"</span>
                 </div>
 
@@ -33,19 +35,19 @@
                 </div>
 
                 <div class="form-group col-sm-12">
-                    <label for="description">Description</label>
-                    <textarea name="description" id="" cols="30" rows="10" class="form-control"></textarea>
+                    <label for="description">Description*</label>
+                    <textarea name="description" id="" cols="30" rows="10" class="form-control" required></textarea>
                 </div>
 
                 <div class="form-group col-sm-12">
-                    <label for="application_method">How to apply</label>
-                    <input type="text" name="application_method" class="form-control">
+                    <label for="application_method">How to apply*</label>
+                    <input type="text" name="application_method" class="form-control" required>
                     <span class="help-block">Example: Email your CV at jobs@example.com</span>
                 </div>
 
                 <div class="form-group col-sm-12">
-                    <label for="email">Email</label>
-                    <input type="email" name="email" class="form-control">
+                    <label for="email">Email*</label>
+                    <input type="email" name="email" class="form-control" required>
                     <span class="help-block">Where you will receive your receipt.</span>
                 </div>
 
@@ -62,7 +64,6 @@
                 <div class="form-group col-sm-12">
                     <input type="submit" class="btn btn-success pull-right">
                 </div>
-
             </form>
         </div>
     </div>

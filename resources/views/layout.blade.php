@@ -19,7 +19,9 @@
             <h3 class="text-muted"><a href="/">Jobboard</a></h3>
         </div>
 
-        @yield('content')
+        <div class="clearfix">
+            @yield('content')
+        </div>
 
         <footer class="footer">
             <p>&copy; 2016 Jobboard, Inc.</p>
