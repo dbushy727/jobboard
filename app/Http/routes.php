@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Job;
+
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -12,10 +14,11 @@
 */
 
 $app->get('/', function () use ($app) {
-    return $app->version();
+    return redirect('/jobs');
 });
 
 // Job Routes
 $app->get('/jobs', 'JobController@index');
 $app->get('/jobs/create', 'JobController@create');
+$app->get('/jobs/{id}', 'JobController@show');
 $app->post('/jobs', 'JobController@store');
