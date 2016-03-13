@@ -22,6 +22,14 @@ class JobController extends Controller
     {
         $job = Job::find($id);
 
+        if (!$job) {
+            return redirect('/');
+        }
+
+        if (!$job->is_active) {
+            return redirect('/');
+        }
+
         return view('jobs.show', compact('job'));
     }
 
@@ -47,6 +55,32 @@ class JobController extends Controller
         $params = array_filter($params);
 
         Job::create($params);
+
+        return redirect('preview');
+    }
+
+    public function preview($id)
+    {
+        $job = Job::find($id);
+
+        if (!$job) {
+            return redirect('/');
+        }
+
+        if ($job->is_active) {
+            return redirect('/');
+        }
+
+        return view('jobs.preview', compact('job'));
+    }
+
+    public function activate($id, Request $request, Stripe $stripe)
+    {
+        $params = $request->all();
+
+        if ($stripe->charge($params)) {
+            Job::find($id)->activate();
+        }
 
         return redirect('/');
     }

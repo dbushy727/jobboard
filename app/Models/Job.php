@@ -40,4 +40,9 @@ class Job extends Model
     {
         return $query->where('is_active', true);
     }
+
+    public function activate()
+    {
+        return $this->update(['is_active' => true]);
+    }
 }
