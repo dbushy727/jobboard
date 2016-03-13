@@ -1,13 +1,13 @@
 @extends('layout')
 
 @section('content')
-<h2>Jobs</h2>
 <div class="jobs">
     <div class="col-sm-12">
+        <h2>Jobs</h2>
     @if(!$jobs->count())
         <div class="text-center">There are currently no jobs posted within the last 30 days.</div>
     @else
-        <div class="list-group job-list">
+        <div class="list-group job-list tight">
         @foreach($jobs as $job)
             <a href="/jobs/{{$job->id}}" class="list-group-item {{ $job->is_featured ? 'featured' : ''}}" >
                 <div class="pull-right">
@@ -18,7 +18,7 @@
                     @if($job->logo)
                         <img class="job-posting-logo" src="{{ $job->logo }}" alt="">
                     @else
-                        <img class="job-posting-logo" src="https://placebear.com/100/100" alt="">
+                        <img class="job-posting-logo" src="/img/bear100.jpeg" alt="">
                     @endif
                     <div class="job-list-info">
                         <div class="job-list-title">{{$job->title}}</div>

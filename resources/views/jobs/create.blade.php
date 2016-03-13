@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('content')
-<div class="job">
+<div class="job tight">
     <h2>Post a Job</h2>
     <div class="panel panel-default">
         <div class="panel-body">
@@ -10,12 +10,15 @@
                 <div class="form-group col-sm-12">
                     <label for="title">Title*</label>
                     <input type="text" name="title" class="form-control" required>
-                    <span class="help-block">Example: "DevOps Engineer, Senior Keyboard Jockey, Jenkins Genius, etc."</span>
+                    <span class="help-block">Example: "DevOps Engineer, Jenkins Genius, etc."</span>
                 </div>
 
                 <div class="form-group col-sm-6">
-                    <label for="logo">Logo <small>(100px wide)</small></label>
-                    <input type="file" name="logo" id="logo">
+                    <label for="logo">Logo <span class="small">(100px wide)</span></label>
+                    <input type="file" name="logo" id="logo" class="hidden">
+                    <div class="upload-logo">
+                        <button class="btn-sm btn btn-info"><label for="logo">Click to Upload</label></button>
+                    </div>
                 </div>
 
                 <div class="form-group col-sm-6">
@@ -35,6 +38,16 @@
                 </div>
 
                 <div class="form-group col-sm-12">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" id="featured" name="featured">
+                            <b>Remote</b>
+                        </label>
+                    </div>
+                    <span class="help-block">Work from anywhere</span>
+                </div>
+
+                <div class="form-group col-sm-12">
                     <label for="description">Description*</label>
                     <textarea name="description" id="" cols="30" rows="10" class="form-control" required></textarea>
                 </div>
@@ -48,10 +61,11 @@
                 <div class="form-group col-sm-12">
                     <label for="email">Email*</label>
                     <input type="email" name="email" class="form-control" required>
-                    <span class="help-block">Where you will receive your receipt.</span>
+                    <span class="help-block">Where you will receive your receipt</span>
                 </div>
 
                 <div class="form-group col-sm-12">
+                    <hr>
                     <div class="checkbox">
                         <label>
                             <input type="checkbox" id="featured" name="featured">

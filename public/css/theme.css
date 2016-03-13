@@ -2,6 +2,10 @@
 body {
   padding-top: 20px;
   padding-bottom: 20px;
+  font-size: 21px;
+  font-family: 'Lora', serif;
+  line-height: 1.9;
+  word-spacing: 2px;
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
@@ -76,4 +80,13 @@ body {
   .jumbotron {
     border-bottom: 0;
   }
+}
+
+.small {
+  font-size: 60%;
+}
+
+
+.tight {
+    line-height: 1.3;
 }

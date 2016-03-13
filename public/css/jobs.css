@@ -10,6 +10,7 @@
 
 .job-posting-logo {
     width: 100px;
+    vertical-align: top;
 }
 
 .job-list .featured {
@@ -35,4 +36,18 @@
     .job-posting-logo {
         display: none;
     }
+}
+
+.activation-buttons {
+    padding: 1em 0;
+}
+
+.apply_info {
+    background: #EAEAEA;
+    border-radius: 0.2em;
+}
+
+.upload-logo label {
+    margin-bottom: 0;
+    cursor: pointer;
 }
