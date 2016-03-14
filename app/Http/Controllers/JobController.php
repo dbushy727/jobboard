@@ -55,9 +55,9 @@ class JobController extends Controller
 
         $params = array_filter($params);
 
-        Job::create($params);
+        $job = Job::create($params);
 
-        return redirect('preview');
+        return redirect("/jobs/{$job->id}/preview");
     }
 
     public function preview($id)
