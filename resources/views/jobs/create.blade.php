@@ -49,7 +49,10 @@
 
                 <div class="form-group col-sm-12">
                     <label for="description">Description*</label>
-                    <textarea name="description" id="" cols="30" rows="10" class="form-control" required></textarea>
+                    <textarea name="description" id="description-editor" cols="30" rows="10" class="form-control" required></textarea>
+                    <script>
+                        CKEDITOR.replace( 'description-editor' );
+                    </script>
                 </div>
 
                 <div class="form-group col-sm-12">
