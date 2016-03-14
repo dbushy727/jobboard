@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Job;
+use App\Payment\Stripe;
 use Illuminate\Http\Request;
 
 class JobController extends Controller
@@ -76,11 +77,16 @@ class JobController extends Controller
 
     public function activate($id, Request $request, Stripe $stripe)
     {
-        $params = $request->all();
+        $token = $request->get('token');
 
-        if ($stripe->charge($params)) {
-            Job::find($id)->activate();
-        }
+        $params = [
+            'token' => $token,
+            'description' => "Job Application Payment Fee for Application ID: {$id}",
+        ];
+
+        $charge = $stripe->charge($params);
+        dd($charge);
+            // Job::find($id)->activate();
 
         return redirect('/');
     }

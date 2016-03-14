@@ -22,4 +22,7 @@ $app->get('/jobs', 'JobController@index');
 $app->get('/jobs/create', 'JobController@create');
 $app->get('/jobs/{id}', 'JobController@show');
 $app->get('/jobs/{id}/preview', 'JobController@preview');
+
+
 $app->post('/jobs', 'JobController@store');
+$app->post('/jobs/{id}/activate', 'JobController@activate');

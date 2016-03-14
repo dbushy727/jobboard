@@ -6,6 +6,7 @@ body {
   font-family: 'Lora', serif;
   line-height: 1.9;
   word-spacing: 2px;
+  word-wrap: break-word;
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
@@ -82,6 +83,17 @@ body {
   }
 }
 
+/* Responsive: Portrait tablets and up */
+@media screen and (max-width: 500px) {
+  body {
+    font-size: 16px;
+  }
+
+  h1 {
+    font-size: 2em;
+  }
+}
+
 .small {
   font-size: 60%;
 }
@@ -89,4 +101,12 @@ body {
 
 .tight {
     line-height: 1.3;
+}
+
+.header-text {
+  font-size: 2em;
+}
+
+.baseline {
+  vertical-align: -webkit-baseline-middle;
 }

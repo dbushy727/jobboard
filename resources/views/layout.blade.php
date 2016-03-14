@@ -10,17 +10,25 @@
     <link rel="stylesheet" href="/css/theme.css">
     <link rel="stylesheet" href="/css/jobs.css">
 
+    <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
     <script src="//cdn.ckeditor.com/4.5.7/basic/ckeditor.js"></script>
+    <script src="https://checkout.stripe.com/checkout.js"></script>
 </head>
 <body>
     <div class="container">
-        <div class="header clearfix">
+        <!-- <div class="header clearfix">
             <nav>
                 <ul class="nav nav-pills pull-right">
                     <li role="presentation" class="active"><a href="/jobs/create">Post a Job</a></li>
                 </ul>
             </nav>
             <h2 class="text-muted"><a href="/">Jobboard</a></h2>
+        </div> -->
+
+        <div>
+            <a href="/" class="header-text baseline">Jobboard</a>
+            <a href="/jobs/create"><button class="btn btn-primary pull-right header-button">Post a Job</button></a>
+            <hr>
         </div>
 
         <div class="clearfix">
@@ -37,8 +45,6 @@
         </footer>
 
     </div> <!-- /container -->
-
-    <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 </body>
 </html>

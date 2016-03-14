@@ -79,7 +79,8 @@
                 </div>
 
                 <div class="form-group col-sm-12">
-                    <input type="submit" class="btn btn-success pull-right">
+                    <hr>
+                    <input type="submit" class="btn btn-success pull-right btn-lg btn-block">
                 </div>
             </form>
         </div>
