@@ -10,7 +10,7 @@
         <div class="list-group job-list tight">
         @foreach($jobs as $job)
             <a href="/jobs/{{$job->id}}" class="list-group-item {{ $job->is_featured ? 'featured' : ''}}" >
-                <div class="pull-right">
+                <div class="pull-right job-list-date">
                     <div class="job-list-item location">{{ $job->location }}</div>
                     <!-- <div class="job-list-item date">{{ $job->created_at->format('M d Y') }}</div> -->
                     <div class="job-list-item date">{{ $job->created_at->diffForHumans() }}</div>
