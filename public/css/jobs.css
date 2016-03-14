@@ -24,12 +24,16 @@
 }
 
 .job-list-title {
-    font-size: 1.5em;
+    font-size: 1.3em;
     font-weight: 500;
     max-width: 20em;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+.job-list-company {
+    font-size: 0.9em;
 }
 
 @media (max-width: 767px) {
@@ -38,7 +42,7 @@
     }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 525px) {
 
     body {
         font-size: 14px;
