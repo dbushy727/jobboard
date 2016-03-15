@@ -19,7 +19,7 @@
                     @if($job->logo)
                         <img class="job-posting-logo" src="{{ $job->logo }}" alt="">
                     @else
-                        <img class="job-posting-logo" src="/img/bear100.jpeg" alt="">
+                        <img class="job-posting-logo" src="https://cdn2.iconfinder.com/data/icons/management/256/Resume-512.png" alt="">
                     @endif
                     <div class="job-list-info">
                         <div class="job-list-title">{{$job->title}}</div>
