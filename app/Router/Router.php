@@ -30,7 +30,7 @@ class Router
     protected function setStaticRoutes()
     {
         $this->router->get('/', function () {
-            return redirect('/auth/register');
+            return redirect('/jobs');
         });
     }
 
