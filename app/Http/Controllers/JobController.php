@@ -90,4 +90,15 @@ class JobController extends Controller
 
         return redirect('/');
     }
+
+    public function pending()
+    {
+        $jobs = Job::pending()
+            ->current()
+            ->orderBy('is_featured', 'desc')
+            ->orderBy('created_at', 'desc')
+            ->get();
+
+        return view('jobs.index', compact('jobs'));
+    }
 }

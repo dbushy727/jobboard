@@ -41,6 +41,11 @@ class Job extends Model
         return $query->where('is_active', true);
     }
 
+    public function scopePending($query)
+    {
+        return $query->where('is_active', false);
+    }
+
     public function activate()
     {
         return $this->update(['is_active' => true]);
