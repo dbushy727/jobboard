@@ -18,6 +18,7 @@ return [
         'method' => 'pending',
         'type'   => 'get',
         'name'   => 'pending_jobs',
+        'middleware' => 'auth',
     ],
     [
         'path'   => '/{id}',

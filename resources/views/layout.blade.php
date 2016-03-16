@@ -7,6 +7,7 @@
     <title>Jobboard</title>
     <link href='https://fonts.googleapis.com/css?family=Lora:400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="/css/app.css">
 
     <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
@@ -15,26 +16,12 @@
 </head>
 <body>
     <div class="container">
-        <!-- <div class="header clearfix">
-            <nav>
-                <ul class="nav nav-pills pull-right">
-                    <li role="presentation" class="active"><a href="/jobs/create">Post a Job</a></li>
-                </ul>
-            </nav>
-            <h2 class="text-muted"><a href="/">Jobboard</a></h2>
-        </div> -->
-
         <div>
             <a href="/" class="header-text baseline">Jobboard</a>
             <a href="/jobs/create"><button class="btn btn-primary pull-right header-button">Post a Job</button></a>
             <hr>
         </div>
 
-        <div class="clearfix">
-            This is my welcome content. This is where the copy goes that explains what this site does along with anything else we wanna tell the world. Go ahead, write something down and I'll make sure to share it. PS - We could put pictures in this as well. No need to hold back.
-
-            <hr>
-        </div>
         <div class="clearfix">
             @yield('content')
         </div>

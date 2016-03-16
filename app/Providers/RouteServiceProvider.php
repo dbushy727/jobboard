@@ -16,17 +16,19 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected $namespace = 'App\Http\Controllers';
 
+    public function register()
+    {
+        app('App\Router\Router')->setRoutes();
+    }
     /**
      * Define your route model bindings, pattern filters, etc.
      *
      * @param  \Illuminate\Routing\Router  $router
      * @return void
      */
-    public function boot(Router $router)
+    public function boot(Router $base_router)
     {
-        //
-
-        parent::boot($router);
+        // parent::boot($base_router);
     }
 
     /**
