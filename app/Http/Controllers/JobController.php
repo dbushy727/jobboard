@@ -103,7 +103,7 @@ class JobController extends Controller
             ->orderBy('created_at', 'desc')
             ->get();
 
-        return view('jobs.index', compact('jobs'));
+        return view('jobs.pending', compact('jobs'));
     }
 
     public function payment($id, Stripe $stripe, PaymentRequest $request)
