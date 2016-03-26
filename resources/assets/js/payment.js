@@ -5,6 +5,7 @@ var key = $('#key').val(),
         locale: 'auto',
         token: function(token) {
             $('#token').val(token.id);
+            $('#email').val(token.email);
             $('#payment').submit();
         }
 });
