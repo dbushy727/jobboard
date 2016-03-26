@@ -33,10 +33,8 @@ class Router
             return redirect('/jobs');
         });
 
-        $this->router->get('/danny', function () {
-            $img = \Image::make('foo.jpg')->resize(300, 200);
-
-            return $img->response('jpg');
+        $this->router->get('/thank-you', function () {
+            return view('thank-you');
         });
     }
 

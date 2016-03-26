@@ -3,7 +3,7 @@
 @section('activate')
 
 <div class="activation-buttons">
-    <button class="btn btn-info">Edit</button>
+    <a href="/jobs/{{$job->id}}/edit"><button class="btn btn-info">Edit</button></a>
     <button class="btn btn-success pull-right" id="checkoutButton">Looks Good</button>
     <form action="/jobs/{{$job->id}}/payment" method="POST" id="payment">
         <input type="hidden" id="key" value="{{ getenv('STRIPE_PUBLIC_KEY')}}">

@@ -21,6 +21,14 @@
             <a href="/jobs/create"><button class="btn btn-primary pull-right header-button">Post a Job</button></a>
             <hr>
         </div>
+        @if(Auth::check())
+        <div>
+            <div class="text-center">Welcome {{ Auth::user()->name }}</div>
+            <a href="/jobs/pending">Jobs Pending</a>
+            <a href="/auth/logout" class="pull-right">Logout</a>
+            <hr>
+        </div>
+        @endif
 
         <div class="clearfix">
             @yield('content')
@@ -28,6 +36,9 @@
 
         <footer class="footer text-center">
             <p>&copy; 2016 Jobboard, Inc.</p>
+            @if(!Auth::check())
+            <p><a href="/auth/login">Admin</a></p>
+            @endif
         </footer>
 
     </div> <!-- /container -->

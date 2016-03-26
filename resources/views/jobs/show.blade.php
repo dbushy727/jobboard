@@ -4,7 +4,7 @@
 <div class="panel panel-default job-posting">
     <div class="panel-body">
         <div class="job-posting-section tight">
-            <img src="https://s3-us-west-2.amazonaws.com/voyant/{{ $job->logo}}" class="job-posting-logo pull-right">
+            <img src="{{ env('S3_BASEPATH') . $job->logo}}" class="job-posting-logo pull-right">
             <h1>{{$job->title}}</h1>
             <p>{{ $job->created_at->format('M d Y') }}</p>
         </div>
@@ -27,6 +27,22 @@
                 {{$job->application_method}}
             </div>
         </div>
+
+        @if(Auth::check() && !$job->is_active)
+        <div class="form-group">
+            <hr>
+            <form action="/jobs/{{$job->id}}/activate" method="POST" class="form">
+                {!! csrf_field() !!}
+                <button type="submit" class="btn btn-success btn-lg btn-block">Activate</button>
+            </form>
+        </div>
+        <div class="form-group">
+            <form action="/jobs/{{$job->id}}/reject" method="POST" class="form">
+                {!! csrf_field() !!}
+                <button type="submit" class="btn btn-danger btn-lg btn-block">Reject</button>
+            </form>
+        </div>
+        @endif
     </div>
 </div>
 

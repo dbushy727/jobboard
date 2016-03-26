@@ -14,15 +14,17 @@ class CreateJobsTable extends Migration
     {
         Schema::create('jobs', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('price')->unsigned();
             $table->string('company_name');
             $table->string('url');
             $table->string('logo');
             $table->string('email');
             $table->string('title');
             $table->string('location');
-            $table->text('description');
             $table->string('application_method');
+            $table->text('description');
             $table->boolean('is_featured');
+            $table->boolean('is_remote');
             $table->boolean('is_active');
             $table->boolean('is_paid');
             $table->timestamps();

@@ -22,8 +22,10 @@ class Job extends Model
         'description',
         'application_method',
         'is_featured',
+        'is_remote',
         'is_active',
         'is_paid',
+        'price',
     ];
 
     /**

@@ -4,7 +4,6 @@ var key = $('#key').val(),
         image: 'https://cdn2.iconfinder.com/data/icons/hicons/600/relatorio.png',
         locale: 'auto',
         token: function(token) {
-            console.log(token);
             $('#token').val(token.id);
             $('#email').val(token.email);
             $('#payment').submit();
@@ -12,14 +11,25 @@ var key = $('#key').val(),
 });
 
 $('#checkoutButton').on('click', function(e) {
-    // Open Checkout with further options
-    var amount = 20000;
+    var id = window.location.pathname.split('/')[2];
+    $.ajax({
+        url: '/jobs/' + id + '/info',
+        method: 'get',
+        success: function (job) {
+            if (job.status == 'error') {
+                $('#errorMessage').text(job.message);
+                return false;
+            }
 
-    handler.open({
-        name: 'Payment Information',
-        amount: amount,
+            var amount = job.message.price;
+
+            // Open Checkout with further options
+            handler.open({
+                name: 'Payment Information',
+                amount: amount,
+            });
+        }
     });
-
     e.preventDefault();
 });
 
@@ -28,4 +38,16 @@ $(window).on('popstate', function() {
     handler.close();
 });
 
+var renderFileUploaded = function () {
+    $('#editJob #logo').on('change', function (e) {
+        var logo = this;
+        var data = $(logo).val().split('\\');
+        var name = data[data.length - 1];
+        $('#uploadedFile').text(name);
+    });
+};
+
+$(function() {
+    renderFileUploaded();
+});
 //# sourceMappingURL=all.js.map

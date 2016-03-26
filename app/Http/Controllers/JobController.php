@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PaymentRequest;
 use App\Models\Job;
+use App\Models\Payment;
 use App\Payment\Stripe;
 use Illuminate\Http\Request;
-use App\Http\Requests\PaymentRequest;
 
 class JobController extends Controller
 {
@@ -24,11 +25,12 @@ class JobController extends Controller
     {
         $job = Job::find($id);
 
+
         if (!$job) {
             return redirect('/');
         }
 
-        if (!$job->is_active) {
+        if (!$job->is_active && !\Auth::check()) {
             return redirect('/');
         }
 
@@ -51,11 +53,18 @@ class JobController extends Controller
             'application_method',
             'email',
             'is_featured',
+            'is_remote',
         ]);
 
         $params = array_filter($params);
 
         $params['logo'] = $this->uploadImage($request->file('logo'));
+
+        $params['price'] = env('BASE_PRICE');
+
+        if (array_get($params, 'is_featured')) {
+            $params['price'] += env('FEATURE_PRICE');
+        }
 
         $job = Job::create($params);
 
@@ -83,7 +92,7 @@ class JobController extends Controller
 
         $job->activate();
 
-        return redirect('/');
+        return redirect("/jobs/{$id}");
     }
 
     public function pending()
@@ -115,10 +124,82 @@ class JobController extends Controller
             'receipt_email' => $request->get('email', null),
         ]);
 
-        if (array_get($charge, 'status') === 'success') {
-            $job->pay();
+        if (array_get($charge, 'status') !== 'success') {
+            throw new \Exception("Payment Failed");
         }
 
-        return $charge;
+        $job->pay();
+
+        $payment_params = [
+            'job_id'         => $job->id,
+            'transaction_id' => array_get($charge, 'message.id'),
+            'amount'         => array_get($charge, 'message.amount'),
+            'description'    => array_get($charge, 'message.description'),
+            'email'          => array_get($charge, 'message.receipt_email'),
+            'type'           => array_get($charge, 'message.source.object'),
+            'last4'          => array_get($charge, 'message.source.last4'),
+            'exp_month'      => array_get($charge, 'message.source.exp_month'),
+            'exp_year'       => array_get($charge, 'message.source.exp_year'),
+            'name'           => array_get($charge, 'message.source.name'),
+        ];
+
+        Payment::create($payment_params);
+
+        return redirect('/thank-you');
+    }
+
+    public function edit($id)
+    {
+        $job = Job::find($id);
+
+        if (!$job) {
+            return redirect('/404');
+        }
+
+        if ($job->is_active) {
+            return redirect('/jobs/show/' . $job->id);
+        }
+
+        return view('jobs.edit', compact('job'));
+    }
+
+    public function update($id, Request $request)
+    {
+        $job = Job::find($id);
+
+        if (!$job) {
+            return redirect('/404');
+        }
+
+        $params = $request->only([
+            'title',
+            'company_name',
+            'location',
+            'url',
+            'description',
+            'application_method',
+            'email',
+            'is_featured',
+            'is_remote',
+        ]);
+
+        $params = array_filter($params);
+
+        $params['logo'] = $this->uploadImage($request->file('logo'));
+
+        $job->update($params);
+
+        return redirect("/jobs/{$job->id}/preview");
+    }
+
+    public function info($id, Request $request)
+    {
+        $job = Job::find($id);
+
+        if (!$job) {
+            return ['status' => 'error', 'message' => 'Job not found'];
+        }
+
+        return ['status' => 'success', 'message' => $job];
     }
 }

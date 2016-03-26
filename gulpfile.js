@@ -13,5 +13,6 @@ var elixir = require('laravel-elixir');
 
 elixir(function(mix) {
     mix.sass(['theme.scss', 'jobs.scss']);
-    mix.scripts(['payment.js']);
+    mix.scripts(['payment.js', 'edit-job.js']);
 });
+
