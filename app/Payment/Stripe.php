@@ -35,15 +35,13 @@ class Stripe
 
     public function charge($params)
     {
+        $params['amount']       = array_get($params, 'amount', $this->default_payment_amount);
+        $params['currency']     = array_get($params, 'currency', $this->currency);
+        $params['description']  = array_get($params, 'description', $this->default_description);
+        $params['source']       = array_pull($params, 'token');
+
         try {
-            $charge = $this->charge->create([
-                'source'        => array_get($params, 'token'),
-                'amount'        => array_get($params, 'amount', $this->default_payment_amount),
-                'currency'      => array_get($params, 'currency', $this->currency),
-                'description'   => array_get($params, 'description', $this->default_description),
-                'metadata'      => array_get($params, 'metadata'),
-                'receipt_email' => array_get($params, 'receipt_email', null),
-            ]);
+            $charge = $this->charge->create($params);
 
             return [
                 'status'  => 'success',
