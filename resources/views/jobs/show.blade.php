@@ -4,7 +4,7 @@
 <div class="panel panel-default job-posting">
     <div class="panel-body">
         <div class="job-posting-section tight">
-            <img src="{{ $job->logo}}" class="job-posting-logo pull-right">
+            <img src="https://s3-us-west-2.amazonaws.com/voyant/{{ $job->logo}}" class="job-posting-logo pull-right">
             <h1>{{$job->title}}</h1>
             <p>{{ $job->created_at->format('M d Y') }}</p>
         </div>

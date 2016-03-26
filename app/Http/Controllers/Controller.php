@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Image\Image;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -11,12 +12,8 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    public function uploadImage($logo, $height = 200, $width = 200)
+    public function uploadImage($logo, $height = 100, $width = 100)
     {
-        $filepath = storage_path(time() . $logo->getClientOriginalName());
-
-        \Image::make($logo)->fit($height, $width)->save($filepath);
-
-        return $filepath;
+        return (new Image($logo))->save($height, $width);
     }
 }
