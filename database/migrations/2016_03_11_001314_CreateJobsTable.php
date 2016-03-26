@@ -24,6 +24,7 @@ class CreateJobsTable extends Migration
             $table->string('application_method');
             $table->boolean('is_featured');
             $table->boolean('is_active');
+            $table->boolean('is_paid');
             $table->timestamps();
         });
     }

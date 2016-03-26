@@ -44,5 +44,10 @@ return [
         'type'   => 'post',
         'name'   => 'activate_job',
     ],
-
+    [
+        'path'   => '/{id}/payment',
+        'method' => 'payment',
+        'type'   => 'post',
+        'name'   => 'pay_for_job',
+    ],
 ];

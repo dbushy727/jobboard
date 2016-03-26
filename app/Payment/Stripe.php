@@ -18,7 +18,7 @@ class Stripe
 
     protected $default_payment_amount = 20000;
 
-    protected $default_payment_description = 'Job Application Payment Fee';
+    protected $default_description = 'Application Fee';
 
     public function __construct(StripeClient $stripe, Charge $charge)
     {
@@ -37,10 +37,12 @@ class Stripe
     {
         try {
             $charge = $this->charge->create([
-                'source'      => array_get($params, 'token'),
-                'amount'      => array_get($params, 'amount', $this->default_payment_amount),
-                'currency'    => array_get($params, 'currency', $this->currency),
-                'description' => array_get($params, 'description', $this->default_payment_description),
+                'source'        => array_get($params, 'token'),
+                'amount'        => array_get($params, 'amount', $this->default_payment_amount),
+                'currency'      => array_get($params, 'currency', $this->currency),
+                'description'   => array_get($params, 'description', $this->default_description),
+                'metadata'      => array_get($params, 'metadata'),
+                'receipt_email' => array_get($params, 'receipt_email', null),
             ]);
 
             return [

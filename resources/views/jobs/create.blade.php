@@ -7,7 +7,7 @@
         <h2>Post a Job</h2>
         <div class="panel panel-default">
             <div class="panel-body">
-                <form action="/jobs" method="POST" name="createJob">
+                <form action="/jobs" method="POST" name="createJob" enctype="multipart/form-data">
                     <div class="form-group col-sm-12 text-right">* Required fields</div>
                     <div class="form-group col-sm-12">
                         <label for="title">Title*</label>
@@ -17,10 +17,7 @@
 
                     <div class="form-group col-sm-6">
                         <label for="logo">Logo <span class="small">(100px wide)</span></label>
-                        <input type="file" name="logo" id="logo" class="hidden">
-                        <div class="upload-logo">
-                            <button class="btn-sm btn btn-info"><label for="logo">Click to Upload</label></button>
-                        </div>
+                        <input type="file" name="logo" id="logo">
                     </div>
 
                     <div class="form-group col-sm-6">

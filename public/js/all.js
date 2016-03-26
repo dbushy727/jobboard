@@ -4,16 +4,20 @@ var key = $('#key').val(),
         image: 'https://cdn2.iconfinder.com/data/icons/hicons/600/relatorio.png',
         locale: 'auto',
         token: function(token) {
+            console.log(token);
             $('#token').val(token.id);
+            $('#email').val(token.email);
             $('#payment').submit();
         }
 });
 
 $('#checkoutButton').on('click', function(e) {
     // Open Checkout with further options
+    var amount = 20000;
+
     handler.open({
         name: 'Payment Information',
-        amount: 20000,
+        amount: amount,
     });
 
     e.preventDefault();

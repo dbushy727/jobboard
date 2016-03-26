@@ -32,6 +32,12 @@ class Router
         $this->router->get('/', function () {
             return redirect('/jobs');
         });
+
+        $this->router->get('/danny', function () {
+            $img = \Image::make('foo.jpg')->resize(300, 200);
+
+            return $img->response('jpg');
+        });
     }
 
     protected function setDynamicRoutes()

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Job;
 use App\Payment\Stripe;
 use Illuminate\Http\Request;
+use App\Http\Requests\PaymentRequest;
 
 class JobController extends Controller
 {
@@ -43,7 +44,6 @@ class JobController extends Controller
     {
         $params = $request->only([
             'title',
-            'logo',
             'company_name',
             'location',
             'url',
@@ -55,6 +55,8 @@ class JobController extends Controller
 
         $params = array_filter($params);
 
+        $params['logo'] = $this->uploadImage($request->file('logo'));
+
         $job = Job::create($params);
 
         return redirect("/jobs/{$job->id}/preview");
@@ -65,28 +67,21 @@ class JobController extends Controller
         $job = Job::find($id);
 
         if (!$job) {
-            return redirect('/');
+            return redirect('/404');
         }
 
         if ($job->is_active) {
-            return redirect('/');
+            return redirect('/jobs/show/' . $job->id);
         }
 
         return view('jobs.preview', compact('job'));
     }
 
-    public function activate($id, Request $request, Stripe $stripe)
+    public function activate($id, Request $request)
     {
-        $token = $request->get('token');
+        $job = Job::find($id);
 
-        $params = [
-            'token' => $token,
-            'description' => "Job Application Payment Fee for Application ID: {$id}",
-        ];
-
-        $charge = $stripe->charge($params);
-        dd($charge);
-            // Job::find($id)->activate();
+        $job->activate();
 
         return redirect('/');
     }
@@ -100,5 +95,30 @@ class JobController extends Controller
             ->get();
 
         return view('jobs.index', compact('jobs'));
+    }
+
+    public function payment($id, Stripe $stripe, PaymentRequest $request)
+    {
+        $job = Job::find($id);
+
+        if (!$job) {
+            throw new \Exception("Cannot find Job #{$id}");
+        }
+
+        if ($job->is_paid) {
+            throw new \Exception("Job #{$id} has already been paid for");
+        }
+
+        $charge = $stripe->charge([
+            'token' => $request->get('token'),
+            'metadata' => ['job_id' => $id],
+            'receipt_email' => $request->get('email', null),
+        ]);
+
+        if (array_get($charge, 'status') === 'success') {
+            $job->pay();
+        }
+
+        return $charge;
     }
 }

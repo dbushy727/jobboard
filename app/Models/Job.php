@@ -23,6 +23,7 @@ class Job extends Model
         'application_method',
         'is_featured',
         'is_active',
+        'is_paid',
     ];
 
     /**
@@ -49,5 +50,10 @@ class Job extends Model
     public function activate()
     {
         return $this->update(['is_active' => true]);
+    }
+
+    public function pay()
+    {
+        return $this->update(['is_paid' => true]);
     }
 }
