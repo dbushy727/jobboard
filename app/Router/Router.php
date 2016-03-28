@@ -35,7 +35,7 @@ class Router
 
         $this->router->get('/thank-you', function () {
             return view('thank-you');
-        });
+        })->name('thank-you');
     }
 
     protected function setDynamicRoutes()

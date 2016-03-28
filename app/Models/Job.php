@@ -93,4 +93,14 @@ class Job extends Model
     {
         return $this->hasOne('App\Models\Payment');
     }
+
+    public function setPriceAttribute($value)
+    {
+        $this->attributes['price'] = $this->attributes['is_featured'] ? env('BASE_PRICE') + env('FEATURE_PRICE') : env('BASE_PRICE');
+    }
+
+    public function setSessionIdAttribute($value)
+    {
+        $this->attributes['session_id'] = \Session::getId();
+    }
 }

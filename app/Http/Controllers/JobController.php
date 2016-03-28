@@ -26,13 +26,8 @@ class JobController extends Controller
     {
         $job = Job::find($id);
 
-
-        if (!$job) {
-            return redirect('/');
-        }
-
-        if (!$job->is_active && !\Auth::check()) {
-            return redirect('/');
+        if (!$job->is_active) {
+            return redirect()->route('jobs');
         }
 
         return view('jobs.show', compact('job'));
@@ -43,16 +38,16 @@ class JobController extends Controller
         return view('jobs.create');
     }
 
-    public function store(Request $request)
+    public function store(CreateJobRequest $request)
     {
         $params = $request->only([
             'title',
-            'company_name',
             'location',
-            'url',
             'description',
             'application_method',
             'email',
+            'company_name',
+            'url',
             'is_featured',
             'is_remote',
         ]);
@@ -63,33 +58,14 @@ class JobController extends Controller
             $params['logo'] = $this->uploadImage($file);
         }
 
-        $params['price'] = env('BASE_PRICE');
-        $params['session_id'] = \Session::getId();
-
-        if (array_get($params, 'is_featured')) {
-            $params['price'] += env('FEATURE_PRICE');
-        }
-
         $job = Job::create($params);
 
-        return redirect("/jobs/{$job->id}/preview");
+        return redirect()->route('preview_job', [$job->id]);
     }
 
     public function preview($id)
     {
         $job = Job::find($id);
-
-        if ($job->session_id !== \Session::getId()) {
-            return redirect('/');
-        }
-
-        if (!$job) {
-            return response('Not Found', 404);
-        }
-
-        if ($job->is_active) {
-            return redirect('/jobs/show/' . $job->id);
-        }
 
         return view('jobs.preview', compact('job'));
     }
@@ -100,7 +76,7 @@ class JobController extends Controller
 
         $job->activate();
 
-        return redirect("/jobs/{$id}");
+        return redirect()->route('show_job', [$id]);
     }
 
     public function pending()
@@ -118,56 +94,16 @@ class JobController extends Controller
     {
         $job = Job::find($id);
 
-        if (!$job) {
-            throw new \Exception("Cannot find Job #{$id}");
-        }
-
-        if ($job->is_paid) {
-            throw new \Exception("Job #{$id} has already been paid for");
-        }
-
-        $charge = $stripe->charge([
-            'token'         => $request->get('token'),
-            'metadata'      => ['job_id' => $id],
-            'receipt_email' => $request->get('email', null),
-            'amount'        => $job->price,
-        ]);
-
-        if (array_get($charge, 'status') !== 'success') {
-            throw new \Exception("Payment Failed");
-        }
-
+        $charge = $this->makePayment($job, $request);
+        $this->savePayment($charge);
         $job->pay();
 
-        $payment_params = [
-            'job_id'         => $job->id,
-            'transaction_id' => array_get($charge, 'message.id'),
-            'amount'         => array_get($charge, 'message.amount'),
-            'description'    => array_get($charge, 'message.description'),
-            'email'          => array_get($charge, 'message.receipt_email'),
-            'type'           => array_get($charge, 'message.source.object'),
-            'last4'          => array_get($charge, 'message.source.last4'),
-            'exp_month'      => array_get($charge, 'message.source.exp_month'),
-            'exp_year'       => array_get($charge, 'message.source.exp_year'),
-            'name'           => array_get($charge, 'message.source.name'),
-        ];
-
-        Payment::create($payment_params);
-
-        return redirect('/thank-you');
+        return redirect()->route('thank-you');
     }
 
     public function edit($id)
     {
         $job = Job::find($id);
-
-        if (!$job) {
-            return redirect('/404');
-        }
-
-        if ($job->is_active) {
-            return redirect('/jobs/show/' . $job->id);
-        }
 
         return view('jobs.edit', compact('job'));
     }
@@ -175,14 +111,6 @@ class JobController extends Controller
     public function update($id, Request $request)
     {
         $job = Job::find($id);
-
-        if (!$job) {
-            return redirect('/404');
-        }
-
-        if ($job->is_paid) {
-            return redirect("/jobs/{$id}");
-        }
 
         $params = $request->only([
             'title',
@@ -202,7 +130,7 @@ class JobController extends Controller
 
         $job->update($params);
 
-        return redirect("/jobs/{$job->id}/preview");
+        return redirect()->route('preview_job', [$job->id]);
     }
 
     public function info($id, Request $request)
@@ -237,6 +165,44 @@ class JobController extends Controller
             'reason' => 'Rejected Job Application',
         ]);
 
-        return redirect('/jobs/pending');
+        return redirect()->route('pending_jobs');
+    }
+
+    protected function makePayment(Job $job, PaymentRequest $request)
+    {
+        if ($job->is_paid) {
+            throw new \Exception("Job #{$id} has already been paid for");
+        }
+
+        $charge = $stripe->charge([
+            'token'         => $request->get('token'),
+            'metadata'      => ['job_id' => $id],
+            'receipt_email' => $request->get('email', null),
+            'amount'        => $job->price,
+        ]);
+
+        if (array_get($charge, 'status') !== 'success') {
+            throw new \Exception("Payment Failed");
+        }
+
+        return $charge;
+    }
+
+    protected function savePayment(Job $job, $charge)
+    {
+        $params = [
+            'job_id'         => $job->id,
+            'transaction_id' => array_get($charge, 'message.id'),
+            'amount'         => array_get($charge, 'message.amount'),
+            'description'    => array_get($charge, 'message.description'),
+            'email'          => array_get($charge, 'message.receipt_email'),
+            'type'           => array_get($charge, 'message.source.object'),
+            'last4'          => array_get($charge, 'message.source.last4'),
+            'exp_month'      => array_get($charge, 'message.source.exp_month'),
+            'exp_year'       => array_get($charge, 'message.source.exp_year'),
+            'name'           => array_get($charge, 'message.source.name'),
+        ];
+
+        return Payment::create($params);
     }
 }
