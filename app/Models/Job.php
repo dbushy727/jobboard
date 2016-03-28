@@ -13,6 +13,7 @@ class Job extends Model
      * @var array
      */
     protected $fillable = [
+        'session_id',
         'company_name',
         'url',
         'logo',
@@ -39,14 +40,38 @@ class Job extends Model
         return $query->where('created_at', '>=', Carbon::today()->subDay(30));
     }
 
+    public function scopeRejected($query)
+    {
+        return $query->where('is_rejected', true);
+    }
+
+    public function scopeNotRejected($query)
+    {
+        return $query->where('is_rejected', false);
+    }
+
+    public function scopePaid($query)
+    {
+        return $query->where('is_paid', true);
+    }
+
+    public function scopeNotPaid($query)
+    {
+        return $query->where('is_paid', false);
+    }
+
     public function scopeActive($query)
     {
-        return $query->where('is_active', true);
+        return $query->paid()
+            ->notRejected()
+            ->where('is_active', true);
     }
 
     public function scopePending($query)
     {
-        return $query->where('is_active', false);
+        return $query->paid()
+            ->notRejected()
+            ->where('is_active', false);
     }
 
     public function activate()
@@ -57,5 +82,15 @@ class Job extends Model
     public function pay()
     {
         return $this->update(['is_paid' => true]);
+    }
+
+    public function reject()
+    {
+        return $this->update(['is_rejected' => true]);
+    }
+
+    public function payment()
+    {
+        return $this->hasOne('App\Models\Payment');
     }
 }

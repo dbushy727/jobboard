@@ -2,8 +2,10 @@
 
 namespace App\Payment;
 
+use App\Models\Payment;
 use Stripe\Charge;
 use Stripe\Error\Card as CardError;
+use Stripe\Refund;
 use Stripe\Stripe as StripeClient;
 
 class Stripe
@@ -14,16 +16,19 @@ class Stripe
 
     protected $charge;
 
+    protected $refund;
+
     protected $currency = 'usd';
 
     protected $default_payment_amount = 20000;
 
     protected $default_description = 'Application Fee';
 
-    public function __construct(StripeClient $stripe, Charge $charge)
+    public function __construct(StripeClient $stripe, Charge $charge, Refund $refund)
     {
         $this->stripe = $stripe;
         $this->charge = $charge;
+        $this->refund = $refund;
         $this->setApiToken();
     }
 
@@ -51,6 +56,26 @@ class Stripe
         } catch (CardError $e) {
             return [
                 'status'  => 'error',
+                'message' => $e->getMessage(),
+            ];
+        }
+    }
+
+    public function refund(Payment $payment)
+    {
+        try {
+            $refund = $this->refund->create([
+                'charge' => $payment->transaction_id,
+            ]);
+
+            return [
+                'status' => 'success',
+                'message' => $refund,
+            ];
+
+        } catch (\Exception $e) {
+            return [
+                'status' => 'error',
                 'message' => $e->getMessage(),
             ];
         }

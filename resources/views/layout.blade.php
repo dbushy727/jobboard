@@ -16,6 +16,9 @@
 </head>
 <body>
     <div class="container">
+        <pre>
+            {{ Session::getId()}}
+        </pre>
         <div>
             <a href="/" class="header-text baseline">Jobboard</a>
             <a href="/jobs/create"><button class="btn btn-primary pull-right header-button">Post a Job</button></a>
@@ -23,7 +26,7 @@
         </div>
         @if(Auth::check())
         <div>
-            <div class="text-center">Welcome {{ Auth::user()->name }}</div>
+            <div class="text-center">God Mode</div>
             <a href="/jobs/pending">Jobs Pending</a>
             <a href="/auth/logout" class="pull-right">Logout</a>
             <hr>

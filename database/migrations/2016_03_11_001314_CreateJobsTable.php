@@ -14,6 +14,7 @@ class CreateJobsTable extends Migration
     {
         Schema::create('jobs', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('session_id');
             $table->integer('price')->unsigned();
             $table->string('company_name');
             $table->string('url');
@@ -27,6 +28,7 @@ class CreateJobsTable extends Migration
             $table->boolean('is_remote');
             $table->boolean('is_active');
             $table->boolean('is_paid');
+            $table->boolean('is_rejected');
             $table->timestamps();
         });
     }

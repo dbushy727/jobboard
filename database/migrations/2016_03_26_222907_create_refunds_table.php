@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePaymentsTable extends Migration
+class CreateRefundsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,23 +12,17 @@ class CreatePaymentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('payments', function (Blueprint $table) {
+        Schema::create('refunds', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('job_id')->unsigned();
+            $table->integer('payment_id')->unsigned();
             $table->integer('amount')->unsigned();
             $table->string('transaction_id');
-            $table->string('description');
-            $table->string('email');
-            $table->string('type');
-            $table->string('last4');
-            $table->string('exp_month');
-            $table->string('exp_year');
-            $table->string('name');
+            $table->string('reason');
             $table->timestamps();
 
-            $table->foreign('job_id')
+            $table->foreign('payment_id')
                 ->references('id')
-                ->on('jobs');
+                ->on('payments');
         });
     }
 
@@ -39,6 +33,6 @@ class CreatePaymentsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('payments');
+        Schema::drop('refunds');
     }
 }

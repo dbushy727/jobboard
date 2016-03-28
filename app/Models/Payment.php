@@ -24,4 +24,14 @@ class Payment extends Model
         'exp_year',
         'name',
     ];
+
+    public function job()
+    {
+        return $this->belongsTo('App\Models\Job');
+    }
+
+    public function refund()
+    {
+        return $this->hasOne('App\Models\Refund');
+    }
 }

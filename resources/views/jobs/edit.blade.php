@@ -8,6 +8,7 @@
         <div class="panel panel-default">
             <div class="panel-body">
                 <form action="/jobs/{{$job->id}}/update" method="POST" name="editJob" id="editJob" enctype="multipart/form-data">
+                    {!! csrf_field() !!}
                     <div class="form-group col-sm-12 text-right">* Required fields</div>
                     <div class="form-group col-sm-12">
                         <label for="title">Title*</label>

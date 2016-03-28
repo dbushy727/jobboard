@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\PaymentRequest;
 use App\Models\Job;
 use App\Models\Payment;
+use App\Models\Refund;
 use App\Payment\Stripe;
 use Illuminate\Http\Request;
 
@@ -58,9 +59,12 @@ class JobController extends Controller
 
         $params = array_filter($params);
 
-        $params['logo'] = $this->uploadImage($request->file('logo'));
+        if ($file = $request->file('logo')) {
+            $params['logo'] = $this->uploadImage($file);
+        }
 
         $params['price'] = env('BASE_PRICE');
+        $params['session_id'] = \Session::getId();
 
         if (array_get($params, 'is_featured')) {
             $params['price'] += env('FEATURE_PRICE');
@@ -75,8 +79,12 @@ class JobController extends Controller
     {
         $job = Job::find($id);
 
+        if ($job->session_id !== \Session::getId()) {
+            return redirect('/');
+        }
+
         if (!$job) {
-            return redirect('/404');
+            return response('Not Found', 404);
         }
 
         if ($job->is_active) {
@@ -119,9 +127,10 @@ class JobController extends Controller
         }
 
         $charge = $stripe->charge([
-            'token' => $request->get('token'),
-            'metadata' => ['job_id' => $id],
+            'token'         => $request->get('token'),
+            'metadata'      => ['job_id' => $id],
             'receipt_email' => $request->get('email', null),
+            'amount'        => $job->price,
         ]);
 
         if (array_get($charge, 'status') !== 'success') {
@@ -171,6 +180,10 @@ class JobController extends Controller
             return redirect('/404');
         }
 
+        if ($job->is_paid) {
+            return redirect("/jobs/{$id}");
+        }
+
         $params = $request->only([
             'title',
             'company_name',
@@ -201,5 +214,29 @@ class JobController extends Controller
         }
 
         return ['status' => 'success', 'message' => $job];
+    }
+
+    public function reject($id, Stripe $stripe, Request $request)
+    {
+        $job = Job::find($id);
+
+        $stripe_refund = $stripe->refund($job->payment);
+
+        dd($stripe_refund);
+
+        if (array_get($stripe_refund, 'status') !== 'success') {
+            throw new \Exception("Refund Failed");
+        }
+
+        $job->reject();
+
+        $refund = Refund::create([
+            'payment_id' => $job->payment->id,
+            'transaction_id' => $stripe_refund->id,
+            'amount' => $stripe_refund->amount,
+            'reason' => 'Rejected Job Application',
+        ]);
+
+        return redirect('/jobs/pending');
     }
 }
