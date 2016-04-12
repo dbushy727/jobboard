@@ -26,6 +26,7 @@ class Job extends Model
         'is_remote',
         'is_active',
         'is_paid',
+        'is_rejected',
         'price',
     ];
 
@@ -92,15 +93,5 @@ class Job extends Model
     public function payment()
     {
         return $this->hasOne('App\Models\Payment');
-    }
-
-    public function setPriceAttribute($value)
-    {
-        $this->attributes['price'] = $this->attributes['is_featured'] ? env('BASE_PRICE') + env('FEATURE_PRICE') : env('BASE_PRICE');
-    }
-
-    public function setSessionIdAttribute($value)
-    {
-        $this->attributes['session_id'] = \Session::getId();
     }
 }

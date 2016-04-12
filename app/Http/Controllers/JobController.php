@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateJobRequest;
 use App\Http\Requests\PaymentRequest;
 use App\Models\Job;
 use App\Models\Payment;
@@ -26,7 +27,7 @@ class JobController extends Controller
     {
         $job = Job::find($id);
 
-        if (!$job->is_active) {
+        if (!$job->is_active && !\Auth::check()) {
             return redirect()->route('jobs');
         }
 
@@ -94,11 +95,11 @@ class JobController extends Controller
     {
         $job = Job::find($id);
 
-        $charge = $this->makePayment($job, $request);
-        $this->savePayment($charge);
+        $charge = $this->makePayment($job, $stripe, $request);
+        $this->savePayment($job, $charge);
         $job->pay();
 
-        return redirect()->route('thank-you');
+        return redirect()->route('thank_you');
     }
 
     public function edit($id)
@@ -150,8 +151,6 @@ class JobController extends Controller
 
         $stripe_refund = $stripe->refund($job->payment);
 
-        dd($stripe_refund);
-
         if (array_get($stripe_refund, 'status') !== 'success') {
             throw new \Exception("Refund Failed");
         }
@@ -160,15 +159,15 @@ class JobController extends Controller
 
         $refund = Refund::create([
             'payment_id' => $job->payment->id,
-            'transaction_id' => $stripe_refund->id,
-            'amount' => $stripe_refund->amount,
+            'transaction_id' => $stripe_refund['message']->id,
+            'amount' => $stripe_refund['message']->amount,
             'reason' => 'Rejected Job Application',
         ]);
 
         return redirect()->route('pending_jobs');
     }
 
-    protected function makePayment(Job $job, PaymentRequest $request)
+    protected function makePayment(Job $job, Stripe $stripe, PaymentRequest $request)
     {
         if ($job->is_paid) {
             throw new \Exception("Job #{$id} has already been paid for");
@@ -176,7 +175,7 @@ class JobController extends Controller
 
         $charge = $stripe->charge([
             'token'         => $request->get('token'),
-            'metadata'      => ['job_id' => $id],
+            'metadata'      => ['job_id' => $job->id],
             'receipt_email' => $request->get('email', null),
             'amount'        => $job->price,
         ]);

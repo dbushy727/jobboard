@@ -33,9 +33,9 @@ class Router
             return redirect('/jobs');
         });
 
-        $this->router->get('/thank-you', function () {
+        $this->router->get('/thank-you', ['as' => 'thank_you', 'middleware' => ['web'], function () {
             return view('thank-you');
-        })->name('thank-you');
+        }]);
     }
 
     protected function setDynamicRoutes()
@@ -68,6 +68,7 @@ class Router
         $method     = array_get($endpoint, 'method');
         $name       = array_get($endpoint, 'name');
         $middleware = array_get($endpoint, 'middleware');
+        $controller = array_get($endpoint, 'controller', $controller);
 
         return array_filter([
             'uses'       => "{$controller}@{$method}",

@@ -26,7 +26,7 @@ return [
         'path'   => '/{id}',
         'method' => 'show',
         'type'   => 'get',
-        'name'   => 'job',
+        'name'   => 'show_job',
         'middleware' => ['web', 'job_exists'],
     ],
     [
