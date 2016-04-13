@@ -127,7 +127,9 @@ class JobController extends Controller
 
         $params = array_filter($params);
 
-        $params['logo'] = $this->uploadImage($request->file('logo'));
+        if ($file = $request->file('logo')) {
+            $params['logo'] = $this->uploadImage($file);
+        }
 
         $job->update($params);
 
