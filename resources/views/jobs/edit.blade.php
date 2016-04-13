@@ -51,7 +51,6 @@
                                     <input type="checkbox" id="featured" name="featured">
                                 @endif
                                 <b>Remote</b>
-                                {{ $job->is_featured }}
                             </label>
                         </div>
                         <span class="help-block">Work from anywhere</span>
