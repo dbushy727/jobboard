@@ -15,25 +15,21 @@
                 <div for="url"><a href="{{$job->url}}">{{$job->url}}</a></div>
             </div>
             <div class="col-sm-3 share-links">
-                <h4><u>Share Links</u></h4>
+                <br>
                 <p><a href="mailto:?subject={{$job->title}}&body=Hey, I thought you would want to check out this job posting. {{ url('jobs', $job->id)}}"><i class="fa fa-envelope"></i> Email This Job</a></p>
                 <p><a target="_BLANK" href="http://twitter.com/share?text=Check Out This Job: {{ $job->title }}&url={{ url('jobs', $job->id) }}&hashtags=jobboard, devops, {{ $job->company }}"><i class="fa fa-twitter"></i> Tweet This Job</a></p>
                 <p><a target="_BLANK" href="https://www.linkedin.com/shareArticle?mini=true&source=Jobboard&title={{ $job->title }}&url={{ url('jobs', $job->id) }}"><i class="fa fa-linkedin"></i> Post on LinkedIn</a></p>
+                <p><a href="mailto:report@jobboard.dev?subject=Job #{{ $job->id }} Is Being Reported"> <i class="fa fa-warning"></i> Report This Job</a></p>
             </div>
 
             <div class="job_info job-posting-section">
                 <label>Description</label>
                 <hr>
-
-                <div class="row">
-                    <p>{!! $job->description !!}</p>
-                </div>
+                <p>{!! $job->description !!}</p>
                 <br>
-                <div class="row">
-                    <div class="apply_info job-posting-section col-sm-12">
-                        <label>How to apply</label>
-                        <div>{{$job->application_method}}</div>
-                    </div>
+                <div class="apply_info job-posting-section col-sm-12">
+                    <label>How to apply</label>
+                    <div>{{$job->application_method}}</div>
                 </div>
             </div>
         </div>
