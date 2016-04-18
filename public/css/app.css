@@ -161,6 +161,9 @@ body {
   font-size: 1.5em;
   padding: 10px 12px; }
 
+.share-links {
+  font-size: 0.6em; }
+
 .modal-text {
   font-size: 0.9em;
   padding: 1em 2em; }
