@@ -30,6 +30,13 @@ return [
         'middleware' => ['web'],
     ],
     [
+        'path'   => '/search',
+        'method' => 'search',
+        'type'   => 'get',
+        'name'   => 'search',
+        'middleware' => ['web'],
+    ],
+    [
         'path'   => '/{id}',
         'method' => 'show',
         'type'   => 'get',

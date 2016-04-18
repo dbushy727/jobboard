@@ -305,4 +305,17 @@ class JobController extends Controller
 
         return $feed->render('atom');
     }
+
+    public function search(Request $request)
+    {
+        $term = $request->get('term');
+
+        if (empty($term)) {
+            return $this->index();
+        }
+
+        $jobs = Job::search($term)->get();
+
+        return view('jobs.index', compact('jobs', 'term'));
+    }
 }

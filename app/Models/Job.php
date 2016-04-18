@@ -136,6 +136,21 @@ class Job extends Model
         return $query->whereNotNull('replacement_id');
     }
 
+    /**
+     * Search through active current jobs
+     *
+     * @param  Illuminate\Database\Eloquent\Builder $query
+     * @param  string $term
+     * @return Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeSearch($query, $term)
+    {
+        return $query->active()->current()->where(function ($q) use ($term) {
+            $q->where('title', 'like', "%{$term}%");
+            $q->orWhere('description', 'like', "%{$term}%");
+        });
+    }
+
     /******************
         ACTIONS
      *****************/

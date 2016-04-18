@@ -19,9 +19,6 @@
 </head>
 <body>
     <div class="container">
-        <pre>
-            {{ Session::getId()}}
-        </pre>
         <div>
             <a href="/" class="header-text baseline">Jobboard</a>
             <button class="btn btn-primary pull-right header-button" data-toggle="modal" data-target="#postJobModal">Post a Job</button>

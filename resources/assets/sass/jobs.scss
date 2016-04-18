@@ -91,3 +91,21 @@
 .share-links {
     font-size: 0.8em;
 }
+
+.search-form {
+    text-align: center;
+}
+    .search-form .input-group-btn {
+        width: 39px !important;
+    }
+
+.search-group {
+    width: 50%;
+    margin: 0 auto;
+}
+
+@media (max-width: 525px) {
+    .search-group {
+        width: 100%;
+    }
+}
