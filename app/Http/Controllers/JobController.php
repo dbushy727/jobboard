@@ -101,10 +101,13 @@ class JobController extends Controller
 
         if ($job->isReplacement()) {
             $job->original->replace();
-            return redirect()->route('show_job', [$job->original->id]);
+            $job = $job->original;
         }
 
         $job->activate();
+
+        // $status = $job->title . ' ' . url('jobs', $id);
+        // \Twitter::postTweet(['status' => $status, 'format' => 'json']);
 
         return redirect()->route('show_job', [$id]);
     }
