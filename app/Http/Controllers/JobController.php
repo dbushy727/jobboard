@@ -80,6 +80,12 @@ class JobController extends Controller
     protected function storeReplacement($params)
     {
         $job = Job::firstOrCreate(array_only($params, ['replacement_id']));
+
+        \Log::info('here');
+        if (!$job->logo) {
+            $job->logo = $job->original->logo;
+        }
+
         $job->update($params);
 
         return redirect()->route('preview_job', [$job->id]);
