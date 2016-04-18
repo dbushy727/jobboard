@@ -4,7 +4,7 @@
     <div class="jobs">
         <div class="col-sm-12">
             <h2>Jobs</h2>
-            @include('jobs.jobs')
+            @include('jobs.partials.list')
         </div>
     </div>
 @endsection

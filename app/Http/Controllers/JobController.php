@@ -14,6 +14,7 @@ class JobController extends Controller
 {
     public function index()
     {
+        // Find the current active jobs and sort them by feature status and newest
         $jobs = Job::active()
             ->current()
             ->orderBy('is_featured', 'desc')
@@ -27,11 +28,18 @@ class JobController extends Controller
     {
         $job = Job::find($id);
 
-        if (!$job->is_active && !\Auth::check()) {
-            return redirect()->route('jobs');
+        return view('jobs.show', compact('job'));
+    }
+
+    public function approval($id)
+    {
+        $job = Job::find($id);
+
+        if ($job->isReplacement()) {
+            return view('jobs.approval_replacement', compact('job'));
         }
 
-        return view('jobs.show', compact('job'));
+        return view('jobs.approval', compact('job'));
     }
 
     public function create()
@@ -51,6 +59,7 @@ class JobController extends Controller
             'url',
             'is_featured',
             'is_remote',
+            'replacement_id',
         ]);
 
         $params = array_filter($params);
@@ -59,7 +68,18 @@ class JobController extends Controller
             $params['logo'] = $this->uploadImage($file);
         }
 
+        if ($replacement_id = array_get($params, 'replacement_id')) {
+            return $this->storeReplacement($params);
+        }
+
         $job = Job::create($params);
+        return redirect()->route('preview_job', [$job->id]);
+    }
+
+    protected function storeReplacement($params)
+    {
+        $job = Job::firstOrCreate(array_only($params, ['replacement_id']));
+        $job->update($params);
 
         return redirect()->route('preview_job', [$job->id]);
     }
@@ -68,12 +88,21 @@ class JobController extends Controller
     {
         $job = Job::find($id);
 
+        if ($job->isReplacement()) {
+            return view('jobs.preview_replacement', compact('job'));
+        }
+
         return view('jobs.preview', compact('job'));
     }
 
     public function activate($id, Request $request)
     {
         $job = Job::find($id);
+
+        if ($job->isReplacement()) {
+            $job->original->replace();
+            return redirect()->route('show_job', [$job->original->id]);
+        }
 
         $job->activate();
 
@@ -82,11 +111,20 @@ class JobController extends Controller
 
     public function pending()
     {
-        $jobs = Job::pending()
+        // Grab currents jobs that haven't been activated yet
+        $pending = Job::pending()
             ->current()
             ->orderBy('is_featured', 'desc')
             ->orderBy('created_at', 'desc')
             ->get();
+
+        $replacements = Job::replacements()
+            ->current()
+            ->orderBy('is_featured', 'desc')
+            ->orderBy('created_at', 'desc')
+            ->get();
+
+        $jobs = $pending->merge($replacements);
 
         return view('jobs.pending', compact('jobs'));
     }
@@ -95,6 +133,8 @@ class JobController extends Controller
     {
         $job = Job::find($id);
 
+        // Process the charge and then save the charge info for later.
+        // Once all payment bidness went through, set job to paid.
         $charge = $this->makePayment($job, $stripe, $request);
         $this->savePayment($job, $charge);
         $job->pay();
@@ -102,7 +142,7 @@ class JobController extends Controller
         return redirect()->route('thank_you');
     }
 
-    public function edit($id)
+    public function edit($id, $token)
     {
         $job = Job::find($id);
 
@@ -136,6 +176,13 @@ class JobController extends Controller
         return redirect()->route('preview_job', [$job->id]);
     }
 
+    /**
+     * Show the job api style
+     *
+     * @param  int  $id
+     * @param  Request $request
+     * @return array
+     */
     public function info($id, Request $request)
     {
         $job = Job::find($id);
@@ -147,6 +194,14 @@ class JobController extends Controller
         return ['status' => 'success', 'message' => $job];
     }
 
+    /**
+     * Reject the job and refund the money
+     *
+     * @param  int  $id
+     * @param  Stripe  $stripe
+     * @param  Request $request
+     * @return redirect
+     */
     public function reject($id, Stripe $stripe, Request $request)
     {
         $job = Job::find($id);
@@ -169,6 +224,13 @@ class JobController extends Controller
         return redirect()->route('pending_jobs');
     }
 
+    /**
+     * Charge payment via payment processor
+     * @param  Job            $job
+     * @param  Stripe         $stripe
+     * @param  PaymentRequest $request
+     * @return array
+     */
     protected function makePayment(Job $job, Stripe $stripe, PaymentRequest $request)
     {
         if ($job->is_paid) {

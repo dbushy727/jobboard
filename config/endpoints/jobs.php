@@ -27,7 +27,7 @@ return [
         'method' => 'show',
         'type'   => 'get',
         'name'   => 'show_job',
-        'middleware' => ['web', 'job_exists'],
+        'middleware' => ['web', 'job_exists', 'active'],
     ],
     [
         'path'   => '/{id}/preview',
@@ -58,11 +58,11 @@ return [
         'middleware' => ['web', 'job_exists'],
     ],
     [
-        'path'   => '/{id}/edit',
+        'path'   => '/{id}/edit/{token}',
         'method' => 'edit',
         'type'   => 'get',
         'name'   => 'edit_job',
-        'middleware' => ['web', 'job_exists', 'inactive'],
+        'middleware' => ['web', 'job_exists', 'valid_token'],
     ],
     [
         'path'   => '/{id}/update',
@@ -84,5 +84,12 @@ return [
         'type'   => 'post',
         'name'   => 'reject_job',
         'middleware' => ['web', 'auth', 'job_exists'],
+    ],
+    [
+        'path'   => '/{id}/approval',
+        'method' => 'approval',
+        'type'   => 'get',
+        'name'   => 'approve_job',
+        'middleware' => ['web', 'auth', 'job_exists', 'inactive'],
     ],
 ];

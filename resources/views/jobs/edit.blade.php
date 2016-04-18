@@ -7,7 +7,12 @@
         <h2>Post a Job</h2>
         <div class="panel panel-default">
             <div class="panel-body">
-                <form action="/jobs/{{$job->id}}/update" method="POST" name="editJob" id="editJob" enctype="multipart/form-data">
+                @if($job->is_active)
+                    <form action="/jobs" method="POST" name="editJob" id="editJob" enctype="multipart/form-data">
+                    <input type="input" name="replacement_id" class="hidden" value="{{$job->id}}">
+                @else
+                    <form action="/jobs/{{$job->id}}/update" method="POST" name="editJob" id="editJob" enctype="multipart/form-data">
+                @endif
                     {!! csrf_field() !!}
                     <div class="form-group col-sm-12 text-right">* Required fields</div>
                     <div class="form-group col-sm-12">

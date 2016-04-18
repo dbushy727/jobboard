@@ -51,5 +51,7 @@ class Kernel extends HttpKernel
         'job_exists'     => \App\Http\Middleware\RedirectIfJobDoesntExist::class,
         'verify_session' => \App\Http\Middleware\VerifySession::class,
         'inactive'       => \App\Http\Middleware\RedirectIfActive::class,
+        'active'         => \App\Http\Middleware\RedirectIfInactive::class,
+        'valid_token'    => \App\Http\Middleware\RedirectIfInvalidToken::class,
     ];
 }

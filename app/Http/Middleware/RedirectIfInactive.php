@@ -6,7 +6,7 @@ use App\Models\Job;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 
-class VerifySession
+class RedirectIfInactive
 {
     /**
      * Handle an incoming request.
@@ -20,8 +20,8 @@ class VerifySession
     {
         $job = Job::find($request->id);
 
-        if (\Session::getId() !== $job->session_token) {
-            return redirect()->route('jobs');
+        if (!$job->is_active) {
+            return \Auth::check() ? redirect()->route('approve_job', [$job->id]) : redirect()->route('jobs');
         }
 
         return $next($request);

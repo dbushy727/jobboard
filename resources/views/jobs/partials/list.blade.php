@@ -5,6 +5,10 @@
     @foreach($jobs as $job)
         <a href="/jobs/{{$job->id}}" class="list-group-item {{ $job->is_featured ? 'featured' : ''}}" >
             <div class="pull-right job-list-date">
+                @if($job->isReplacement())
+                    <div class="job-list-item"><b>Revision</b></div>
+                @endif
+
                 <div class="job-list-item location">{{ $job->location }}</div>
                 <!-- <div class="job-list-item date">{{ $job->created_at->format('M d Y') }}</div> -->
                 <div class="job-list-item date">{{ $job->created_at->diffForHumans() }}</div>

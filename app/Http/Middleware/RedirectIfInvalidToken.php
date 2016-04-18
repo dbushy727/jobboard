@@ -6,7 +6,7 @@ use App\Models\Job;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 
-class VerifySession
+class RedirectIfInvalidToken
 {
     /**
      * Handle an incoming request.
@@ -20,7 +20,7 @@ class VerifySession
     {
         $job = Job::find($request->id);
 
-        if (\Session::getId() !== $job->session_token) {
+        if ($job->edit_token !== $request->token) {
             return redirect()->route('jobs');
         }
 

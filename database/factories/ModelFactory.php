@@ -19,3 +19,24 @@ $factory->define(App\Models\User::class, function (Faker\Generator $faker) {
         'remember_token' => str_random(10),
     ];
 });
+
+$factory->define(App\Models\Job::class, function (Faker\Generator $faker) {
+    return [
+        'application_method' => $faker->sentence(),
+        'company_name'       => $faker->words(2, true),
+        'description'        => $faker->paragraph(),
+        'edit_token'         => str_random(40),
+        'email'              => $faker->safeEmail(),
+        'is_active'          => false,
+        'is_featured'        => false,
+        'is_paid'            => false,
+        'is_remote'          => false,
+        'is_rejected'        => false,
+        'location'           => $faker->city(),
+        'logo'               => null,
+        'price'              => 20000,
+        'session_token'      => str_random(40),
+        'title'              => $faker->words(3, true),
+        'url'                => $faker->url(),
+    ];
+});
