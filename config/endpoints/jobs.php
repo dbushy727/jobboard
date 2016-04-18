@@ -23,6 +23,13 @@ return [
         'middleware' => ['web', 'auth'],
     ],
     [
+        'path'   => '/feed',
+        'method' => 'feed',
+        'type'   => 'get',
+        'name'   => 'feed',
+        'middleware' => ['web'],
+    ],
+    [
         'path'   => '/{id}',
         'method' => 'show',
         'type'   => 'get',

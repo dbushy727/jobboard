@@ -9,6 +9,7 @@ use App\Models\Payment;
 use App\Models\Refund;
 use App\Payment\Stripe;
 use Illuminate\Http\Request;
+use Roumen\Feed\Feed;
 
 class JobController extends Controller
 {
@@ -270,5 +271,32 @@ class JobController extends Controller
         ];
 
         return Payment::create($params);
+    }
+
+    public function feed(Feed $feed)
+    {
+        $jobs = Job::active()
+            ->current()
+            ->orderBy('is_featured', 'desc')
+            ->orderBy('created_at', 'desc')
+            ->take(20)
+            ->get();
+
+        $feed->title       = env('RSS_TITLE');
+        $feed->description = env('RSS_DESCRIPTION');
+        $feed->link        = url('jobs', 'feed');
+        $feed->pubdate     = $jobs->first()->created_at;
+        $feed->lang        = 'en';
+
+        $feed->setDateFormat('datetime');
+        $feed->setShortening(true);
+        $feed->setTextLimit(100);
+        $feed->setView('vendor.feed.atom');
+
+        foreach ($jobs as $job) {
+            $feed->add($job->title, $job->company, url('jobs', $job->id), $job->created_at, $job->description);
+        }
+
+        return $feed->render('atom');
     }
 }

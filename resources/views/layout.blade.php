@@ -62,6 +62,7 @@
             @if(!Auth::check())
             <p><a href="/auth/login">Admin</a></p>
             @endif
+
         </footer>
 
     </div> <!-- /container -->

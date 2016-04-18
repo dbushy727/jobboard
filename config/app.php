@@ -153,6 +153,7 @@ return [
          */
         Intervention\Image\ImageServiceProvider::class,
         Thujohn\Twitter\TwitterServiceProvider::class,
+        Roumen\Feed\FeedServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -209,6 +210,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View'      => Illuminate\Support\Facades\View::class,
 
+        'Feed'      => Roumen\Feed\Feed::class,
         'Image'     => Intervention\Image\Facades\Image::class,
         'Twitter'   => Thujohn\Twitter\Facades\Twitter::class,
 
