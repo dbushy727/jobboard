@@ -144,7 +144,9 @@ body {
   .job-list-company {
     font-size: 0.7em; }
   .job-posting-logo {
-    display: none; } }
+    text-align: right; }
+  .share-links {
+    font-size: 0.6em; } }
 
 .activation-buttons {
   padding: 1em 0; }
@@ -162,7 +164,7 @@ body {
   padding: 10px 12px; }
 
 .share-links {
-  font-size: 0.8em; }
+  font-size: 0.7em; }
 
 .search-form {
   text-align: center; }
