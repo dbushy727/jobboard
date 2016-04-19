@@ -27,7 +27,9 @@ class Job extends Model
     ];
 
     /******************
+
         RELATIONSHIPS
+
      *****************/
 
     public function payment()
@@ -47,7 +49,9 @@ class Job extends Model
 
 
     /******************
+
         QUERY SCOPES
+
      *****************/
 
     /**

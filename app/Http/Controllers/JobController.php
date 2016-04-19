@@ -249,7 +249,10 @@ class JobController extends Controller
 
         $charge = $stripe->charge([
             'token'         => $request->get('token'),
-            'metadata'      => ['job_id' => $job->id],
+            'metadata'      => [
+                'job_id' => $job->id,
+                'edit_link' => url('jobs', $job->id, $job->edit_token),
+            ],
             'receipt_email' => $request->get('email', null),
             'amount'        => $job->price,
         ]);

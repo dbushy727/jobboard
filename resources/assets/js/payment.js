@@ -10,8 +10,9 @@ var key = $('#key').val(),
         }
 });
 
-$('#checkoutButton').on('click', function(e) {
+function setupCheckout() {
     var id = window.location.pathname.split('/')[2];
+
     $.ajax({
         url: '/jobs/' + id + '/info',
         method: 'get',
@@ -23,17 +24,29 @@ $('#checkoutButton').on('click', function(e) {
 
             var amount = job.message.price;
 
-            // Open Checkout with further options
-            handler.open({
-                name: 'Payment Information',
-                amount: amount,
-            });
+            createCheckoutListener(amount);
         }
     });
-    e.preventDefault();
-});
+}
+
+
+function createCheckoutListener(amount) {
+    $('#checkoutButton').on('click', function(e) {
+        e.preventDefault();
+        // Open Checkout with further options
+        handler.open({
+            name: 'Payment Information',
+            amount: amount,
+        });
+    });
+};
+
 
 // Close Checkout on page navigation
 $(window).on('popstate', function() {
     handler.close();
+});
+
+$(function() {
+    setupCheckout();
 });

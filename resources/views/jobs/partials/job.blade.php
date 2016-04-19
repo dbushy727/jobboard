@@ -2,11 +2,16 @@
     <div class="panel-body">
         <div class="col-sm-12">
             <div class="job-posting-section tight">
-                @if($job->logo)
-                <img src="{{ env('S3_BASEPATH') . $job->logo}}" class="job-posting-logo pull-right">
-                @endif
-                <h1>{{$job->title}}</h1>
-                <p>{{ $job->created_at->format('M d Y') }}</p>
+                <div class="col-sm-9">
+                    <h1>{{$job->title}}</h1>
+                    <p>{{ $job->created_at->format('M d Y') }}</p>
+                </div>
+
+                <div class="col-sm-3">
+                    @if($job->logo)
+                    <img src="{{ env('S3_BASEPATH') . $job->logo}}" class="job-posting-logo pull-right">
+                    @endif
+                </div>
             </div>
 
             <div class="company_info job-posting-section col-sm-9">
@@ -22,7 +27,7 @@
                 <p><a href="mailto:report@jobboard.dev?subject=Job #{{ $job->id }} Is Being Reported"> <i class="fa fa-warning"></i> Report This Job</a></p>
             </div>
 
-            <div class="job_info job-posting-section">
+            <div class="job_info job-posting-section col-sm-12">
                 <label>Description</label>
                 <hr>
                 <p>{!! $job->description !!}</p>
