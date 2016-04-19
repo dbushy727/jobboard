@@ -81,7 +81,6 @@ class JobController extends Controller
     {
         $job = Job::firstOrCreate(array_only($params, ['replacement_id']));
 
-        \Log::info('here');
         if (!$job->logo) {
             $job->logo = $job->original->logo;
         }

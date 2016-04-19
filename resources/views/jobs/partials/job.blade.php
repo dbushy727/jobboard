@@ -17,7 +17,11 @@
             <div class="company_info job-posting-section col-sm-9">
                 <div for="company">{{ $job->company_name}}</div>
                 <div for="location">{{ $job->location}}</div>
-                <div for="url"><a href="{{$job->url}}">{{$job->url}}</a></div>
+                @if(strpos($job->url, '://') !== false)
+                    <div for="url"><a href="{{$job->url}}">{{$job->url}}</a></div>
+                @else
+                    <div for="url"><a href="http://{{$job->url}}">{{$job->url}}</a></div>
+                @endif
             </div>
             <div class="col-sm-3 share-links">
                 <br>
