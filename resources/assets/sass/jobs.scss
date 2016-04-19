@@ -29,9 +29,6 @@
 .job-list-title {
     font-size: 1.3em;
     font-weight: 500;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
 }
 
 .job-list-company {
@@ -42,6 +39,7 @@
     font-size: 0.8em;
     position: absolute;
     right: 2em;
+    bottom: 1em;
     vertical-align: initial;
 }
 
