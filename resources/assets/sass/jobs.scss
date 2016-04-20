@@ -1,9 +1,10 @@
+@import 'colors';
+
 /*.job-list .job-list-item {
     display: inline-block;
     width: 24%;
     padding: 0.5em 1em;
 }*/
-
 .job-posting-section {
     padding: 1em;
 }
@@ -17,7 +18,7 @@
 }
 
 .job-list .featured {
-    background: #FBFBD3;
+    // background-color: $dark-accent;
 }
 
 .job-list-info {
@@ -67,7 +68,7 @@
     }
 
     .share-links {
-        font-size: 0.6em;
+        font-size: 0.8em;
     }
 }
 
@@ -76,7 +77,8 @@
 }
 
 .apply_info {
-    background: #EAEAEA;
+    // background: #EAEAEA;
+    background: $dark-accent;
     border-radius: 0.2em;
 }
 
@@ -91,7 +93,7 @@
 }
 
 .share-links {
-    font-size: 0.7em;
+    font-size: 0.9em;
 }
 
 .search-form {
@@ -110,4 +112,11 @@
     .search-group {
         width: 100%;
     }
+}
+
+.job-link {
+    font-size: 0.9em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: clip;
 }

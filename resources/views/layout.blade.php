@@ -22,7 +22,6 @@
         <div>
             <a href="/" class="header-text baseline">Jobboard</a>
             <button class="btn btn-primary pull-right header-button" data-toggle="modal" data-target="#postJobModal">Post a Job</button>
-            <hr>
         </div>
 
         <!-- Modal -->
@@ -49,7 +48,9 @@
             <hr>
         </div>
         @endif
-
+        <hr>
+    </div>
+    <div class="container-fluid">
         <div class="clearfix">
             @yield('content')
         </div>

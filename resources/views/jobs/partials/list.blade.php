@@ -22,6 +22,10 @@
                 <div class="job-list-info">
                     <div class="job-list-title">{{$job->title}}</div>
                     <div class="job-list-company">{{ $job->company_name}}</div>
+                    @if($job->is_featured)
+                    <br>
+                    <div class="label label-warning">Featured</div>
+                    @endif
                 </div>
             </div>
         </a>

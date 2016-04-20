@@ -1,14 +1,35 @@
 /* Space out content a bit */
+
+@import 'colors';
+
 body {
   padding-top: 20px;
   padding-bottom: 20px;
-  font-size: 21px;
+  font-size: 16px;
   font-family: 'Lora', serif;
   line-height: 1.9;
   word-spacing: 2px;
   word-wrap: break-word;
+  background-color: $dark;
+  color: $grey;
 }
 
+.panel {
+  background-color: $dark;
+}
+
+.panel-footer {
+  background-color: $dark;
+}
+
+.list-group-item, a.list-group-item {
+  background-color: $dark;
+  color: $grey;
+}
+
+.list-group-item:hover {
+  background-color: $dark-accent;
+}
 /* Everything but the jumbotron gets side spacing for mobile first views */
 .header,
 .marketing,
@@ -20,7 +41,7 @@ body {
 /* Custom page header */
 .header {
   padding-bottom: 20px;
-  border-bottom: 1px solid #e5e5e5;
+  border-bottom: 1px solid $grey-accent;
 }
 /* Make the masthead heading the same height as the navigation */
 .header h3 {
@@ -33,7 +54,7 @@ body {
 .footer {
   padding-top: 19px;
   color: #777;
-  border-top: 1px solid #e5e5e5;
+  border-top: 1px solid $grey-accent;
 }
 
 /* Customize container */
@@ -49,7 +70,7 @@ body {
 /* Main marketing message and sign up button */
 .jumbotron {
   text-align: center;
-  border-bottom: 1px solid #e5e5e5;
+  border-bottom: 1px solid $grey-accent;
 }
 .jumbotron .btn {
   padding: 14px 24px;

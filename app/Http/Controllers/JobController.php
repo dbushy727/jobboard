@@ -316,7 +316,10 @@ class JobController extends Controller
             return $this->index();
         }
 
-        $jobs = Job::search($term)->get();
+        $jobs = Job::search($term)
+            ->orderBy('is_featured', 'desc')
+            ->orderBy('created_at', 'desc')
+            ->get();
 
         return view('jobs.index', compact('jobs', 'term'));
     }
