@@ -29,7 +29,15 @@ class JobController extends Controller
     {
         $job = Job::find($id);
 
-        return view('jobs.show', compact('job'));
+        $jobs = Job::active()
+            ->current()
+            ->orderBy('is_featured', 'desc')
+            ->orderBy('created_at', 'desc')
+            ->where('id', '!=', $id)
+            ->take(5)
+            ->get();
+
+        return view('jobs.show', compact('job', 'jobs'));
     }
 
     public function approval($id)

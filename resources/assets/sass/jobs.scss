@@ -18,7 +18,7 @@
 }
 
 .job-list .featured {
-    // background-color: $dark-accent;
+    background-color: $feature-color;
 }
 
 .job-list-info {
@@ -77,8 +77,7 @@
 }
 
 .apply_info {
-    // background: #EAEAEA;
-    background: $dark-accent;
+    background: $grey;
     border-radius: 0.2em;
 }
 
@@ -119,4 +118,18 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: clip;
+}
+
+.mobile-ad-bar, .mobile-share-bar, .mobile-recommend-bar {
+    display: none;
+}
+
+@media (max-width: 767px) {
+    .regular-ad-bar, .regular-share-bar, .regular-recommend-bar {
+        display: none;
+    }
+
+    .mobile-ad-bar, .mobile-share-bar, .mobile-recommend-bar {
+        display: block;
+    }
 }

@@ -22,9 +22,8 @@
                 <div class="job-list-info">
                     <div class="job-list-title">{{$job->title}}</div>
                     <div class="job-list-company">{{ $job->company_name}}</div>
-                    @if($job->is_featured)
-                    <br>
-                    <div class="label label-warning">Featured</div>
+                    @if($job->created_at->diffInDays() < 2)
+                        <div class="label label-info small">New</div>
                     @endif
                 </div>
             </div>
