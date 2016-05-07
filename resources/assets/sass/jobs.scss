@@ -42,6 +42,7 @@
     right: 2em;
     bottom: 1em;
     vertical-align: initial;
+    text-align: right;
 }
 
 @media (max-width: 767px) {
@@ -110,6 +111,10 @@
 @media (max-width: 525px) {
     .search-group {
         width: 100%;
+    }
+
+    .job-posting-logo {
+        width: 30px;
     }
 }
 

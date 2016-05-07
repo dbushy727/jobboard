@@ -93,6 +93,9 @@ body {
 .sans-serif {
   font-family: 'Lato', sans-serif; }
 
+.no-pad {
+  padding: 0; }
+
 /*.job-list .job-list-item {
     display: inline-block;
     width: 24%;
@@ -128,7 +131,8 @@ body {
   position: absolute;
   right: 2em;
   bottom: 1em;
-  vertical-align: initial; }
+  vertical-align: initial;
+  text-align: right; }
 
 @media (max-width: 767px) {
   body {
@@ -176,7 +180,9 @@ body {
 
 @media (max-width: 525px) {
   .search-group {
-    width: 100%; } }
+    width: 100%; }
+  .job-posting-logo {
+    width: 30px; } }
 
 .job-link {
   font-size: 0.9em;
