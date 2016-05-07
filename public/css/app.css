@@ -203,6 +203,9 @@ li.preview-tab {
 #post-job-button {
   display: block; }
 
+.god-panel {
+  clear: both; }
+
 .modal-text {
   font-size: 0.9em;
   padding: 1em 2em; }

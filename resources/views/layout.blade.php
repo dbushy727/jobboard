@@ -50,7 +50,7 @@
             </div>
         </div>
         @if(Auth::check())
-        <div>
+        <div class="god-panel">
             <div class="text-center">God Mode</div>
             <a href="/jobs/pending">Jobs Pending</a>
             <a href="/auth/logout" class="pull-right">Logout</a>
