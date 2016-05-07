@@ -14,7 +14,7 @@ function setupCheckout() {
     var id = window.location.pathname.split('/')[2];
 
     $.ajax({
-        url: '/jobs/' + id + '/info',
+        url: '/jobs-ajax/' + id,
         method: 'get',
         success: function (job) {
             if (job.status == 'error') {

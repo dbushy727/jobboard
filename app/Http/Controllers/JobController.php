@@ -190,24 +190,6 @@ class JobController extends Controller
     }
 
     /**
-     * Show the job api style
-     *
-     * @param  int  $id
-     * @param  Request $request
-     * @return array
-     */
-    public function info($id, Request $request)
-    {
-        $job = Job::find($id);
-
-        if (!$job) {
-            return ['status' => 'error', 'message' => 'Job not found'];
-        }
-
-        return ['status' => 'success', 'message' => $job];
-    }
-
-    /**
      * Reject the job and refund the money
      *
      * @param  int  $id

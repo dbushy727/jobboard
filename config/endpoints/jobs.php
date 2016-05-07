@@ -86,13 +86,6 @@ return [
         'middleware' => ['web', 'job_exists'],
     ],
     [
-        'path'   => '/{id}/info',
-        'method' => 'info',
-        'type'   => 'get',
-        'name'   => 'info_job',
-        'middleware' => ['web'],
-    ],
-    [
         'path'   => '/{id}/reject',
         'method' => 'reject',
         'type'   => 'post',
