@@ -1,8 +1,8 @@
 <div>
     <!-- Nav tabs -->
-    <ul class="nav nav-tabs" role="tablist">
-        <li role="presentation"><a href="#original" aria-controls="original" role="tab" data-toggle="tab">Original</a></li>
-        <li role="presentation" class="active"><a href="#revision" aria-controls="revision" role="tab" data-toggle="tab">Revision</a></li>
+    <ul class="nav nav-tabs text-center" role="tablist">
+        <li role="presentation" class="preview-tab"><a href="#original" aria-controls="original" role="tab" data-toggle="tab">Original</a></li>
+        <li role="presentation" class="active preview-tab"><a href="#revision" aria-controls="revision" role="tab" data-toggle="tab">Revision</a></li>
     </ul>
     <br>
 

@@ -72,11 +72,11 @@ return [
         'middleware' => ['web', 'job_exists'],
     ],
     [
-        'path'   => '/{id}/edit/{token}',
+        'path'   => '/{id}/edit/{token?}',
         'method' => 'edit',
         'type'   => 'get',
         'name'   => 'edit_job',
-        'middleware' => ['web', 'job_exists', 'valid_token'],
+        'middleware' => ['web', 'job_exists'],
     ],
     [
         'path'   => '/{id}/update',

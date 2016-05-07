@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Jobboard</title>
+    <title>{{ env('APP_NAME') }}</title>
     <!-- Fonts -->
     <link href='https://fonts.googleapis.com/css?family=Lora:400,700' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Lato:300' rel='stylesheet' type='text/css'>
@@ -20,7 +20,7 @@
 <body>
     <div class="container">
         <div>
-            <a href="/" class="header-text baseline">Jobboard</a>
+            <a href="/" class="header-text baseline">{{ env('APP_NAME') }}</a>
             <button class="btn btn-primary pull-right header-button" data-toggle="modal" data-target="#postJobModal">Post a Job</button>
         </div>
 
@@ -45,7 +45,6 @@
             <div class="text-center">God Mode</div>
             <a href="/jobs/pending">Jobs Pending</a>
             <a href="/auth/logout" class="pull-right">Logout</a>
-            <hr>
         </div>
         @endif
         <hr>
@@ -54,9 +53,11 @@
         <div class="clearfix">
             @yield('content')
         </div>
-
+        <br>
+        <br>
+        <br>
         <footer class="footer text-center">
-            <p>&copy; 2016 Jobboard, Inc.</p>
+            <p>&copy; {{ date('Y') }} {{ env('COMPANY_NAME') }}</p>
             @if(!Auth::check())
             <p><a href="/auth/login">Admin</a></p>
             @endif

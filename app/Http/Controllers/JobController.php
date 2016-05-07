@@ -29,14 +29,6 @@ class JobController extends Controller
     {
         $job = Job::find($id);
 
-        $jobs = Job::active()
-            ->current()
-            ->orderBy('is_featured', 'desc')
-            ->orderBy('created_at', 'desc')
-            ->where('id', '!=', $id)
-            ->take(5)
-            ->get();
-
         return view('jobs.show', compact('job', 'jobs'));
     }
 
@@ -159,9 +151,13 @@ class JobController extends Controller
         return redirect()->route('thank_you');
     }
 
-    public function edit($id, $token)
+    public function edit($id, $token = null)
     {
         $job = Job::find($id);
+
+        if (!$token || $job->edit_token !== $token) {
+            abort(403);
+        }
 
         return view('jobs.edit', compact('job'));
     }

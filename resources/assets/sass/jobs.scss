@@ -17,7 +17,7 @@
     width: 25px;
 }
 
-.job-list .featured {
+.featured {
     background-color: $feature-color;
 }
 
@@ -73,7 +73,7 @@
 }
 
 .activation-buttons {
-    padding: 1em 0;
+    padding: 1em;
 }
 
 .apply_info {
@@ -132,4 +132,13 @@
     .mobile-ad-bar, .mobile-share-bar, .mobile-recommend-bar {
         display: block;
     }
+}
+
+li.preview-tab {
+    float: none;
+    display: inline-block;
+}
+
+.activation-form {
+    display: inline-block;
 }

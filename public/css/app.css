@@ -108,7 +108,7 @@ body {
 .job-posting-logo-edit {
   width: 25px; }
 
-.job-list .featured {
+.featured {
   background-color: #FBFBD3; }
 
 .job-list-info {
@@ -147,7 +147,7 @@ body {
     font-size: 0.8em; } }
 
 .activation-buttons {
-  padding: 1em 0; }
+  padding: 1em; }
 
 .apply_info {
   background: #EAEAEA;
@@ -192,6 +192,13 @@ body {
     display: none; }
   .mobile-ad-bar, .mobile-share-bar, .mobile-recommend-bar {
     display: block; } }
+
+li.preview-tab {
+  float: none;
+  display: inline-block; }
+
+.activation-form {
+  display: inline-block; }
 
 .modal-text {
   font-size: 0.9em;

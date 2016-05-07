@@ -52,6 +52,5 @@ class Kernel extends HttpKernel
         'verify_session' => \App\Http\Middleware\VerifySession::class,
         'inactive'       => \App\Http\Middleware\RedirectIfActive::class,
         'active'         => \App\Http\Middleware\RedirectIfInactive::class,
-        'valid_token'    => \App\Http\Middleware\RedirectIfInvalidToken::class,
     ];
 }

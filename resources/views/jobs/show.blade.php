@@ -1,7 +1,7 @@
 @extends('layout')
 
 @section('content')
-    @include('jobs.partials.job')
     @yield('activate')
+    @include('jobs.partials.job')
 
 @endsection

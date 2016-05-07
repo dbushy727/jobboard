@@ -20,7 +20,7 @@ class Stripe
 
     protected $currency = 'usd';
 
-    protected $default_payment_amount = 20000;
+    protected $default_payment_amount;
 
     protected $default_description = 'Application Fee';
 
@@ -29,13 +29,20 @@ class Stripe
         $this->stripe = $stripe;
         $this->charge = $charge;
         $this->refund = $refund;
+
         $this->setApiToken();
+        $this->setDefaultPaymentAmount();
     }
 
     protected function setApiToken()
     {
-        $this->api_token = getenv('STRIPE_SECRET_KEY');
+        $this->api_token = env('STRIPE_SECRET_KEY');
         $this->stripe->setApiKey($this->api_token);
+    }
+
+    protected function setDefaultPaymentAmount()
+    {
+        $this->default_payment_amount = env('BASE_PRICE');
     }
 
     public function charge($params)
