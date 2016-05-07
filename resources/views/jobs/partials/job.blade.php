@@ -67,9 +67,6 @@
         </div>
     </div>
 </div>
-<div class="col-sm-3 mobile-recommend-bar">
-    @include('jobs.partials.mini-list')
-</div>
 <div class="col-sm-3 mobile-share-bar">
     <div class="panel panel-default text-center">
         <div class="panel-body">
@@ -85,6 +82,9 @@
             <p><a href="mailto:report@\{{ env('MAIL_DOMAIN') }}?subject=Job #{{ $job->id }} Is Being Reported"> <i class="fa fa-warning"></i> Report This Job</a></p>
         </div>
     </div>
+</div>
+<div class="col-sm-3 mobile-recommend-bar">
+    @include('jobs.partials.mini-list')
 </div>
 <div class="col-sm-3 mobile-ad-bar">
     <div class="text-center">
