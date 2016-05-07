@@ -21,18 +21,27 @@
     <div class="container">
         <div>
             <a href="/" class="header-text baseline">{{ env('APP_NAME') }}</a>
-            <button class="btn btn-primary pull-right header-button" data-toggle="modal" data-target="#postJobModal">Post a Job</button>
+            <span class="pull-right text-center">
+                <button id="post-job-button" class="btn btn-primary header-button" data-toggle="modal" data-target="#postJobModal">Post a Job</button>
+                <label class="">$200 for 30 days</label>
+            </span>
         </div>
 
         <!-- Modal -->
         <div class="modal fade" id="postJobModal" tabindex="-1" role="dialog" aria-labelledby="postJobModalLabel">
             <div class="modal-dialog" role="document">
                 <div class="modal-content sans-serif">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <div class="modal-header text-center">
+                        <h3>
+                            <span>Thanks for choosing to post with {{ env('APP_NAME')}}</span>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        </h3>
                     </div>
                     <div class="modal-body modal-text">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quisquam qui officiis voluptatum maiores sint, incidunt. Dolor quis recusandae illum, sequi ab perspiciatis, delectus eaque ut dicta, nemo, veniam aperiam.
+                        For <strong>$<u>200</u></strong>, your job posting will remain on the site for <strong><u>30 days</u></strong>.
+                        To ensure that we maintain the best DevOps jobs in the market, your application will be reviewed by our experienced team.
+                        If your application is accepted, it will appear on the top of the job board.
+                        If your application gets rejected, your payment will be refunded.
                     </div>
                     <div class="modal-footer">
                         <a href="/jobs/create" class="btn btn-success btn-lg btn-block">Continue</a>
@@ -47,7 +56,7 @@
             <a href="/auth/logout" class="pull-right">Logout</a>
         </div>
         @endif
-        <hr>
+
     </div>
     <div class="container-fluid">
         <div class="clearfix">

@@ -2,7 +2,18 @@
 
 @section('content')
     <div class="container">
-        @include('welcome')
+        <div class="jumbotron">
+            <p>
+                For <strong>$200</strong>, your job posting will remain on the site for <strong>30 days</strong>.
+            </p>
+            <p>
+                To ensure that we maintain the best DevOps jobs in the market, your application will be reviewed by our experienced team.
+            </p>
+            <p>
+                If your application is accepted, it will appear on the top of the job board.
+                If your application gets rejected, your payment will be refunded.
+            </p>
+        </div>
         <div class="job tight">
             <h2>Post a Job</h2>
             <div class="panel panel-default">

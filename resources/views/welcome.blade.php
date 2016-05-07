@@ -1,4 +1,8 @@
-<div class="clearfix">
-    This is my welcome content. This is where the copy goes that explains what this site does along with anything else we wanna tell the world. Go ahead, write something down and I'll make sure to share it. PS - We could put pictures in this as well. No need to hold back.
-    <hr>
+<div class="jumbotron">
+    <div class="text-left">
+        <h1>Welcome to Jobboard</h1>
+        <p>
+            Here you will find a manicured list of the hottest DevOps jobs the market has to offer. Each application is reviewed to make sure only top-notch jobs make it to the board.
+        </p>
+    </div>
 </div>
