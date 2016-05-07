@@ -18,7 +18,11 @@
 
                         <div class="form-group col-sm-6">
                             <label for="logo">Logo <span class="small">(100px wide)</span></label>
-                            <input type="file" name="logo" id="logo">
+                            <input type="file" name="logo" id="logo" class="hidden">
+                            <div class="upload-logo">
+                                <button type="button" class="btn-sm btn btn-info"><label for="logo">Click to Upload</label></button>
+                                <label class="uploadedFile"></label>
+                            </div>
                         </div>
 
                         <div class="form-group col-sm-6">
