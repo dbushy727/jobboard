@@ -152,6 +152,7 @@ class Job extends Model
         return $query->active()->current()->where(function ($q) use ($term) {
             $q->where('title', 'like', "%{$term}%");
             $q->orWhere('description', 'like', "%{$term}%");
+            $q->orWhere('location', 'like', "%{$term}%");
         });
     }
 
