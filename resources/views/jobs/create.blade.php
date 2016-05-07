@@ -90,7 +90,7 @@
                                     <b>Featured</b>
                                 </label>
                             </div>
-                            <span class="help-block">For an extra $50, you can have your post highlighted and and keep it sitting at the top of the list.</span>
+                            <span class="help-block">For an extra $50, you can have your post highlighted and keep it sitting at the top of the list.</span>
                         </div>
 
                         <div class="form-group col-sm-12">
