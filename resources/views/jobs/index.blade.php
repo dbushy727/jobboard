@@ -1,7 +1,6 @@
-@extends('layout')
+@extends('home')
 @section('content')
     <div class="container">
-        @include('welcome')
         <div class="jobs">
             <div class="col-sm-12 no-pad">
 

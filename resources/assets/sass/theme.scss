@@ -121,3 +121,32 @@ body {
 .no-pad {
   padding: 0;
 }
+#hero {
+    height: 20em;
+    background: url("https://images.unsplash.com/photo-1449247709967-d4461a6a6103?crop=entropy&dpr=2&fit=crop&fm=jpg&h=700&ixjsv=2.1.0&ixlib=rb-0.3.5&q=50&w=1300") top center fixed;
+    background-size: cover;
+    background-position-y: -15em;
+}
+#hero-title {
+  font-size: 3em;
+  text-shadow: 3px 2px 2px #ccc;
+}
+
+.menu {
+  margin-bottom: 2em;
+}
+
+#main {
+  padding: 0;
+}
+
+.main-hero {
+  background: url("https://images.unsplash.com/photo-1449247709967-d4461a6a6103?crop=entropy&dpr=2&fit=crop&fm=jpg&h=700&ixjsv=2.1.0&ixlib=rb-0.3.5&q=50&w=1300") top center;
+  padding-top: 4em;
+  background-position-y: 24em;
+  background-size: cover;
+}
+
+.container-fluid {
+  margin-top: 2em;
+}

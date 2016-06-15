@@ -18,9 +18,15 @@
     <script src="https://checkout.stripe.com/checkout.js"></script>
 </head>
 <body>
-    <section id="main">
-        <div class="container-fluid main-hero">
-            <div class="col-sm-12 menu">
+    <section id="hero" class="text-center">
+        <h1 id="hero-title">Find your new workspace.</h1>
+    </section>
+    <section>
+        <div class="container">
+            <div>
+                @include('welcome')
+            </div>
+            <div>
                 <a href="/" class="header-text baseline">{{ env('APP_NAME') }}</a>
                 <span class="pull-right text-center">
                     <button id="post-job-button" class="btn btn-primary header-button" data-toggle="modal" data-target="#postJobModal">Post a Job</button>
