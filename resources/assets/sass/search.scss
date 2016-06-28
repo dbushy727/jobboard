@@ -1,0 +1,23 @@
+@import 'sizes';
+
+#search {
+    float: right;
+    margin-top: 9px;
+}
+
+.search {
+    padding: 20px 0;
+    position: relative;
+}
+    .search input {
+        position: relative;
+        height: $search-height;
+    }
+
+.search-button.btn {
+    height: $search-height;
+    position: absolute;
+    right: 0;
+    top: 20px;
+    border-radius:1px;
+}

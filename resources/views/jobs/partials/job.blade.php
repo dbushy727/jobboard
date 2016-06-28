@@ -1,6 +1,9 @@
 <div class="col-sm-3 col-sm-push-9">
+    {{-- Company --}}
     <div class="panel panel-default text-center">
         <div class="panel-body">
+            <h4>Company</h4>
+            <hr>
             <div class="col-sm-12">
                 @if($job->logo)
                 <img src="{{ env('S3_BASEPATH') . $job->logo}}" class="job-posting-logo">
@@ -18,6 +21,8 @@
             </div>
         </div>
     </div>
+
+    {{-- Share --}}
     <div class="panel panel-default text-center regular-share-bar">
         <div class="panel-body">
             <div class="col-sm-12 share-links">
@@ -34,6 +39,8 @@
             <p><a href="mailto:report@\{{ env('MAIL_DOMAIN') }}?subject=Job #{{ $job->id }} Is Being Reported"> <i class="fa fa-warning"></i> Report This Job</a></p>
         </div>
     </div>
+
+    {{-- Recommendations --}}
     <div class="regular-recommend-bar">
         @include('jobs.partials.mini-list')
     </div>

@@ -1,25 +1,32 @@
-@extends('home')
+@extends('new_home')
 @section('content')
-    <div class="container">
+    <div class="col-sm-8">
+        <div class="search">
+            <input type="text" class="form-control" maxlength="64" placeholder='Search for things like "Jenkins", "AWS" or "Chef"' />
+            <button type="submit" class="btn btn-red search-button">Search</button>
+        </div>
+    </div>
+    {{-- Two Column Layout --}}
+    <div class="col-sm-8">
         <div class="jobs">
             <div class="col-sm-12 no-pad">
+                @include('jobs.partials.list')
+            </div>
+        </div>
+    </div>
 
-                    <form action="/jobs/search" class="form-inline search-form" method="GET">
-                        <div class="input-group search-group">
-                            <input type="text" class="form-control" placeholder="Search for jobs here ..." name="term">
-                            <div class="input-group-btn">
-                                <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-                            </div>
-                        </div>
-                    </form>
-
-                    @if(isset($term))
-                        Search: {{$term}}
-                    @endif
-                <div class="col-sm-12 no-pad">
-                    <h2>Jobs <a href="/jobs/feed" class="pull-right"><i class="fa fa-rss" aria-hidden="true"></i></a></h2>
-                    @include('jobs.partials.list')
-                </div>
+    <div class="col-sm-4">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <button class="btn btn-lg btn-block btn-primary" data-toggle="modal" data-target="#postJobModal">Post A Job</button>
+                <div class="small text-center">$200 for 30 days</div>
+                <hr>
+                <ul>
+                    <li class="circle">Curated list of jobs</li>
+                    <li class="circle">Lorem ipsum dolor sit amet.</li>
+                    <li class="circle">Consectetur adipisicing elit.</li>
+                    <li class="circle">Necessitatibus ipsum quasi sapiente.</li>
+                </ul>
             </div>
         </div>
     </div>

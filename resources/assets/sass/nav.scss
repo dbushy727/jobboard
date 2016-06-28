@@ -1,7 +1,29 @@
-body {
-    padding-top: 0;
-    margin-top: 0;
+@import 'colors';
+@import 'sizes';
+
+/* Navbar */
+.navbar {
+    background-color: $dark-blue;
+    height: $navbar-height;
+    color: $light-grey;
 }
+
+.navbar a, .footer a {
+    color: $light-grey;
+}
+
+
+/* Footer */
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: $footer-height;
+  background-color: $dark-blue;
+  text-align: center;
+  color: $light-grey;
+}
+
 .image-bg-fluid-height,
 .image-bg-fixed-height {
     text-align: center;
@@ -41,10 +63,6 @@ section {
 
 .section-paragraph {
     margin: 30px 0;
-}
-
-footer {
-    margin: 50px 0;
 }
 
 @media(max-width:768px) {

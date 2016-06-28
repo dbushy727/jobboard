@@ -3,7 +3,7 @@
 @section('activate')
 
     <div class="activation-buttons">
-        <a href="/jobs/{{$job->id}}/edit/{{$job->edit_token}}"><button class="btn btn-info header-button"><i class="fa fa-arrow-left"></i> Back To Edit</button></a>
+        <a href="/jobs/{{$job->id}}/edit/{{$job->edit_token}}"><button class="btn btn-red header-button"><i class="fa fa-arrow-left"></i> Back To Edit</button></a>
         @if($job->is_paid || $job->isReplacement())
             <a href="/thank-you" class="btn btn-success header-button pull-right">Looks Good <i class="fa fa-arrow-right"></i></a>
         @else
