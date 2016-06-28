@@ -1,10 +1,11 @@
-@extends('layout')
+@extends('new_home')
 
 @section('content')
-    <div class="container">
-        @include('welcome')
+    <div class="col-sm-12">
+        <h2>Post a Job</h2>
+    </div>
+    <div class="col-sm-8">
         <div class="job tight">
-            <h2>Post a Job</h2>
             <div class="panel panel-default">
                 <div class="panel-body">
                     @if($job->is_active)
@@ -22,7 +23,11 @@
                         </div>
 
                         <div class="form-group col-sm-6">
-                            <img src="{{ env('S3_BASEPATH') . $job->logo}}" class="job-posting-logo-edit pull-right">
+                            @if($job->logo)
+                                <img src="{{ env('S3_BASEPATH') . $job->logo}}" class="job-posting-logo-edit pull-right">
+                            @else
+                                <img class="job-posting-logo-edit pull-right" src="/img/building.png" alt="">
+                            @endif
                             <label for="logo">Logo <span class="small">(100px wide)</span></label>
                             <input type="file" name="logo" id="logo" class="hidden">
                             <div class="upload-logo">
@@ -76,12 +81,6 @@
                         </div>
 
                         <div class="form-group col-sm-12">
-                            <label for="email">Email*</label>
-                            <input type="email" name="email" class="form-control" value="{{$job->email}}" required>
-                            <span class="help-block">Where you will receive your receipt</span>
-                        </div>
-
-                        <div class="form-group col-sm-12">
                             <hr>
                             <div class="checkbox">
                                 <label>
@@ -98,12 +97,24 @@
 
                         <div class="form-group col-sm-12">
                             <hr>
-                            <input type="submit" class="btn btn-success pull-right btn-lg btn-block">
+                            <input type="submit" class="btn btn-success pull-right btn-lg btn-block" value="Preview">
                         </div>
                     </form>
                 </div>
             </div>
+        </div>
 
+    </div>
+    <div class="col-sm-4">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero quasi possimus, nulla soluta eius. Quae quasi, vero voluptatum consequuntur quos. Fugit sunt voluptatibus excepturi, quae odio earum sapiente et tempora.</p>
+                <hr>
+                <p class="underline"><u>Helpful Links</u></p>
+                <div><a href="#">lorem-ipsum.com</a></div>
+                <div><a href="#">lorem-ipsum.com</a></div>
+                <div><a href="#">lorem-ipsum.com</a></div>
+            </div>
         </div>
     </div>
 

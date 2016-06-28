@@ -13,7 +13,7 @@
                 @if($job->logo)
                     <img src="{{ env('S3_BASEPATH') . $job->logo}}" class="job-posting-logo">
                 @else
-                    <img class="job-posting-logo" src="https://cdn2.iconfinder.com/data/icons/management/256/Resume-512.png" alt="">
+                    <img class="job-posting-logo" src="/img/building.png" alt="">
                 @endif
                 <div class="job-list-info">
                     <div class="job-list-title">{{$job->title}}</div>

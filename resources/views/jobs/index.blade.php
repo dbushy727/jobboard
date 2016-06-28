@@ -1,10 +1,13 @@
 @extends('new_home')
 @section('content')
     <div class="col-sm-8">
-        <div class="search">
-            <input type="text" class="form-control" maxlength="64" placeholder='Search for things like "Jenkins", "AWS" or "Chef"' />
+        <form class="search" action="/jobs/search">
+            <input type="text" name="term" class="form-control" maxlength="64" placeholder='Search for things like "Jenkins", "AWS" or "Chef"' />
             <button type="submit" class="btn btn-red search-button">Search</button>
-        </div>
+        </form>
+        @if(isset($term))
+            <div>Search: {{ $term }} <a href="/"><i class="fa fa-times"></i></a></div>
+        @endif
     </div>
     {{-- Two Column Layout --}}
     <div class="col-sm-8">

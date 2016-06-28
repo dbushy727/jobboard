@@ -6,7 +6,9 @@
             <hr>
             <div class="col-sm-12">
                 @if($job->logo)
-                <img src="{{ env('S3_BASEPATH') . $job->logo}}" class="job-posting-logo">
+                    <img src="{{ env('S3_BASEPATH') . $job->logo}}" class="job-posting-logo">
+                @else
+                    <img class="job-posting-logo" src="/img/building.png" alt="">
                 @endif
             </div>
 

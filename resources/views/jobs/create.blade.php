@@ -67,12 +67,6 @@
                         </div>
 
                         <div class="form-group col-sm-12">
-                            <label for="email">Email*</label>
-                            <input type="email" name="email" class="form-control" required>
-                            <span class="help-block">Where you will receive your receipt</span>
-                        </div>
-
-                        <div class="form-group col-sm-12">
                             <hr>
                             <div class="checkbox">
                                 <label>
@@ -85,7 +79,7 @@
 
                         <div class="form-group col-sm-12">
                             <hr>
-                            <input type="submit" class="btn btn-success btn-lg btn-block">
+                            <input type="submit" class="btn btn-success btn-lg btn-block" value="Preview">
                         </div>
                     </form>
                 </div>
