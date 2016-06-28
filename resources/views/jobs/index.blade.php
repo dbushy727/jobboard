@@ -2,7 +2,7 @@
 @section('content')
     <div class="col-sm-8">
         <form class="search" action="/jobs/search">
-            <input type="text" name="term" class="form-control" maxlength="64" placeholder='Search for things like "Jenkins", "AWS" or "Chef"' />
+            <input type="text" name="term" class="form-control" maxlength="64" placeholder="Search for jobs"/>
             <button type="submit" class="btn btn-red search-button">Search</button>
         </form>
         @if(isset($term))
@@ -26,7 +26,7 @@
                 <hr>
                 <ul>
                     <li class="circle">Curated list of jobs</li>
-                    <li class="circle">Lorem ipsum dolor sit amet.</li>
+                    <li class="circle">Quick review process</li>
                     <li class="circle">Consectetur adipisicing elit.</li>
                     <li class="circle">Necessitatibus ipsum quasi sapiente.</li>
                 </ul>
