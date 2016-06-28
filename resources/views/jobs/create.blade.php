@@ -7,7 +7,7 @@
                 For <strong>$200</strong>, your job posting will remain on the site for <strong>30 days</strong>.
             </p>
             <p>
-                To ensure that we maintain the best DevOps jobs in the market, your application will be reviewed by our experienced team.
+                To ensure that we maintain the best {{ env('JOB_TYPE')}} jobs in the market, your application will be reviewed by our experienced team.
             </p>
             <p>
                 If your application is accepted, it will appear on the top of the job board.

@@ -39,7 +39,7 @@
                         </div>
                         <div class="modal-body modal-text">
                             For <strong>$<u>200</u></strong>, your job posting will remain on the site for <strong><u>30 days</u></strong>.
-                            To ensure that we maintain the best DevOps jobs in the market, your application will be reviewed by our experienced team.
+                            To ensure that we maintain the best {{ env('JOB_TYPE')}} jobs in the market, your application will be reviewed by our experienced team.
                             If your application is accepted, it will appear on the top of the job board.
                             If your application gets rejected, your payment will be refunded.
                         </div>
