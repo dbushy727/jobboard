@@ -24,12 +24,14 @@
                 <button class="btn btn-lg btn-block btn-primary" data-toggle="modal" data-target="#postJobModal">Post A Job</button>
                 <div class="small text-center">$200 for 30 days</div>
                 <hr>
-                <ul>
+                <ul class="job-amenities">
                     <li class="circle">Curated list of jobs</li>
                     <li class="circle">Quick review process</li>
                     <li class="circle">Consectetur adipisicing elit.</li>
                     <li class="circle">Necessitatibus ipsum quasi sapiente.</li>
                 </ul>
+                <hr>
+                <p>Welcome to <b>{{ env('APP_NAME') }}</b>. Here you will find a manicured list of the hottest {{ env('JOB_TYPE') }} jobs the market has to offer. Each application is reviewed to make sure only top-notch jobs make it to the board.</p>
             </div>
         </div>
     </div>

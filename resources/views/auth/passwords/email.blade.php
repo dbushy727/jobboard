@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('new_home')
 
 <!-- Main Content -->
 @section('content')

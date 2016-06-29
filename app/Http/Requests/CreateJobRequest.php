@@ -28,7 +28,6 @@ class CreateJobRequest extends Request
             'location'           => ['required'],
             'description'        => ['required'],
             'application_method' => ['required'],
-            'email'              => ['required', 'email'],
         ];
     }
 }

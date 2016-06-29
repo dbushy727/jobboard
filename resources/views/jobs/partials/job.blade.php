@@ -1,24 +1,19 @@
 <div class="col-sm-3 col-sm-push-9">
     {{-- Company --}}
-    <div class="panel panel-default text-center">
+    <div class="panel panel-default">
         <div class="panel-body">
-            <h4>Company</h4>
-            <hr>
-            <div class="col-sm-12">
-                @if($job->logo)
-                    <img src="{{ env('S3_BASEPATH') . $job->logo}}" class="job-posting-logo">
-                @else
-                    <img class="job-posting-logo" src="/img/building.png" alt="">
-                @endif
-            </div>
-
             <div class="company_info job-posting-section col-sm-12">
-                <div for="company">{{ $job->company_name}}</div>
-                <div for="location">{{ $job->location}}</div>
-                @if(strpos($job->url, '://') !== false)
-                    <div for="url" class="job-link"><a href="{{$job->url}}">{{ explode('://', $job->url)[1] }}</a></div>
-                @else
-                    <div for="url" class="job-link"><a href="http://{{$job->url}}">{{ $job->url }}</a></div>
+                <div for="company"><span class="company-icon"><i class="fa fa-university"></i></span> <span>{{ $job->company_name}}</span></div>
+                <div for="location"><span class="company-icon"><i class="fa fa-map-marker"></i></span> <span>{{ $job->location}}</span></div>
+                @if($job->url)
+                    @if(strpos($job->url, '://') !== false)
+                        <div for="url" class="job-link"><span class="company-icon"><i class="fa fa-external-link-square"></i></span> <a href="{{$job->url}}">{{ explode('://', $job->url)[1] }}</a></div>
+                    @else
+                        <div for="url" class="job-link"><span class="company-icon"><i class="fa fa-external-link-square"></i></span> <a href="http://{{$job->url}}">{{ $job->url }}</a></div>
+                    @endif
+                @endif
+                @if($job->is_remote)
+                    <div><span class="company-icon"><i class="fa fa-globe"></i></span> <span>Remote</span></div>
                 @endif
             </div>
         </div>
@@ -54,6 +49,11 @@
             <div class="job-posting-section tight col-sm-12">
                 <h1>{{$job->title}}</h1>
                 <p>{{ $job->created_at->format('M d Y') }}</p>
+                @if ($job->logo)
+                    <div class="company-logo">
+                        <img src="{{ env('S3_BASEPATH') . $job->logo}}" class="job-posting-logo">
+                    </div>
+                @endif
             </div>
             <div class="job_info job-posting-section col-sm-12 col-xs-12">
                 <hr>

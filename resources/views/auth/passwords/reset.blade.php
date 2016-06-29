@@ -1,4 +1,4 @@
-@extends('layouts')
+@extends('new_home')
 
 @section('content')
 <div class="container tight">

@@ -55,7 +55,6 @@ class JobController extends Controller
             'location',
             'description',
             'application_method',
-            'email',
             'company_name',
             'url',
             'is_featured',
@@ -173,7 +172,6 @@ class JobController extends Controller
             'url',
             'description',
             'application_method',
-            'email',
             'is_featured',
             'is_remote',
         ]);

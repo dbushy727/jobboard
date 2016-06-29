@@ -49,6 +49,10 @@
     body {
         font-size: 16px;
     }
+
+    .job-posting-logo {
+        display: none;
+    }
 }
 
 @media (max-width: 525px) {
@@ -112,10 +116,12 @@
     .search-group {
         width: 100%;
     }
-
-    .job-posting-logo {
-        width: 30px;
-    }
+}
+.company-logo {
+    float: right;
+    position: absolute;
+    top: 2em;
+    right: 0em;
 }
 
 .job-link {
@@ -154,4 +160,14 @@ li.preview-tab {
 
 .god-panel {
     clear: both;
+}
+
+.company-icon {
+    float: left;
+    width: 2em;
+}
+
+.job-amenities {
+    font-size: 0.8em;
+    color: grey;
 }

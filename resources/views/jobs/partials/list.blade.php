@@ -24,6 +24,9 @@
                             <div class="label label-warning small">Revision</div>
                         @endif
                     @endif
+                        <div class="label label-success small">Remote</div>
+                    @if($job->is_remote)
+                    @endif
                 </div>
             </div>
         </a>

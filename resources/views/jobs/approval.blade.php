@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('new_home')
 
 @section('content')
     @include('jobs.partials.activation')
