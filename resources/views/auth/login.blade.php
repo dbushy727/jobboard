@@ -55,15 +55,15 @@
                             </div>
                         </div>
                     </form>
-                    <hr>
-                    <div class="form-group">
+                    {{-- <hr> --}}
+                    {{-- <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
                             <div class="text-center">
                                 <p>Don't have an account?</p>
                                 <a class="btn btn-link" href="{{ url('/auth/register') }}"><button class="btn btn-success">Register</button></a>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>

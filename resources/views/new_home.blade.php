@@ -71,7 +71,7 @@
     <footer class="footer">
         <div class="container-fluid">
             <a href="http://voyent.io" class="navbar-text pull-right">Powered by Voyent</a>
-            <span class="pull-left navbar-text">{{ date('Y') }} | <a href="/jobs/feed">RSS Feed</a></span>
+            <span class="pull-left navbar-text">&copy; {{ date('Y') }} | <a href="/jobs/feed">RSS Feed</a></span>
         </div>
     </footer>
 

@@ -22,18 +22,18 @@ return [
         'name'   => 'logout',
         'middleware' => ['web'],
     ],
-    [
-        'path'   => '/register',
-        'method' => 'showRegistrationForm',
-        'type'   => 'get',
-        'name'   => 'register',
-        'middleware' => ['web', 'guest'],
-    ],
-    [
-        'path'   => '/register',
-        'method' => 'register',
-        'type'   => 'post',
-        'name'   => 'register',
-        'middleware' => ['web', 'guest'],
-    ],
+    // [
+    //     'path'   => '/register',
+    //     'method' => 'showRegistrationForm',
+    //     'type'   => 'get',
+    //     'name'   => 'register',
+    //     'middleware' => ['web', 'guest'],
+    // ],
+    // [
+    //     'path'   => '/register',
+    //     'method' => 'register',
+    //     'type'   => 'post',
+    //     'name'   => 'register',
+    //     'middleware' => ['web', 'guest'],
+    // ],
 ];

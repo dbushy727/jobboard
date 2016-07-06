@@ -27,8 +27,8 @@
                 <ul class="job-amenities">
                     <li class="circle">Curated list of jobs</li>
                     <li class="circle">Quick review process</li>
-                    <li class="circle">Consectetur adipisicing elit.</li>
-                    <li class="circle">Necessitatibus ipsum quasi sapiente.</li>
+                    <li class="circle">Reach out to followers on Twitter</li>
+                    <li class="circle">Narrow your target to the right people.</li>
                 </ul>
                 <hr>
                 <p>Welcome to <b>{{ env('APP_NAME') }}</b>. Here you will find a manicured list of the hottest {{ env('JOB_TYPE') }} jobs the market has to offer. Each application is reviewed to make sure only top-notch jobs make it to the board.</p>
