@@ -26,7 +26,7 @@
                     <span class="sr-only">Toggle navigation</span>
                     <!-- <span class="icon-bar"></span> -->
                 </button>
-                <a class="navbar-brand" href="/"><img alt="{{ env('APP_NAME') }} Logo" src="{{ env('APP_LOGO') }}" height=50px></a>
+                <a class="navbar-brand" href="/"><img alt="{{ env('APP_NAME') }} Logo" src="/{{ env('APP_LOGO') }}" height=50px></a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
