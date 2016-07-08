@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ env('APP_NAME') }}</title>
+    <title>{{ env('APP_NAME') }}: A curated list of {{ env('JOB_TYPE') }} opportunities</title>
     <!-- Fonts -->
     <link href='https://fonts.googleapis.com/css?family=Lora:400,700' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Lato:300' rel='stylesheet' type='text/css'>
@@ -26,7 +26,7 @@
                     <span class="sr-only">Toggle navigation</span>
                     <!-- <span class="icon-bar"></span> -->
                 </button>
-                <a class="navbar-brand" href="/"><img alt="{{ env('APP_NAME') }} Logo" src="{{ env('APP_LOGO') }}" height=50px></a>
+                <a class="navbar-brand" href="/"><img alt="{{ env('APP_NAME') }} Logo" src="/{{ env('APP_LOGO') }}" height=50px></a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
@@ -37,6 +37,7 @@
                 </ul>
             </div><!--/.navbar-collapse -->
         </div>
+        <div>A curated list of {{ env('JOB_TYPE') }} job opportunities FIXME</div>
     </nav>
 
     <!-- Container -->
@@ -54,13 +55,16 @@
                         </h3>
                     </div>
                     <div class="modal-body modal-text">
-                        For <strong>$<u>200</u></strong>, your job posting will remain on the site for <strong><u>30 days</u></strong>.
-                        To ensure that we maintain the best {{ env('JOB_TYPE')}} jobs in the market, your application will be reviewed by our experienced team.
-                        If your application is accepted, it will appear on the top of the job board.
-                        If your application gets rejected, your payment will be refunded.
+                        <center>For <strong>$<u>200</u></strong>, your job posting will be listed here for <strong><u>30 days</u></strong>.</center>
+                        <p>{{ env('APP_NAME')}} is only for jobs that complement a {{ env('JOB_TYPE')}} skillset.
+                        Your application will be reviewed by our experienced team to ensure that we only list the best {{ env('JOB_TYPE')}} jobs on the market.
+                        After your application is accepted it will appear at the top of the job board.
+                        Your payment will be refunded in the event that your application is rejected.</p>
                     </div>
                     <div class="modal-footer">
-                        <a href="/jobs/create" class="btn btn-success btn-lg btn-block">Continue</a>
+                        <a href="/jobs/create" class="btn btn-success btn-lg btn-block">Got it! Let's find the right person for the job!</a>
+                        <br/>
+                        <center><a href="{{ url('/') }}">On second thought, this isn't really a {{ env('JOB_TYPE')}} opportunity</a></center>
                     </div>
                 </div>
             </div>
