@@ -24,6 +24,11 @@ AddOutputFilterByType DEFLATE application/x-javascript
 
     RewriteEngine On
 
+    # Redirect non-matching hostnames
+    RewriteCond %{HTTP_HOST} !^devops\.jobs
+    RewriteCond %{HTTPS}s ^on(s)|
+    RewriteRule ^(.*)$ http%1://devops.jobs/$1 [R=301,L]
+
     # Redirect Trailing Slashes If Not A Folder...
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteRule ^(.*)/$ /$1 [L,R=301]
