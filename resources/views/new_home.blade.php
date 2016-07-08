@@ -17,6 +17,18 @@
     <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
     <script src="//cdn.ckeditor.com/4.5.7/basic/ckeditor.js"></script>
     <script src="https://checkout.stripe.com/checkout.js"></script>
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="/img/favicons/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/img/favicons/favicon-16x16.png" sizes="16x16">
+    <link rel="manifest" href="/img/favicons/manifest.json">
+    <link rel="mask-icon" href="/img/favicons/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="shortcut icon" href="/img/favicons/favicon.ico">
+    <meta name="apple-mobile-web-app-title" content="{{ env('APP_NAME') }}">
+    <meta name="application-name" content="{{ env('APP_NAME') }}">
+    <meta name="msapplication-config" content="/img/favicons/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
+    
 </head>
 <body>
     <!-- Nav -->
