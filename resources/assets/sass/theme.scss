@@ -92,3 +92,23 @@ li.circle {
 input[placeholder] { text-overflow: ellipsis; }
 ::-moz-placeholder { text-overflow: ellipsis; } /* firefox 19+ */
 input:-moz-placeholder { text-overflow: ellipsis; }
+
+.large {
+  font-size: 1.5em;
+}
+
+.red {
+  color: $red;
+}
+
+.dark-blue {
+  color: $dark-blue;
+}
+
+.green {
+  color: $green;
+}
+
+.light-blue {
+  color: $light-blue;
+}

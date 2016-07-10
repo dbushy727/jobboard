@@ -77,10 +77,25 @@ input[placeholder] {
 input:-moz-placeholder {
   text-overflow: ellipsis; }
 
+.large {
+  font-size: 1.5em; }
+
+.red {
+  color: #E74C3C; }
+
+.dark-blue {
+  color: #2C3E50; }
+
+.green {
+  color: #2FB547; }
+
+.light-blue {
+  color: #3498DB; }
+
 /* Navbar */
 .navbar {
   background-color: #2C3E50;
-  height: 50px;
+  height: 100px;
   color: #ECF0F1; }
 
 .navbar a, .footer a {
@@ -133,6 +148,9 @@ section {
     padding-bottom: 25px; }
   .section-heading {
     font-size: 2em; } }
+
+.contact-link:hover {
+  color: #777; }
 
 /*.job-list .job-list-item {
     display: inline-block;
@@ -263,6 +281,10 @@ li.preview-tab {
 .job-amenities {
   font-size: 0.8em;
   color: grey; }
+
+.main-post-job-button {
+  position: relative;
+  top: 1em; }
 
 .modal-text {
   font-size: 0.9em;

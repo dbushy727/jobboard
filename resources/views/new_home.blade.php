@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ env('APP_NAME') }}</title>
+    <title>{{ env('APP_NAME') }}: A curated list of {{ env('JOB_TYPE') }} opportunities</title>
     <!-- Fonts -->
     <link href='https://fonts.googleapis.com/css?family=Lora:400,700' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Lato:300' rel='stylesheet' type='text/css'>
@@ -13,9 +13,11 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="/css/app.css">
 
+    <script src="https://platform.twitter.com/widgets.js"></script>
     <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
     <script src="//cdn.ckeditor.com/4.5.7/basic/ckeditor.js"></script>
     <script src="https://checkout.stripe.com/checkout.js"></script>
+
 </head>
 <body>
     <!-- Nav -->
@@ -26,13 +28,16 @@
                     <span class="sr-only">Toggle navigation</span>
                     <!-- <span class="icon-bar"></span> -->
                 </button>
-                <a class="navbar-brand" href="/">{{ env('APP_NAME') }}</a>
+                <a class="navbar-brand" href="/">
+                    <img alt="{{ env('APP_NAME') }} Logo" src="/{{ env('APP_LOGO') }}" height=50px>
+                    <div class="lead small text-center">A curated list of {{ env('JOB_TYPE') }} job opportunities</div>
+                </a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <!-- <li><a href="#contact">Contact</a></li> -->
                     <div class="navbar-form">
-                        <li><button class="btn btn-primary" data-toggle="modal" data-target="#postJobModal">Post A Job</button></li>
+                        <li><button class="btn btn-primary btn-lg main-post-job-button" data-toggle="modal" data-target="#postJobModal">Post A Job</button></li>
                     </div>
                 </ul>
             </div><!--/.navbar-collapse -->
@@ -54,13 +59,20 @@
                         </h3>
                     </div>
                     <div class="modal-body modal-text">
-                        For <strong>$<u>200</u></strong>, your job posting will remain on the site for <strong><u>30 days</u></strong>.
-                        To ensure that we maintain the best {{ env('JOB_TYPE')}} jobs in the market, your application will be reviewed by our experienced team.
-                        If your application is accepted, it will appear on the top of the job board.
-                        If your application gets rejected, your payment will be refunded.
+                        <div class="text-center">For <strong>$<u>200</u></strong>, your job posting will be listed here for <strong><u>30 days</u></strong>.</div>
+                        <p>{{ env('APP_NAME')}} is only for jobs that complement a {{ env('JOB_TYPE')}} skillset.
+                        Your application will be reviewed by our experienced team to ensure that we only list the best {{ env('JOB_TYPE')}} jobs on the market.
+                        After your application is accepted it will appear at the top of the job board.
+                        Your payment will be refunded in the event that your application is rejected.</p>
                     </div>
                     <div class="modal-footer">
-                        <a href="/jobs/create" class="btn btn-success btn-lg btn-block">Continue</a>
+                        <div>
+                            <a href="/jobs/create" class="btn btn-success btn-lg btn-block">Got it! Let's find the right person for the job!</a>
+                        </div>
+                        <br/>
+                        <div class="text-center">
+                            <a href="#" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">On second thought, this isn't really a {{ env('JOB_TYPE')}} opportunity</span></a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -70,7 +82,10 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container-fluid">
-            <a href="http://voyent.io" class="navbar-text pull-right">Powered by Voyent</a>
+            <p class="navbar-text pull-right">
+                <a class="contact-link" href="mailto:{{ env('ADMIN_EMAIL') }}"><i class="fa fa-2x fa-envelope"></i></a>
+                <a class="contact-link" href="{{ env('TWITTER_URL') }}"><i class="fa fa-2x fa-twitter"></i></a>
+            </p>
             <span class="pull-left navbar-text">&copy; {{ date('Y') }} | <a href="/jobs/feed">RSS Feed</a></span>
         </div>
     </footer>
@@ -84,10 +99,8 @@
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
       })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-    
       ga('create', 'UA-80504881-1', 'auto');
       ga('send', 'pageview');
-    
     </script>
 </body>
 </html>
