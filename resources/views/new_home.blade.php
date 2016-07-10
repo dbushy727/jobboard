@@ -26,7 +26,10 @@
                     <span class="sr-only">Toggle navigation</span>
                     <!-- <span class="icon-bar"></span> -->
                 </button>
-                <a class="navbar-brand" href="/"><img alt="{{ env('APP_NAME') }} Logo" src="/{{ env('APP_LOGO') }}" height=50px></a>
+                <a class="navbar-brand" href="/">
+                    <img alt="{{ env('APP_NAME') }} Logo" src="/{{ env('APP_LOGO') }}" height=50px>
+                    <div class="lead small text-center">A curated list of {{ env('JOB_TYPE') }} job opportunities</div>
+                </a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
@@ -37,7 +40,6 @@
                 </ul>
             </div><!--/.navbar-collapse -->
         </div>
-        <div>A curated list of {{ env('JOB_TYPE') }} job opportunities FIXME</div>
     </nav>
 
     <!-- Container -->
@@ -91,10 +93,10 @@
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
       })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-    
+
       ga('create', 'UA-80504881-1', 'auto');
       ga('send', 'pageview');
-    
+
     </script>
 </body>
 </html>

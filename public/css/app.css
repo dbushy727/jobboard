@@ -80,7 +80,7 @@ input:-moz-placeholder {
 /* Navbar */
 .navbar {
   background-color: #2C3E50;
-  height: 75px;
+  height: 100px;
   color: #ECF0F1; }
 
 .navbar a, .footer a {
