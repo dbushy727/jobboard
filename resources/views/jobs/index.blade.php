@@ -1,9 +1,11 @@
 @extends('new_home')
 @section('content')
-    <div class="col-sm-12">
-        <p>
-            Welcome to <a href="{{ url('/') }}"><b>{{ env('APP_NAME') }}</b></a>. We serve the {{ env('JOB_TYPE') }} community by offering the best place to find and list {{ env('JOB_TYPE') }} career opportunities.
-        </p>
+    <div class="col-sm-8 col-sm-offset-2 panel panel-default">
+        <div class="panel-body">
+            <p class="large">
+                Welcome to <a href="{{ url('/') }}"><b>{{ env('APP_NAME') }}</b></a>. We serve the {{ env('JOB_TYPE') }} community by offering the best place to find and list {{ env('JOB_TYPE') }} career opportunities.
+            </p>
+        </div>
     </div>
     <div class="col-sm-8">
         <form class="search" action="/jobs/search">
@@ -26,7 +28,7 @@
     <div class="col-sm-4">
         <div class="panel panel-default">
             <div class="panel-body text-center">
-                <button class="btn btn-lg btn-block btn-primary" data-toggle="modal" data-target="#postJobModal">Post A Job FIXME</button>
+                <button class="btn btn-lg btn-block btn-primary" data-toggle="modal" data-target="#postJobModal">Post A Job</button>
                 <div class="small">$200 for 30 days</div>
                 <hr>
                 <div>
@@ -41,6 +43,9 @@
                         data-size="large"
                         data-show-count="false"> Follow {{ env('TWITTER_HANDLE') }}
                     </a>
+                </div>
+                <div>
+                    <i class="fa fa-briefcase light-blue"></i> <i class="fa fa-heart red"></i> <i class="fa fa-users green"></i>
                 </div>
             </div>
         </div>
