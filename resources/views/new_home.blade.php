@@ -13,9 +13,11 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="/css/app.css">
 
+    <script src="https://platform.twitter.com/widgets.js"></script>
     <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
     <script src="//cdn.ckeditor.com/4.5.7/basic/ckeditor.js"></script>
     <script src="https://checkout.stripe.com/checkout.js"></script>
+
 </head>
 <body>
     <!-- Nav -->
@@ -35,7 +37,7 @@
                 <ul class="nav navbar-nav navbar-right">
                     <!-- <li><a href="#contact">Contact</a></li> -->
                     <div class="navbar-form">
-                        <li><button class="btn btn-primary" data-toggle="modal" data-target="#postJobModal">Post A Job</button></li>
+                        <li><button class="btn btn-primary btn-lg main-post-job-button" data-toggle="modal" data-target="#postJobModal">Post A Job</button></li>
                     </div>
                 </ul>
             </div><!--/.navbar-collapse -->
@@ -57,16 +59,20 @@
                         </h3>
                     </div>
                     <div class="modal-body modal-text">
-                        <center>For <strong>$<u>200</u></strong>, your job posting will be listed here for <strong><u>30 days</u></strong>.</center>
+                        <div class="text-center">For <strong>$<u>200</u></strong>, your job posting will be listed here for <strong><u>30 days</u></strong>.</div>
                         <p>{{ env('APP_NAME')}} is only for jobs that complement a {{ env('JOB_TYPE')}} skillset.
                         Your application will be reviewed by our experienced team to ensure that we only list the best {{ env('JOB_TYPE')}} jobs on the market.
                         After your application is accepted it will appear at the top of the job board.
                         Your payment will be refunded in the event that your application is rejected.</p>
                     </div>
                     <div class="modal-footer">
-                        <a href="/jobs/create" class="btn btn-success btn-lg btn-block">Got it! Let's find the right person for the job!</a>
+                        <div>
+                            <a href="/jobs/create" class="btn btn-success btn-lg btn-block">Got it! Let's find the right person for the job!</a>
+                        </div>
                         <br/>
-                        <center><a href="{{ url('/') }}">On second thought, this isn't really a {{ env('JOB_TYPE')}} opportunity</a></center>
+                        <div class="text-center">
+                            <a href="#" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">On second thought, this isn't really a {{ env('JOB_TYPE')}} opportunity</span></a>
+                        </div>
                     </div>
                 </div>
             </div>
