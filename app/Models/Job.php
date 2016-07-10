@@ -212,4 +212,9 @@ class Job extends Model
     {
         return $this->replacement_id !== null;
     }
+
+    public function getPriceInMoney()
+    {
+        return number_format($this->price / 100, 2);
+    }
 }
