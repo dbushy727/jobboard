@@ -92,6 +92,11 @@ input:-moz-placeholder {
 .light-blue {
   color: #3498DB; }
 
+.nav-link {
+  display: inline-block;
+  position: relative;
+  top: 1em; }
+
 /* Navbar */
 .navbar {
   background-color: #2C3E50;
@@ -281,10 +286,6 @@ li.preview-tab {
 .job-amenities {
   font-size: 0.8em;
   color: grey; }
-
-.main-post-job-button {
-  position: relative;
-  top: 1em; }
 
 .modal-text {
   font-size: 0.9em;

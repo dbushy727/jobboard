@@ -112,3 +112,9 @@ input:-moz-placeholder { text-overflow: ellipsis; }
 .light-blue {
   color: $light-blue;
 }
+
+.nav-link {
+  display: inline-block;
+  position: relative;
+  top: 1em;
+}

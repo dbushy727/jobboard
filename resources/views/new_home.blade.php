@@ -53,8 +53,13 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <!-- <li><a href="#contact">Contact</a></li> -->
-                    <div class="navbar-form">
+                    <div class="navbar-form nav-link">
+                        <li><a href="/">Home</a></li>
+                    </div>
+                    <div class="navbar-form nav-link">
+                        <li><a href="/about">About</a></li>
+                    </div>
+                    <div class="navbar-form nav-link">
                         <li><button class="btn btn-primary btn-lg main-post-job-button" data-toggle="modal" data-target="#postJobModal">Post A Job</button></li>
                     </div>
                 </ul>
