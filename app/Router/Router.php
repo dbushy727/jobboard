@@ -36,6 +36,10 @@ class Router
         $this->router->get('/thank-you', ['as' => 'thank_you', 'middleware' => ['web'], function () {
             return view('thank-you');
         }]);
+
+        $this->router->get('/about', ['as' => 'about', function () {
+            return view('about');
+        }]);
     }
 
     protected function setDynamicRoutes()

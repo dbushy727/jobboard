@@ -101,8 +101,8 @@
     <footer class="footer">
         <div class="container-fluid">
             <p class="navbar-text pull-right">
-                <a class="contact-link" href="mailto:{{ env('ADMIN_EMAIL') }}"><i class="fa fa-2x fa-envelope"></i></a>
-                <a class="contact-link" href="{{ env('TWITTER_URL') }}"><i class="fa fa-2x fa-twitter"></i></a>
+                <a class="contact-link" href="mailto:{{ env('ADMIN_EMAIL') }}"><i class="fa large fa-envelope"></i></a>
+                <a class="contact-link" href="{{ env('TWITTER_URL') }}"><i class="fa large fa-twitter"></i></a>
             </p>
             <span class="pull-left navbar-text">&copy; {{ date('Y') }} | <a href="/jobs/feed">RSS Feed</a></span>
         </div>
