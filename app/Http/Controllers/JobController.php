@@ -104,18 +104,17 @@ class JobController extends Controller
     {
         $job = Job::find($id);
 
+        if (!$job->isReplacement()) {
+            $status = "{$job->company}: {$job->title} {url('jobs', $id)}";
+            \Twitter::postTweet(['status' => $status, 'format' => 'json']);
+        }
+
         if ($job->isReplacement()) {
             $job->original->replace();
             $job = $job->original;
         }
 
         $job->activate();
-
-        $status = $job->title . ' ' . url('jobs', $id);
-
-        if (!$job->isReplacement()) {
-            \Twitter::postTweet(['status' => $status, 'format' => 'json']);
-        }
 
         return redirect()->route('show_job', [$id]);
     }
