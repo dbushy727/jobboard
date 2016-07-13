@@ -33,7 +33,7 @@
         <div class="panel-footer">
 
 
-            <p><a href="mailto:report@\{{ env('MAIL_DOMAIN') }}?subject=Job #{{ $job->id }} Is Being Reported"> <i class="fa fa-warning"></i> Report This Job</a></p>
+            <p><a href="mailto:{{ env('REPORT_EMAIL') }}?subject=Job #{{ $job->id }} is being reported&body=Job #{{ $job->id }} is being reported because ..."> <i class="fa fa-warning"></i> Report This Job</a></p>
         </div>
     </div>
 
