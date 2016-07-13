@@ -112,7 +112,10 @@ class JobController extends Controller
         $job->activate();
 
         $status = $job->title . ' ' . url('jobs', $id);
-        \Twitter::postTweet(['status' => $status, 'format' => 'json']);
+
+        if (!$job->isReplacement()) {
+            \Twitter::postTweet(['status' => $status, 'format' => 'json']);
+        }
 
         return redirect()->route('show_job', [$id]);
     }
