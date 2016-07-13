@@ -141,6 +141,7 @@ class JobController extends Controller
     {
         $job = Job::find($id);
 
+
         // Process the charge and then save the charge info for later.
         // Once all payment bidness went through, set job to paid.
         $charge = $this->makePayment($job, $stripe, $request);

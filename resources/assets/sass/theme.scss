@@ -118,3 +118,7 @@ input:-moz-placeholder { text-overflow: ellipsis; }
   position: relative;
   top: 1em;
 }
+
+.table tbody tr td.borderless {
+  border: 0;
+}

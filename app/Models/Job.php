@@ -24,6 +24,7 @@ class Job extends Model
         'replacement_id',
         'title',
         'url',
+        'discount',
     ];
 
     /******************
@@ -215,6 +216,21 @@ class Job extends Model
 
     public function getPriceInMoney()
     {
-        return number_format($this->price / 100, 2);
+        return $this->inMoney($this->price);
+    }
+
+    public function getDiscountInMoney()
+    {
+        return $this->inMoney($this->discount);
+    }
+
+    public function inMoney($amount)
+    {
+        return number_format($amount / 100, 2);
+    }
+
+    public function getTotalInMoney()
+    {
+        return $this->inMoney($this->price - $this->discount);
     }
 }

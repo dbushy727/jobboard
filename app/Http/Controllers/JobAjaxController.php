@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Coupon;
 use App\Http\Requests\CreateJobRequest;
 use App\Http\Requests\PaymentRequest;
 use App\Models\Job;
@@ -29,5 +30,34 @@ class JobAjaxController extends Controller
         }
 
         return ['status' => 'success', 'message' => $job];
+    }
+
+    public function applyCoupon($id, Request $request)
+    {
+        $job = Job::find($id);
+
+        if (!$job) {
+            return ['status' => 'error', 'message' => 'Job not found'];
+        }
+
+        $coupon = Coupon::where('code', $request->get('code'))->first();
+
+        if (!$coupon) {
+            return ['status' => 'success', 'message' => 'Coupon not found'];
+        }
+
+        if ($coupon->expiration->isPast()) {
+            return ['status' => 'success', 'message' => 'Coupon Expired'];
+        }
+
+        $job->discount = $coupon->amount;
+
+        if ($job->price - $job->discount == 0) {
+            $job->pay();
+        }
+
+        $job->save();
+
+        return ['status' => 'success', 'message' => 'Coupon Applied', 'job' => $job];
     }
 }
