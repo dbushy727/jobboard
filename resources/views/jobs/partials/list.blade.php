@@ -1,5 +1,5 @@
 @if(!$jobs->count())
-    <div class="text-center">There are currently no jobs posted within the last 30 days.</div>
+    <div class="text-center">There are currently no jobs that match your criteria posted within the last 30 days.</div>
 @else
     <div class="list-group job-list tight">
     @foreach($jobs as $job)
