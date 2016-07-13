@@ -16,7 +16,8 @@ class AddCouponsTable extends Migration
             $table->increments('id');
             $table->string('code');
             $table->integer('amount');
-            $table->datetime('expiration');
+            $table->integer('limit');
+            $table->integer('uses')->default(0);
             $table->timestamps();
         });
     }

@@ -43,14 +43,15 @@ class JobAjaxController extends Controller
         $coupon = Coupon::where('code', $request->get('code'))->first();
 
         if (!$coupon) {
-            return ['status' => 'success', 'message' => 'Coupon not found'];
+            return ['status' => 'success', 'message' => 'Coupon Not Found'];
         }
 
-        if ($coupon->expiration->isPast()) {
+        if ($coupon->isMaxedOut()) {
             return ['status' => 'success', 'message' => 'Coupon Expired'];
         }
 
         $job->discount = $coupon->amount;
+        $coupon->useIt();
 
         if ($job->price - $job->discount == 0) {
             $job->pay();

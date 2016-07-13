@@ -14,8 +14,18 @@ class Coupon extends Model
     protected $fillable = [
         'code',
         'amount',
-        'expiration'
+        'limit',
+        'uses'
     ];
 
-    protected $dates = ['expiration'];
+    public function isMaxedOut()
+    {
+        return $this->uses == $this->limit;
+    }
+
+    public function useIt()
+    {
+        $this->uses++;
+        $this->save();
+    }
 }
