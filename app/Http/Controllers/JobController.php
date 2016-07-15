@@ -285,7 +285,7 @@ class JobController extends Controller
 
         $feed->setDateFormat('datetime');
         $feed->setShortening(true);
-        $feed->setTextLimit(100);
+        $feed->setTextLimit(10000);
         $feed->setView('vendor.feed.atom');
 
         foreach ($jobs as $job) {
