@@ -29,9 +29,7 @@ class Router
 
     protected function setStaticRoutes()
     {
-        $this->router->get('/', function () {
-            return redirect('/jobs');
-        });
+        $this->router->get('/', "{$this->namespace}\JobController@index");
 
         $this->router->get('/thank-you', ['as' => 'thank_you', 'middleware' => ['web'], function () {
             return view('thank-you');

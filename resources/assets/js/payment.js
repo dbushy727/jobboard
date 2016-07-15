@@ -11,7 +11,7 @@ var key = $('#key').val(),
 });
 
 function setupCheckout() {
-    var id = window.location.pathname.split('/')[2];
+    var slug = window.location.pathname.split('/')[2];
 
     var callback = function (job) {
         if (job.status == 'error') {
@@ -20,13 +20,13 @@ function setupCheckout() {
         }
     }
 
-    return getJob(id, callback);
+    return getJob(slug, callback);
 }
 
-function getJob(id, callback)
+function getJob(slug, callback)
 {
     return $.ajax({
-        url: '/jobs-ajax/' + id,
+        url: '/jobs-ajax/' + slug,
         method: 'get',
         success: function (job) {
             return callback(job);

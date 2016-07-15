@@ -25,16 +25,16 @@ class JobController extends Controller
         return view('jobs.index', compact('jobs'));
     }
 
-    public function show($id)
+    public function show($slug)
     {
-        $job = Job::find($id);
+        $job = Job::slug($slug)->first();
 
         return view('jobs.show', compact('job', 'jobs'));
     }
 
-    public function approval($id)
+    public function approval($slug)
     {
-        $job = Job::find($id);
+        $job = Job::slug($slug)->first();
 
         if ($job->isReplacement()) {
             return view('jobs.approval_replacement', compact('job'));
@@ -73,7 +73,7 @@ class JobController extends Controller
         }
 
         $job = Job::create($params);
-        return redirect()->route('preview_job', [$job->id]);
+        return redirect()->route('preview_job', [$job->slug]);
     }
 
     protected function storeReplacement($params)
@@ -86,12 +86,12 @@ class JobController extends Controller
 
         $job->update($params);
 
-        return redirect()->route('preview_job', [$job->id]);
+        return redirect()->route('preview_job', [$job->slug]);
     }
 
-    public function preview($id)
+    public function preview($slug)
     {
-        $job = Job::find($id);
+        $job = Job::slug($slug)->first();
 
         if ($job->isReplacement()) {
             return view('jobs.preview_replacement', compact('job'));
@@ -100,12 +100,12 @@ class JobController extends Controller
         return view('jobs.preview', compact('job'));
     }
 
-    public function activate($id, Request $request)
+    public function activate($slug, Request $request)
     {
-        $job = Job::find($id);
+        $job = Job::slug($slug)->first();
 
         if (!$job->isReplacement()) {
-            $status = "{$job->company}: {$job->title} {url('jobs', $id)}";
+            $status = "{$job->company}: {$job->title} {url('jobs', $slug)}";
             \Twitter::postTweet(['status' => $status, 'format' => 'json']);
         }
 
@@ -116,7 +116,7 @@ class JobController extends Controller
 
         $job->activate();
 
-        return redirect()->route('show_job', [$id]);
+        return redirect()->route('show_job', [$slug]);
     }
 
     public function pending()
@@ -139,10 +139,9 @@ class JobController extends Controller
         return view('jobs.pending', compact('jobs'));
     }
 
-    public function payment($id, Stripe $stripe, PaymentRequest $request)
+    public function payment($slug, Stripe $stripe, PaymentRequest $request)
     {
-        $job = Job::find($id);
-
+        $job = Job::slug($slug)->first();
 
         // Process the charge and then save the charge info for later.
         // Once all payment bidness went through, set job to paid.
@@ -153,9 +152,9 @@ class JobController extends Controller
         return redirect()->route('thank_you');
     }
 
-    public function edit($id, $token = null)
+    public function edit($slug, $token = null)
     {
-        $job = Job::find($id);
+        $job = Job::slug($slug)->first();
 
         if (!$token || $job->edit_token !== $token) {
             abort(403);
@@ -164,9 +163,9 @@ class JobController extends Controller
         return view('jobs.edit', compact('job'));
     }
 
-    public function update($id, Request $request)
+    public function update($slug, Request $request)
     {
-        $job = Job::find($id);
+        $job = Job::slug($slug)->first();
 
         $params = $request->only([
             'title',
@@ -187,7 +186,7 @@ class JobController extends Controller
 
         $job->update($params);
 
-        return redirect()->route('preview_job', [$job->id]);
+        return redirect()->route('preview_job', [$job->slug]);
     }
 
     /**
@@ -198,9 +197,9 @@ class JobController extends Controller
      * @param  Request $request
      * @return redirect
      */
-    public function reject($id, Stripe $stripe, Request $request)
+    public function reject($slug, Stripe $stripe, Request $request)
     {
-        $job = Job::find($id);
+        $job = Job::slug($slug)->first();
 
         $stripe_refund = $stripe->refund($job->payment);
 
@@ -237,7 +236,7 @@ class JobController extends Controller
             'token'         => $request->get('token'),
             'metadata'      => [
                 'job_id' => $job->id,
-                'edit_link' => url('jobs', $job->id, $job->edit_token),
+                'edit_link' => url('jobs', $job->slug, $job->edit_token),
             ],
             'receipt_email' => $request->get('email', null),
             'amount'        => $job->price,
@@ -289,7 +288,7 @@ class JobController extends Controller
         $feed->setView('vendor.feed.atom');
 
         foreach ($jobs as $job) {
-            $feed->add($job->title, $job->company, url('jobs', $job->id), $job->created_at, $job->description);
+            $feed->add($job->title, $job->company, url('jobs', $job->slug), $job->created_at, $job->description);
         }
 
         return $feed->render('atom');

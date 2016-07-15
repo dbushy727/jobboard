@@ -21,9 +21,9 @@ class JobAjaxController extends Controller
      * @param  Request $request
      * @return array
      */
-    public function show($id, Request $request)
+    public function show($slug, Request $request)
     {
-        $job = Job::find($id);
+        $job = Job::slug($slug)->first();
 
         if (!$job) {
             return ['status' => 'error', 'message' => 'Job not found'];

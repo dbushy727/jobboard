@@ -6,8 +6,8 @@
             <a href="/thank-you" class="btn btn-success header-button pull-right">Proceed to Checkout</a>
         @else
             <button class="btn btn-success btn-block header-button" id="checkoutButton" data-toggle="modal" data-target="#checkoutModal">Proceed to Checkout</button>
-            or <a href="/jobs/{{$job->id}}/edit/{{$job->edit_token}}">Back to Edit</a>
-            <form action="/jobs/{{$job->id}}/payment" method="POST" id="payment">
+            or <a href="/jobs/{{$job->slug}}/edit/{{$job->edit_token}}">Back to Edit</a>
+            <form action="/jobs/{{$job->slug}}/payment" method="POST" id="payment">
                 {!! csrf_field() !!}
                 <input type="hidden" id="key" value="{{ getenv('STRIPE_PUBLIC_KEY')}}">
                 <input type="hidden" name="token" id="token">
