@@ -105,8 +105,18 @@ class JobController extends Controller
         $job = Job::find($id);
 
         if (!$job->isReplacement()) {
-            $status = "{$job->company}: {$job->title} {url('jobs', $id)}";
-            \Twitter::postTweet(['status' => $status, 'format' => 'json']);
+            if ($job->is_remote) {
+                $remote = ' (Remote)';
+            } else {
+                $remote = '';
+            }
+
+            $status1 = 'New opportunity posted for a ' . $job->title . $remote . ' @ ' . $job->company_name . ' ' . url('jobs', $id);
+            $status2 = $job->company_name . ' is looking for a new ' . $job->title . $remote . ' ' . url('jobs', $id);
+            $status3 = $job->company_name . ' is now hiring for a ' . $job->title . $remote . ' ' . url('jobs', $id);
+            $status4 = 'Interested in being a ' . $job->title . $remote . ' for ' . $job->company_name . '? ' . url('jobs', $id);
+            $statusarray = array($status1, $status2, $status3, $status4);
+            \Twitter::postTweet(['status' => $statusarray[rand(0, count($statusarray) - 1)], 'format' => 'json']);
         }
 
         if ($job->isReplacement()) {
