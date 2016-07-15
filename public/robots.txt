@@ -1,2 +1,3 @@
 User-agent: *
 Disallow:
+Sitemap: http://devops.jobs/sitemap.xml
