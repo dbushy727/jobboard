@@ -5,7 +5,7 @@
         <div class="panel-body">
             <div class="403">
                 <div class="text-center">
-                    <img src="http://www.hospitalsafetyscore.org/media/image/hss-alert-icon.png" alt="">
+                    <img src="/img/alert.png" alt="403 Error Image">
                     <h1>Error: 403</h1>
                     <hr>
                     <p>The page you have requested is restricted.</p>

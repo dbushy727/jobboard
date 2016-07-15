@@ -5,7 +5,7 @@
         <div class="panel-body">
             <div class="404">
                 <div class="text-center">
-                    <img src="http://www.hospitalsafetyscore.org/media/image/hss-alert-icon.png" alt="">
+                    <img src="/img/alert.png" alt="404 Error Image">
                     <h1>Error: 404</h1>
                     <hr>
                     <p>The page you have requested could not be found.</p>
