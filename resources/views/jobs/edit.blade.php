@@ -103,19 +103,23 @@
                 </div>
             </div>
         </div>
-
     </div>
     <div class="col-sm-4">
         <div class="panel panel-default">
             <div class="panel-body">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero quasi possimus, nulla soluta eius. Quae quasi, vero voluptatum consequuntur quos. Fugit sunt voluptatibus excepturi, quae odio earum sapiente et tempora.</p>
+                <p>
+                    For <strong>$200</strong>, your job posting will remain on the site for <strong>30 days</strong>.
+                </p>
                 <hr>
-                <p class="underline"><u>Helpful Links</u></p>
-                <div><a href="#">lorem-ipsum.com</a></div>
-                <div><a href="#">lorem-ipsum.com</a></div>
-                <div><a href="#">lorem-ipsum.com</a></div>
+                <p>
+                    To ensure that we maintain the best {{ env('JOB_TYPE')}} jobs in the market, your application will be reviewed by our experienced team.
+                </p>
+                <hr>
+                <p>
+                    If your application is accepted, it will appear on the top of the job board.
+                    If your application gets rejected, your payment will be refunded.
+                </p>
             </div>
         </div>
     </div>
-
 @endsection
