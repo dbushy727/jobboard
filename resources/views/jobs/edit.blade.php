@@ -24,9 +24,9 @@
 
                         <div class="form-group col-sm-6">
                             @if($job->logo)
-                                <img src="{{ env('S3_BASEPATH') . $job->logo}}" class="job-posting-logo-edit pull-right">
+                                <img src="{{ env('S3_BASEPATH') . $job->logo}}" class="job-posting-logo-edit pull-right" alt="{{$job->company_name}} Logo">
                             @else
-                                <img class="job-posting-logo-edit pull-right" src="/img/building.png" alt="">
+                                <img class="job-posting-logo-edit pull-right" src="/img/building.png" alt="Default Logo">
                             @endif
                             <label for="logo">Logo <span class="small">(100px wide)</span></label>
                             <input type="file" name="logo" id="logo" class="hidden">

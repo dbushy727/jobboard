@@ -11,13 +11,13 @@
             </div>
             <div>
                 @if($job->logo)
-                    <img src="{{ env('S3_BASEPATH') . $job->logo}}" class="job-posting-logo">
+                    <img src="{{ env('S3_BASEPATH') . $job->logo}}" class="job-posting-logo" alt="{{$job->company_name}} Logo">
                 @else
-                    <img class="job-posting-logo" src="/img/building.png" alt="">
+                    <img class="job-posting-logo" src="/img/building.png" alt="Default Logo">
                 @endif
                 <div class="job-list-info">
                     <div class="job-list-title">{{$job->title}}</div>
-                    <div class="job-list-company">{{ $job->company_name}}</div>
+                    <div class="job-list-company">{{$job->company_name}}</div>
                     @if($job->created_at->diffInDays() < 2)
                         <div class="label label-info small">New</div>
                         @if($job->isReplacement())

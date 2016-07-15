@@ -51,7 +51,7 @@
                 <p>{{ $job->created_at->format('M d Y') }}</p>
                 @if ($job->logo)
                     <div class="company-logo">
-                        <img src="{{ env('S3_BASEPATH') . $job->logo}}" class="job-posting-logo">
+                        <img src="{{ env('S3_BASEPATH') . $job->logo}}" class="job-posting-logo" alt="{{$job->company_name}} Logo">
                     </div>
                 @endif
             </div>
