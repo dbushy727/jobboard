@@ -9,7 +9,7 @@
     <meta name="application-name" content="{{ env('APP_NAME') }}">
     <meta name="msapplication-config" content="/img/favicons/browserconfig.xml">
     <meta name="theme-color" content="#ecf0f1">
-    <meta name="description" content="A curated list of {{ env('JOB_TYPE') }} opportunities">
+    <meta name="description" content="A curated list of opportunities for {{ env('JOB_TYPE') }} job seekers, and the best place for hiring managers to target {{ env('JOB_TYPE') }} candidates.">
 
     <title>{{ env('APP_NAME') }}: A curated list of {{ env('JOB_TYPE') }} opportunities</title>
 
