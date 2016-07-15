@@ -61,7 +61,17 @@
                 <br>
                 <div class="apply_info job-posting-section col-sm-12 col-xs-12">
                     <label>How to apply</label>
-                    <div>{{$job->application_method}}</div>
+
+                    <?php
+                      function link_it($text)
+                      {
+                          $text = preg_replace("/((https?:\/\/)[^ ]+)/", '<a target="_blank" href="$1">$1</a>', $text);
+                          $text = preg_replace("/(^|[\n ])([a-z0-9&\-_\.]+?)@([\w\-]+\.([\w\-\.]+)+)/i", "$1&lt;a href=\"mailto:$2@$3\"&gt;$2@$3&lt;/a&gt;", $text);
+                          return($text);
+                      }
+                      echo "<div>".html_entity_decode(link_it($job->application_method))."</div>";
+                    ?>
+                    
                 </div>
             </div>
         </div>
