@@ -5,6 +5,7 @@
 Homestead.yaml
 Homestead.json
 .env
+sitemap.xml
 
 # https://raw.githubusercontent.com/github/gitignore/master/Global/OSX.gitignore
 *.DS_Store
