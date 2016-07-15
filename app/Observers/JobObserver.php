@@ -11,6 +11,11 @@ class JobObserver
         $this->setSessionToken($model);
     }
 
+    public function created($model)
+    {
+        $model->addSlug();
+    }
+
     protected function setPrice($model)
     {
         $model->price = $model->is_featured ? env('BASE_PRICE') + env('FEATURE_PRICE') : env('BASE_PRICE');

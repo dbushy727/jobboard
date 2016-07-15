@@ -2,7 +2,7 @@
 
 return [
     [
-        'path'   => '/{id}',
+        'path'   => '/{slug}',
         'method' => 'show',
         'type'   => 'get',
         'name'   => 'info_job',

@@ -18,10 +18,10 @@ class RedirectIfInactive
      */
     public function handle($request, Closure $next, $guard = null)
     {
-        $job = Job::find($request->id);
+        $job = Job::slug($request->slug)->first();
 
         if (!$job->is_active) {
-            return \Auth::check() ? redirect()->route('approve_job', [$job->id]) : redirect()->route('jobs');
+            return \Auth::check() ? redirect()->route('approve_job', [$job->slug]) : redirect()->route('jobs');
         }
 
         return $next($request);

@@ -18,7 +18,7 @@ class VerifySession
      */
     public function handle($request, Closure $next, $guard = null)
     {
-        $job = Job::find($request->id);
+        $job = Job::slug($request->slug)->first();
 
         if (\Session::getId() !== $job->session_token) {
             return redirect()->route('jobs');

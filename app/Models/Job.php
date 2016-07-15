@@ -141,6 +141,11 @@ class Job extends Model
         return $query->whereNotNull('replacement_id');
     }
 
+    public function scopeSlug($query, $slug)
+    {
+        return $query->where('slug', $slug);
+    }
+
     /**
      * Search through active current jobs
      *
@@ -232,5 +237,35 @@ class Job extends Model
     public function getTotalInMoney()
     {
         return $this->inMoney($this->price - $this->discount);
+    }
+
+    public function slugExists($slug)
+    {
+        return !!$this->where('slug', $slug)->first();
+    }
+
+    public function addSlug($slug = null)
+    {
+        if (!$slug) {
+            $slug = str_slug($this->company_name.'-'.$this->title);
+        }
+
+        if (!$this->slugExists($slug)) {
+            $this->slug = $slug;
+            return $this->save();
+        }
+
+        $pieces = explode('-', $slug);
+
+        if (!is_numeric(last($pieces))) {
+            $last = '1';
+        } else {
+            $last = array_pop($pieces);
+            $last++;
+        }
+
+        array_push($pieces, $last);
+        $slug = implode('-', $pieces);
+        return $this->addSlug($slug);
     }
 }

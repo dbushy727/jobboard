@@ -10,9 +10,9 @@
                 <div class="panel-body">
                     @if($job->is_active)
                         <form action="/jobs" method="POST" name="editJob" id="editJob" enctype="multipart/form-data">
-                        <input type="input" name="replacement_id" class="hidden" value="{{$job->id}}">
+                        <input type="input" name="replacement_id" class="hidden" value="{{$job->slug}}">
                     @else
-                        <form action="/jobs/{{$job->id}}/update" method="POST" name="editJob" id="editJob" enctype="multipart/form-data">
+                        <form action="/jobs/{{$job->slug}}/update" method="POST" name="editJob" id="editJob" enctype="multipart/form-data">
                     @endif
                         {!! csrf_field() !!}
                         <div class="form-group col-sm-12 text-right">* Required fields</div>

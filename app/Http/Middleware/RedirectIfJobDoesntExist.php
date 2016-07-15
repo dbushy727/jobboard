@@ -18,7 +18,7 @@ class RedirectIfJobDoesntExist
      */
     public function handle($request, Closure $next, $guard = null)
     {
-        if (!Job::find($request->id)) {
+        if (!Job::slug($request->slug)->first()) {
             return redirect('/');
         }
 

@@ -18,10 +18,10 @@ class RedirectIfActive
      */
     public function handle($request, Closure $next, $guard = null)
     {
-        $job = Job::find($request->id);
+        $job = Job::slug($request->slug)->first();
 
         if ($job->is_active) {
-            return redirect()->route('show_job', [$job->id]);
+            return redirect()->route('show_job', [$job->slug]);
         }
 
         return $next($request);
