@@ -7,19 +7,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="apple-mobile-web-app-title" content="{{ env('APP_NAME') }}">
     <meta name="application-name" content="{{ env('APP_NAME') }}">
-    <meta name="msapplication-config" content="/img/favicons/browserconfig.xml">
     <meta name="theme-color" content="#ecf0f1">
     <meta name="description" content="A curated list of opportunities for {{ env('JOB_TYPE') }} job seekers, and the best place for hiring managers to target {{ env('JOB_TYPE') }} candidates.">
 
     <title>{{ env('APP_NAME') }}: A curated list of {{ env('JOB_TYPE') }} opportunities</title>
 
     <!-- Icons -->
-    <link rel="apple-touch-icon" sizes="180x180" href="/img/favicons/apple-touch-icon.png">
-    <link rel="icon" type="image/png" href="/img/favicons/favicon-32x32.png" sizes="32x32">
-    <link rel="icon" type="image/png" href="/img/favicons/favicon-16x16.png" sizes="16x16">
-    <link rel="manifest" href="/img/favicons/manifest.json">
-    <link rel="mask-icon" href="/img/favicons/safari-pinned-tab.svg" color="#5bbad5">
-    <link rel="shortcut icon" href="/img/favicons/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/favicons/apple-touch-icon.png?v=GvJBvwNAXW">
+    <link rel="icon" type="image/png" href="/img/favicons/favicon-32x32.png?v=GvJBvwNAXW" sizes="32x32">
+    <link rel="icon" type="image/png" href="/img/favicons/favicon-16x16.png?v=GvJBvwNAXW" sizes="16x16">
+    <link rel="manifest" href="/img/favicons/manifest.json?v=GvJBvwNAXW">
+    <link rel="mask-icon" href="/img/favicons/safari-pinned-tab.svg?v=GvJBvwNAXW" color="#5bbad5">
+    <link rel="shortcut icon" href="/img/favicons/favicon.ico?v=GvJBvwNAXW">
+    <meta name="msapplication-config" content="/img/favicons/browserconfig.xml?v=GvJBvwNAXW">
 
     <!-- Fonts -->
     <link href='https://fonts.googleapis.com/css?family=Lora:400,700' rel='stylesheet' type='text/css'>
