@@ -14,7 +14,7 @@ class AddSlugToJob extends Migration
     public function up()
     {
         Schema::table('jobs', function (Blueprint $table) {
-            $table->string('slug')->after('title')->unique();
+            $table->string('slug')->after('title')->unique()->nullable();
         });
 
         Job::all()->each(function ($job) {
