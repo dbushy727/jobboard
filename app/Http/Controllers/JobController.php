@@ -101,7 +101,7 @@ class JobController extends Controller
         return view('jobs.preview', compact('job'));
     }
 
-    public function activate($id, Request $request, Tweet $tweet)
+    public function activate($slug, Request $request, Tweet $tweet)
     {
         $job = Job::slug($slug)->first();
 
