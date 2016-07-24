@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\External\Tweet;
 use App\Http\Requests\CreateJobRequest;
 use App\Http\Requests\PaymentRequest;
 use App\Models\Job;
@@ -100,13 +101,12 @@ class JobController extends Controller
         return view('jobs.preview', compact('job'));
     }
 
-    public function activate($id, Request $request)
+    public function activate($id, Request $request, Tweet $tweet)
     {
         $job = Job::find($id);
 
         if (!$job->isReplacement()) {
-            $status = "{$job->company}: {$job->title} {url('jobs', $id)}";
-            \Twitter::postTweet(['status' => $status, 'format' => 'json']);
+            $tweet->tweetJob($job);
         }
 
         if ($job->isReplacement()) {
