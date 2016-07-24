@@ -58,13 +58,8 @@ class Tweet
             return $data[$replacement];
         }, $status['replace']);
 
-        $message = sprintf($status['message'], ...$replace);
-
-        \Log::info($replace);
-        \Log::info($message);
-
         $this->twitter->postTweet([
-            'status' => $message,
+            'status' => sprintf($status['message'], ...$replace),
             'format' => 'json'
         ]);
     }
