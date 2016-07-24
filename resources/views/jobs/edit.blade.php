@@ -103,19 +103,8 @@
                 </div>
             </div>
         </div>
-
     </div>
     <div class="col-sm-4">
-        <div class="panel panel-default">
-            <div class="panel-body">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero quasi possimus, nulla soluta eius. Quae quasi, vero voluptatum consequuntur quos. Fugit sunt voluptatibus excepturi, quae odio earum sapiente et tempora.</p>
-                <hr>
-                <p class="underline"><u>Helpful Links</u></p>
-                <div><a href="#">lorem-ipsum.com</a></div>
-                <div><a href="#">lorem-ipsum.com</a></div>
-                <div><a href="#">lorem-ipsum.com</a></div>
-            </div>
-        </div>
+        @include('jobs.partials.explanation')
     </div>
-
 @endsection
