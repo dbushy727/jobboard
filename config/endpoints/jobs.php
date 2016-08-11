@@ -41,7 +41,7 @@ return [
         'method' => 'show',
         'type'   => 'get',
         'name'   => 'show_job',
-        'middleware' => ['web', 'job_exists', 'active'],
+        'middleware' => ['web', 'id_url', 'job_exists', 'active'],
     ],
     [
         'path'   => '/{slug}/preview',

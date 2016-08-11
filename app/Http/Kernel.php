@@ -48,6 +48,7 @@ class Kernel extends HttpKernel
         'auth.basic'     => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'guest'          => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle'       => \Illuminate\Routing\Middleware\ThrottleRequests::class,
+        'id_url'         => \App\Http\Middleware\RedirectIfId::class,
         'job_exists'     => \App\Http\Middleware\RedirectIfJobDoesntExist::class,
         'verify_session' => \App\Http\Middleware\VerifySession::class,
         'inactive'       => \App\Http\Middleware\RedirectIfActive::class,
