@@ -8,7 +8,7 @@
         <div class="job tight">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <form action="/jobs" method="POST" name="createJob" enctype="multipart/form-data">
+                    <form action="/posts" method="POST" name="createJob" enctype="multipart/form-data">
                         {!! csrf_field() !!}
                         <div class="form-group col-sm-12 text-right">* Required fields</div>
                         <div class="form-group col-sm-12">

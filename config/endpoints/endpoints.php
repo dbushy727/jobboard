@@ -2,7 +2,7 @@
 
 return [
     'auth'      => 'Auth\AuthController',
-    'jobs'      => 'JobController',
+    'posts'     => 'JobController',
     'jobs-ajax' => 'JobAjaxController',
     'password'  => 'Auth\PasswordController',
 ];

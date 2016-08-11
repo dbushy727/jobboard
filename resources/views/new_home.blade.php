@@ -93,7 +93,7 @@
                     </div>
                     <div class="modal-footer">
                         <div>
-                            <a href="/jobs/create" class="btn btn-success btn-lg btn-block">Got it! Let's find the right person for the job!</a>
+                            <a href="/posts/create" class="btn btn-success btn-lg btn-block">Got it! Let's find the right person for the job!</a>
                         </div>
                         <br/>
                         <div class="text-center">
@@ -112,7 +112,7 @@
                 <a class="contact-link" href="mailto:{{ env('ADMIN_EMAIL') }}"><i class="fa large fa-envelope"></i></a>
                 <a class="contact-link" href="{{ env('TWITTER_URL') }}"><i class="fa large fa-twitter"></i></a>
             </p>
-            <span class="pull-left navbar-text">&copy; {{ date('Y') }} | <a href="/jobs/feed">RSS Feed</a></span>
+            <span class="pull-left navbar-text">&copy; {{ date('Y') }} | <a href="/posts/feed">RSS Feed</a></span>
         </div>
     </footer>
 

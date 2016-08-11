@@ -44,7 +44,7 @@
                             If your application gets rejected, your payment will be refunded.
                         </div>
                         <div class="modal-footer">
-                            <a href="/jobs/create" class="btn btn-success btn-lg btn-block">Continue</a>
+                            <a href="/posts/create" class="btn btn-success btn-lg btn-block">Continue</a>
                         </div>
                     </div>
                 </div>
@@ -52,7 +52,7 @@
             @if(Auth::check())
             <div class="god-panel">
                 <div class="text-center">God Mode</div>
-                <a href="/jobs/pending">Jobs Pending</a>
+                <a href="/posts/pending">Jobs Pending</a>
                 <a href="/auth/logout" class="pull-right">Logout</a>
             </div>
             @endif

@@ -4,7 +4,7 @@
         <p>
             Welcome to <a href="{{ url('/') }}"><b>{{ env('APP_NAME') }}</b></a>. We serve the {{ env('JOB_TYPE') }} community by offering the best place to find and list {{ env('JOB_TYPE') }} career opportunities.
         </p>
-        <form class="search" action="/jobs/search">
+        <form class="search" action="/posts/search">
             <div class="input-group">
                 <input type="text" name="term" class="form-control" maxlength="64" placeholder="Search for jobs">
                 <span class="input-group-btn"><button class="btn btn-red search-button" type="submit">Search</button></span>
