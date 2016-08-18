@@ -60,7 +60,7 @@ class JobController extends Controller
             'url',
             'is_featured',
             'is_remote',
-            'replacement_id',
+            'replacement_slug',
         ]);
 
         $params = array_filter($params);
@@ -69,7 +69,7 @@ class JobController extends Controller
             $params['logo'] = $this->uploadImage($file);
         }
 
-        if ($replacement_id = array_get($params, 'replacement_id')) {
+        if ($replacement_slug = array_get($params, 'replacement_slug')) {
             return $this->storeReplacement($params);
         }
 
@@ -79,7 +79,8 @@ class JobController extends Controller
 
     protected function storeReplacement($params)
     {
-        $job = Job::firstOrCreate(array_only($params, ['replacement_id']));
+        $replacement = Job::where('slug', array_get($params, 'replacement_slug'))->first();
+        $job = Job::firstOrCreate(['replacement_id' => $replacement->id]);
 
         if (!$job->logo) {
             $job->logo = $job->original->logo;

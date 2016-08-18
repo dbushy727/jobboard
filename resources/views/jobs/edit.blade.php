@@ -10,7 +10,7 @@
                 <div class="panel-body">
                     @if($job->is_active)
                         <form action="/posts" method="POST" name="editJob" id="editJob" enctype="multipart/form-data">
-                        <input type="input" name="replacement_id" class="hidden" value="{{$job->slug}}">
+                        <input type="input" name="replacement_slug" class="hidden" value="{{$job->slug}}">
                     @else
                         <form action="/posts/{{$job->slug}}/update" method="POST" name="editJob" id="editJob" enctype="multipart/form-data">
                     @endif
