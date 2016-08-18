@@ -6,6 +6,7 @@ Homestead.yaml
 Homestead.json
 .env
 sitemap.xml
+installer
 composer
 composer.phar
 
