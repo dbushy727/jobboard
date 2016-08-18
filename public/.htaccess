@@ -29,6 +29,9 @@ AddOutputFilterByType DEFLATE application/x-javascript
     RewriteCond %{HTTPS}s ^on(s)|
     RewriteRule ^(.*)$ http%1://devops.jobs/$1 [R=301,L]
 
+    # Redirect legacy links
+    RewriteRule "^/jobs/(.*)$"  "/posts/$1" [R=301,L]
+
     # Force HTTPS
     RewriteCond %{HTTPS} !=on
     RewriteRule ^/?(.*) https://%{SERVER_NAME}/$1 [R,L]
@@ -45,4 +48,6 @@ AddOutputFilterByType DEFLATE application/x-javascript
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
 </IfModule>
+
