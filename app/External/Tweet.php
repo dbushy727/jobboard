@@ -41,7 +41,7 @@ class Tweet
             'title'        => $job->title,
             'remote'       => $job->is_remote ? '(Remote)' : null,
             'company_name' => $job->company_name,
-            'link'         => url('jobs', $job->slug),
+            'link'         => url('posts', $job->slug),
         ];
 
         $this->tweet($status, $data);
