@@ -30,7 +30,7 @@ AddOutputFilterByType DEFLATE application/x-javascript
     RewriteRule ^(.*)$ http%1://devops.jobs/$1 [R=301,L]
 
     # Redirect legacy links
-    RewriteRule "^/jobs/(.*)$"  "/posts/$1" [R=301,L]
+    RewriteRule "^jobs/(.*)$"  "/posts/$1" [R=301,L]
 
     # Force HTTPS
     RewriteCond %{HTTPS} !=on
