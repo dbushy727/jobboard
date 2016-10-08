@@ -6,11 +6,11 @@
     padding: 0.5em 1em;
 }*/
 .job-posting-section {
-    padding: 1em;
+    padding: 1em 1em 0 1em;
 }
 
 .job-posting-logo {
-    width: 100px;
+    width: 120px;
     vertical-align: top;
 }
 .job-posting-logo-edit {
@@ -170,4 +170,8 @@ li.preview-tab {
 .job-amenities {
     font-size: 0.8em;
     color: grey;
+}
+
+.company-info {
+    padding-top: 1em;
 }
