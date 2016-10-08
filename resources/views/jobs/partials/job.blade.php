@@ -21,7 +21,6 @@
     <div class="regular-recommend-bar">
         @include('jobs.partials.mini-list')
     </div>
-    @include('mixins.regular-ads')
 </div>
 <div class="col-sm-9 col-sm-pull-3">
     <div class="panel panel-default job-posting">
@@ -81,4 +80,3 @@
 <div class="col-sm-3 mobile-recommend-bar">
     @include('jobs.partials.mini-list')
 </div>
-@include('mixins.mobile-ads')
