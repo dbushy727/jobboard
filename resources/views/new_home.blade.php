@@ -8,9 +8,16 @@
     <meta name="apple-mobile-web-app-title" content="{{ env('APP_NAME') }}">
     <meta name="application-name" content="{{ env('APP_NAME') }}">
     <meta name="theme-color" content="#ecf0f1">
-    <meta name="description" content="A curated list of opportunities for {{ env('JOB_TYPE') }} job seekers, and the best place for hiring managers to target {{ env('JOB_TYPE') }} candidates.">
+    <meta name="description" content="{{$description}} | {{env('APP_NAME')}}">
+    <title>{{$title}} | {{env('APP_NAME')}}</title>
 
-    <title>{{ env('APP_NAME') }}: A curated list of {{ env('JOB_TYPE') }} opportunities</title>
+    <meta property="og:title" content="{{$title}} | {{env('APP_NAME')}}" />
+    <meta property="og:url" content="{{$url}}" />
+    <meta property="og:description" content="{{$description}} | {{env('APP_NAME')}}" />
+
+    <meta name="twitter:site" content="@onlydevopsjobs">
+    <meta name="twitter:title" content="{{$title}} | {{env('APP_NAME')}}">
+    <meta name="twitter:description" content="{{$description}} | {{env('APP_NAME')}}">
 
     <!-- Icons -->
     <link rel="apple-touch-icon" sizes="180x180" href="/img/favicons/apple-touch-icon.png?v=GvJBvwNAXW">
