@@ -16,12 +16,14 @@
     <meta property="og:url" content="{{$url}}" />
     <meta property="og:description" content="{{$description}}" />
     <meta property="og:site_name" content="{{ env('APP_NAME') }}" />
+    <meta property="og:image" content="{{$url}}/img/1200x1200.png" />
 
     <meta name="twitter:card" value="summary">
     <meta name="twitter:site" content="{{ env('TWITTER_HANDLE') }}">
-    <meta name="twitter:title" content="{{$title}}| {{env('APP_NAME')}}">
+    <meta name="twitter:title" content="{{$title}} | {{env('APP_NAME')}}">
     <meta name="twitter:description" content="{{$description}}">
     <meta name="twitter:creator" content="{{ env('TWITTER_HANDLE') }}">
+    <meta name="twitter:image" content="{{$url}}/img/1200x1200.png" />
 
     <!-- Icons -->
     <link rel="apple-touch-icon" sizes="180x180" href="/img/favicons/apple-touch-icon.png?v=GvJBvwNAXW">
