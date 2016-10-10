@@ -122,3 +122,10 @@ input:-moz-placeholder { text-overflow: ellipsis; }
 .table tbody tr td.borderless {
   border: 0;
 }
+
+.secondary-text {
+  color: #777;
+  text-transform: uppercase;
+  font-size: 0.8em;
+  letter-spacing: 1px;
+}
