@@ -28,9 +28,12 @@ class JobController extends Controller
 
     public function show($slug)
     {
-        $job = Job::slug($slug)->first();
+        $job          = Job::slug($slug)->first();
+        $title        = strip_tags($job->title . ' - ' . $job->company_name);
+        $created_at   = strip_tags($job->created_at->format('F j, Y'));
+        $description  = substr($created_at . ' - ' . $job->title . ' - ' . $job->company_name . ' - ' . strip_tags($job->description), 0, 155);
 
-        return view('jobs.show', compact('job', 'jobs'));
+        return view('jobs.show', compact('job', 'jobs', 'description', 'title'));
     }
 
     public function approval($slug)
