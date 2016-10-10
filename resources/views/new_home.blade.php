@@ -16,19 +16,19 @@
     <meta property="og:url" content="{{$url}}" />
     <meta property="og:description" content="{{$description}}" />
     <meta property="og:site_name" content="{{ env('APP_NAME') }}" />
-    <meta property="og:image" content="{{$url}}/img/1200x1200.png" />
+    <meta property="og:image" content="<<BASE URL OF SITE>>/img/1200x1200.png" />
 
     <meta name="twitter:card" value="summary">
     <meta name="twitter:site" content="{{ env('TWITTER_HANDLE') }}">
     <meta name="twitter:title" content="{{$title}} | {{env('APP_NAME')}}">
     <meta name="twitter:description" content="{{$description}}">
     <meta name="twitter:creator" content="{{ env('TWITTER_HANDLE') }}">
-    <meta name="twitter:image" content="{{$url}}/img/1200x1200.png" />
+    <meta name="twitter:image" content="<<BASE URL OF SITE>>/img/1200x1200.png" />
 
     <!-- Icons -->
     <link rel="apple-touch-icon" sizes="180x180" href="/img/favicons/apple-touch-icon.png?v=GvJBvwNAXW">
-    <link rel="icon" type="image/png" href="/img/favicons/favicon-32x32.png?v=GvJBvwNAXW" sizes="32x32">
-    <link rel="icon" type="image/png" href="/img/favicons/favicon-16x16.png?v=GvJBvwNAXW" sizes="16x16">
+    <link rel="icon" type="image/png" href=<<BASE URL OF SITE>>vicons/favicon-32x32.png?v=GvJBvwNAXW" sizes="32x32">
+    <link rel="icon" type="image/png" href=<<BASE URL OF SITE>>vicons/favicon-16x16.png?v=GvJBvwNAXW" sizes="16x16">
     <link rel="manifest" href="/img/favicons/manifest.json?v=GvJBvwNAXW">
     <link rel="mask-icon" href="/img/favicons/safari-pinned-tab.svg?v=GvJBvwNAXW" color="#5bbad5">
     <link rel="shortcut icon" href="/img/favicons/favicon.ico?v=GvJBvwNAXW">
