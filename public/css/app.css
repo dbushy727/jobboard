@@ -176,7 +176,7 @@ section {
 
 .job-posting-logo {
   width: 120px;
-  padding: 1em; }
+  vertical-align: top; }
 
 .job-posting-logo-edit {
   width: 25px; }
