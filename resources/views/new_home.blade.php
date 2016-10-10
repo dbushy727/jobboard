@@ -8,19 +8,19 @@
     <meta name="apple-mobile-web-app-title" content="{{ env('APP_NAME') }}">
     <meta name="application-name" content="{{ env('APP_NAME') }}">
     <meta name="theme-color" content="#ecf0f1">
-    <meta name="description" content="{{$meta_description}}">
-    <title>{{$title}} - {{$company_name}} | {{env('APP_NAME')}}</title>
+    <meta name="description" content="{{$description}}">
+    <title>{{$title}} | {{env('APP_NAME')}}</title>
 
-    <meta property="og:title" content="{{$title}} - {{$company_name}} | {{env('APP_NAME')}}" />
+    <meta property="og:title" content="{{$title}} | {{env('APP_NAME')}}" />
     <meta property="og:type" content="article" />
     <meta property="og:url" content="{{$url}}" />
-    <meta property="og:description" content="{{$meta_description}}" />
+    <meta property="og:description" content="{{$description}}" />
     <meta property="og:site_name" content="{{ env('APP_NAME') }}" />
 
     <meta name="twitter:card" value="summary">
     <meta name="twitter:site" content="{{ env('TWITTER_HANDLE') }}">
-    <meta name="twitter:title" content="{{$title}} - {{$company_name}} | {{env('APP_NAME')}}">
-    <meta name="twitter:description" content="{{$twitter_description}}">
+    <meta name="twitter:title" content="{{$title}}| {{env('APP_NAME')}}">
+    <meta name="twitter:description" content="{{$description}}">
     <meta name="twitter:creator" content="{{ env('TWITTER_HANDLE') }}">
 
     <!-- Icons -->
