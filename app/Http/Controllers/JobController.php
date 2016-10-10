@@ -277,8 +277,8 @@ class JobController extends Controller
             ->take(20)
             ->get();
 
-        $feed->title       = env('RSS_TITLE');
-        $feed->description = env('RSS_DESCRIPTION');
+        $feed->title       = env('APP_NAME');
+        $feed->description = 'The best place to find and list ' . env('JOB_TYPE') . ' career opportunities.';
         $feed->link        = url('jobs', 'feed');
         $feed->pubdate     = $jobs->first()->created_at;
         $feed->lang        = 'en';
@@ -289,7 +289,7 @@ class JobController extends Controller
         $feed->setView('vendor.feed.atom');
 
         foreach ($jobs as $job) {
-            $feed->add($job->title, $job->company, url('jobs', $job->slug), $job->created_at, $job->description);
+            $feed->add("$job->title - $job->company_name", env('ADMIN_EMAIL'), url('jobs', $job->slug), $job->created_at, $job->description);
         }
 
         return $feed->render('atom');
