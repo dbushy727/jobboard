@@ -1,24 +1,4 @@
 <div class="col-sm-3 col-sm-push-9">
-    {{-- Company --}}
-    <div class="panel panel-default">
-        <div class="panel-body">
-            <div class="company_info job-posting-section col-sm-12">
-                <div for="company"><span class="company-icon"><i class="fa fa-university"></i></span> <span>{{ $job->company_name}}</span></div>
-                <div for="location"><span class="company-icon"><i class="fa fa-map-marker"></i></span> <span>{{ $job->location}}</span></div>
-                @if($job->url)
-                    @if(strpos($job->url, '://') !== false)
-                        <div for="url" class="job-link"><span class="company-icon"><i class="fa fa-external-link-square"></i></span> <a href="{{$job->url}}">{{ explode('://', $job->url)[1] }}</a></div>
-                    @else
-                        <div for="url" class="job-link"><span class="company-icon"><i class="fa fa-external-link-square"></i></span> <a href="http://{{$job->url}}">{{ $job->url }}</a></div>
-                    @endif
-                @endif
-                @if($job->is_remote)
-                    <div><span class="company-icon"><i class="fa fa-globe"></i></span> <span>Remote</span></div>
-                @endif
-            </div>
-        </div>
-    </div>
-
     {{-- Share --}}
     <div class="panel panel-default text-center regular-share-bar">
         <div class="panel-body">
@@ -41,19 +21,33 @@
     <div class="regular-recommend-bar">
         @include('jobs.partials.mini-list')
     </div>
-    @include('mixins.regular-ads')
 </div>
 <div class="col-sm-9 col-sm-pull-3">
     <div class="panel panel-default job-posting">
         <div class="panel-body">
             <div class="job-posting-section tight col-sm-12">
                 <h1>{{$job->title}}</h1>
-                <p>{{ $job->created_at->format('M d Y') }}</p>
+                <p class="secondary-text">POSTED {{ $job->created_at->format('M d Y') }}</p>
                 @if ($job->logo)
                     <div class="company-logo">
                         <img src="{{ env('S3_BASEPATH') . $job->logo}}" class="job-posting-logo" alt="{{$job->company_name}} Logo">
                     </div>
                 @endif
+                <div class="company-info">
+                    <div for="company"><span class="company-icon"><i class="fa fa-users"></i></span> <span>{{ $job->company_name}}</span></div>
+                    <div for="location"><span class="company-icon"><i class="fa fa-map-marker"></i></span> <span>{{ $job->location}}</span></div>
+                    @if($job->url)
+                        @if(strpos($job->url, '://') !== false)
+                            <div for="url" class="job-link"><span class="company-icon"><i class="fa fa-external-link-square"></i></span> <span><a href="{{$job->url}}">{{ explode('://', $job->url)[1] }}</a></span></div>
+                        @else
+                            <div for="url" class="job-link"><span class="company-icon"><i class="fa fa-external-link-square"></i></span> <span><a href="http://{{$job->url}}">{{ $job->url }}</a></span></div>
+                        @endif
+                    @endif
+                </div>
+                @if($job->is_remote)
+                    <div><span class="company-icon"><i class="fa fa-globe"></i></span> <span>Remote</span></div>
+                @endif
+
             </div>
             <div class="job_info job-posting-section col-sm-12 col-xs-12">
                 <hr>
@@ -86,4 +80,3 @@
 <div class="col-sm-3 mobile-recommend-bar">
     @include('jobs.partials.mini-list')
 </div>
-@include('mixins.mobile-ads')

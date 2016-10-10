@@ -11,20 +11,20 @@ class Tweet
 
     protected $statuses = [
         [
-            'message' => 'New opportunity posted for a %s %s @ %s %s',
-            'replace' => ['title', 'remote', 'company_name', 'link']
+            'message' => 'New opportunity posted for a %s @ %s %s %s',
+            'replace' => ['title', 'company_name', 'hashtags', 'link']
         ],
         [
             'message' => '%s is looking for a new %s %s %s',
-            'replace' => ['company_name', 'title', 'remote', 'link']
+            'replace' => ['company_name', 'title', 'hashtags', 'link']
         ],
         [
             'message' => '%s is now hiring for a %s %s %s',
-            'replace' => ['company_name', 'title', 'remote', 'link']
+            'replace' => ['company_name', 'title', 'hashtags', 'link']
         ],
         [
-            'message' => 'Interested in being a %s %s for %s ? %s',
-            'replace' => ['title', 'remote', 'company_name', 'link']
+            'message' => 'Interested in being a %s for %s? %s %s',
+            'replace' => ['title', 'company_name', 'hashtags', 'link']
         ],
     ];
 
@@ -38,9 +38,9 @@ class Tweet
         $status = $this->randomStatus();
 
         $data = [
-            'title'        => $job->title,
-            'remote'       => $job->is_remote ? '(Remote)' : null,
+            'title'        => $job->is_remote ? $job->title . ' (Remote)' : $job->title,
             'company_name' => $job->company_name,
+            'hashtags'     => "#" . strtolower(env('JOB_TYPE')) . " #" . strtolower(env('JOB_TYPE')) . "jobs #" . str_replace(' ', '', strtolower($job->company_name)),
             'link'         => url('posts', $job->slug),
         ];
 

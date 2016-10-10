@@ -100,6 +100,12 @@ input:-moz-placeholder {
 .table tbody tr td.borderless {
   border: 0; }
 
+.secondary-text {
+  color: #777;
+  text-transform: uppercase;
+  font-size: 0.8em;
+  letter-spacing: 1px; }
+
 /* Navbar */
 .navbar {
   background-color: #2C3E50;
@@ -166,11 +172,11 @@ section {
     padding: 0.5em 1em;
 }*/
 .job-posting-section {
-  padding: 1em; }
+  padding: 1em 1em 0 1em; }
 
 .job-posting-logo {
-  width: 100px;
-  vertical-align: top; }
+  width: 120px;
+  padding: 1em; }
 
 .job-posting-logo-edit {
   width: 25px; }
@@ -289,6 +295,9 @@ li.preview-tab {
 .job-amenities {
   font-size: 0.8em;
   color: grey; }
+
+.company-info {
+  padding-top: 1em; }
 
 .modal-text {
   font-size: 0.9em;
