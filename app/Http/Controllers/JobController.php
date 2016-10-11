@@ -292,7 +292,9 @@ class JobController extends Controller
         $feed->setView('vendor.feed.atom');
 
         foreach ($jobs as $job) {
-            $feed->add("$job->title - $job->company_name", env('ADMIN_EMAIL'), url('posts', $job->slug), $job->created_at, $job->description);
+            $rss_description = substr($job->created_at->format('F j, Y') . ' - ' . $job->title . ' - ' . $job->company_name . ' - ' . strip_tags($job->description), 0, 155);
+
+            $feed->add("$job->title - $job->company_name", env('ADMIN_EMAIL'), url('jobs', $job->slug), $job->created_at, $rss_description, $job->description);
         }
 
         return $feed->render('atom');
