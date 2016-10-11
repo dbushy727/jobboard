@@ -240,7 +240,7 @@ class JobController extends Controller
             'token'         => $request->get('token'),
             'metadata'      => [
                 'job_id' => $job->id,
-                'edit_link' => url('jobs', $job->slug, $job->edit_token),
+                'edit_link' => url('posts', $job->slug, $job->edit_token),
             ],
             'receipt_email' => $request->get('email', null),
             'amount'        => $job->price,
@@ -282,7 +282,7 @@ class JobController extends Controller
 
         $feed->title       = env('APP_NAME');
         $feed->description = 'The best place to find and list ' . env('JOB_TYPE') . ' career opportunities.';
-        $feed->link        = url('jobs', 'feed');
+        $feed->link        = url('posts', 'feed');
         $feed->pubdate     = $jobs->first()->created_at;
         $feed->lang        = 'en';
 
@@ -292,7 +292,7 @@ class JobController extends Controller
         $feed->setView('vendor.feed.atom');
 
         foreach ($jobs as $job) {
-            $feed->add("$job->title - $job->company_name", env('ADMIN_EMAIL'), url('jobs', $job->slug), $job->created_at, $job->description);
+            $feed->add("$job->title - $job->company_name", env('ADMIN_EMAIL'), url('posts', $job->slug), $job->created_at, $job->description);
         }
 
         return $feed->render('atom');
