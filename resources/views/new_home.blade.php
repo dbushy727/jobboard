@@ -122,7 +122,8 @@
     <footer class="footer">
         <div class="container-fluid">
             <p class="navbar-text pull-right">
-                <a class="contact-link" href="mailto:{{ env('ADMIN_EMAIL') }}"><i class="fa large fa-envelope"></i></a>
+                Website by <a href="https://voyent.io">Voyent, Inc.</a>  
+                <a class="contact-link" href="<<CONTACT FORM>>"><i class="fa large fa-envelope"></i></a>
                 <a class="contact-link" href="{{ env('TWITTER_URL') }}"><i class="fa large fa-twitter"></i></a>
             </p>
             <span class="pull-left navbar-text">&copy; {{ date('Y') }} | <a href="/posts/feed">RSS Feed</a></span>
