@@ -29,7 +29,7 @@
                 <h1>{{$job->title}}</h1>
                 <p class="secondary-text">POSTED {{ $job->created_at->format('M d Y') }}</p>
                 @if ($job->logo)
-                    <div class="company-logo">
+                    <div class="company-logo webfeedsFeaturedVisual">
                         <img src="{{ env('S3_BASEPATH') . $job->logo}}" class="job-posting-logo" alt="{{$job->company_name}} Logo">
                     </div>
                 @endif

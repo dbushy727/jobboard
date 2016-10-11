@@ -10,6 +10,7 @@
     <meta name="theme-color" content="#ecf0f1">
     <meta name="description" content="{{$description}}">
     <title>{{$title}} | {{env('APP_NAME')}}</title>
+    <link rel="alternate" type="application/rss+xml" href="/posts/feed" title="RSS feed">
 
     <meta property="og:title" content="{{$title}} | {{env('APP_NAME')}}" />
     <meta property="og:type" content="article" />
