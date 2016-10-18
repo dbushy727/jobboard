@@ -64,7 +64,9 @@
                     <!-- <span class="icon-bar"></span> -->
                 </button>
                 <a class="navbar-brand" href="/">
-                    <img alt="{{ env('APP_NAME') }} Logo" src="/{{ env('APP_LOGO') }}" height=50px>
+                    <h1 style="margin:0em;">
+                        <img alt="{{ env('APP_NAME') }} Logo" title="{{ env('APP_NAME') }} Logo" src="/{{ env('APP_LOGO') }}" height=50px>
+                    </h1>
                     <div class="lead small text-center">A curated list of {{ env('JOB_TYPE') }} job opportunities</div>
                 </a>
             </div>
