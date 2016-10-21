@@ -66,7 +66,7 @@ class Job extends Model
      */
     public function scopeCurrent($query)
     {
-        return $query->where('published_at', '>=', Carbon::today()->subDay(60));
+        return $query->where('published_at', '>=', Carbon::today()->subDay(30));
     }
 
     /**
