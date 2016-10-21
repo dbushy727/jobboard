@@ -125,11 +125,11 @@
     <footer class="footer">
         <div class="container-fluid">
             <p class="navbar-text pull-right">
-                Website by <a href="https://voyent.io">Voyent, Inc.</a>  
-                <a class="contact-link" href="<<CONTACT FORM>>"><i class="fa large fa-envelope"></i></a>
+                <a class="contact-link" href="/contact"><i class="fa large fa-envelope"></i></a>
                 <a class="contact-link" href="{{ env('TWITTER_URL') }}"><i class="fa large fa-twitter"></i></a>
             </p>
-            <span class="pull-left navbar-text">&copy; {{ date('Y') }} | <a href="/posts/feed">RSS Feed</a></span>
+            <p class="pull-left navbar-text">&copy; {{ date('Y') }} | <a href="/posts/feed">RSS Feed</a></p>
+            <p class="navbar-text text-center pull-none">Website by <a href="https://www.voyent.io">Voyent, Inc.</a></p>
         </div>
     </footer>
 

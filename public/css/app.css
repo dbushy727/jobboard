@@ -106,6 +106,9 @@ input:-moz-placeholder {
   font-size: 0.8em;
   letter-spacing: 1px; }
 
+.pull-none {
+  float: none; }
+
 /* Navbar */
 .navbar {
   background-color: #2C3E50;
