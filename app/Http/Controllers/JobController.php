@@ -127,13 +127,11 @@ class JobController extends Controller
     {
         // Grab currents jobs that haven't been activated yet
         $pending = Job::pending()
-            ->current()
             ->orderBy('is_featured', 'desc')
             ->orderBy('created_at', 'desc')
             ->get();
 
         $replacements = Job::replacements()
-            ->current()
             ->orderBy('is_featured', 'desc')
             ->orderBy('created_at', 'desc')
             ->get();
