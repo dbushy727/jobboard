@@ -25,7 +25,10 @@ class Job extends Model
         'title',
         'url',
         'discount',
+        'published_at',
     ];
+
+    protected $dates = ['published_at'];
 
     /******************
 
@@ -63,7 +66,7 @@ class Job extends Model
      */
     public function scopeCurrent($query)
     {
-        return $query->where('created_at', '>=', Carbon::today()->subDay(30));
+        return $query->where('published_at', '>=', Carbon::today()->subDay(60));
     }
 
     /**
@@ -174,6 +177,7 @@ class Job extends Model
     public function activate()
     {
         $this->is_active = true;
+        $this->published_at = Carbon::now();
         return $this->save();
     }
 
