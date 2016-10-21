@@ -129,7 +129,7 @@
                 <a class="contact-link" href="{{ env('TWITTER_URL') }}"><i class="fa large fa-twitter"></i></a>
             </p>
             <p class="pull-left navbar-text">&copy; {{ date('Y') }} | <a href="/posts/feed">RSS Feed</a></p>
-            <p class="navbar-text text-center pull-none">Website by <a href="https://www.voyent.io">Voyent, Inc.</a></p>
+            <p class="navbar-text text-center pull-none">Website by <a href="http://www.voyent.io">Voyent, Inc.</a></p>
         </div>
     </footer>
 
