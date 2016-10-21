@@ -12,7 +12,7 @@ var elixir = require('laravel-elixir');
  */
 
 elixir(function(mix) {
-    mix.sass(['theme.scss', 'nav.scss', 'jobs.scss', 'modal.scss', 'search.scss']);
+    mix.sass(['theme.scss', 'nav.scss', 'jobs.scss', 'modal.scss', 'search.scss', 'contact.scss']);
     mix.scripts(['payment.js', 'edit-job.js']);
 });
 
