@@ -1,8 +1,18 @@
 @extends('emails.layout')
 
 @section('content')
-Name: {{$name}}
-Email: {{$email}}
-
-Message: {{$body}}
+<html>
+<head></head>
+  <body>
+    <div>
+    	Name: {{$name}}
+    </div>
+    <div>
+    	Email: {{$email}}
+    </div>
+    <div>
+    	Message: {{$body}}
+    </div>
+  </body>
+</html>
 @stop
