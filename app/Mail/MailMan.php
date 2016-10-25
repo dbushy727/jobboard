@@ -14,7 +14,7 @@ class MailMan
     public function sendMessageToAdmin($subject, $data, $view)
     {
         return $this->mailer->send($view, $data, function ($mail) use ($subject) {
-            $mail->from(env('ADMIN_EMAIL'), 'DevOps Jobs');
+            $mail->from(env('ADMIN_EMAIL'), env('APP_NAME'));
             $mail->to(env('ADMIN_EMAIL'));
             $mail->subject($subject);
         });
