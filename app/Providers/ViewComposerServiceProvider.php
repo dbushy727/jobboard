@@ -18,7 +18,7 @@ class ViewComposerServiceProvider extends ServiceProvider
             $view->with('jobs', Job::active()
                 ->current()
                 ->orderBy('is_featured', 'desc')
-                ->orderBy('created_at', 'desc')
+                ->orderBy('published_at', 'desc')
                 ->where('id', '!=', $view->job->id)
                 ->take(5)
                 ->get());
