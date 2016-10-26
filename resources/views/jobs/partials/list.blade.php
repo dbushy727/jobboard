@@ -6,8 +6,8 @@
         <a href="/posts/{{$job->slug}}" class="list-group-item {{ $job->is_featured ? 'featured' : ''}}" >
             <div class="pull-right job-list-date">
                 <div class="job-list-item location">{{ $job->location }}</div>
-                <!-- <div class="job-list-item date">{{ $job->created_at->format('M d Y') }}</div> -->
-                <div class="job-list-item date">{{ $job->created_at->diffForHumans() }}</div>
+                <!-- <div class="job-list-item date">{{ $job->date->format('M d Y') }}</div> -->
+                <div class="job-list-item date">{{ $job->date->diffForHumans() }}</div>
             </div>
             <div>
                 @if($job->logo)
@@ -18,7 +18,7 @@
                 <div class="job-list-info">
                     <div class="job-list-title">{{$job->title}}</div>
                     <div class="job-list-company">{{$job->company_name}}</div>
-                    @if($job->created_at->diffInDays() < 2)
+                    @if($job->date->diffInDays() < 2)
                         <div class="label label-info small">New</div>
                         @if($job->isReplacement())
                             <div class="label label-warning small">Revision</div>
