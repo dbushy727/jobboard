@@ -272,4 +272,13 @@ class Job extends Model
         $slug = implode('-', $pieces);
         return $this->addSlug($slug);
     }
+
+    /****************************
+        Accessors & Mutators
+     ***************************/
+
+    public function getDateAttribute()
+    {
+        return $this->published_at ?: $this->created_at;
+    }
 }

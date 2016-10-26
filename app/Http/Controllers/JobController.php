@@ -30,7 +30,7 @@ class JobController extends Controller
     {
         $job          = Job::slug($slug)->first();
         $title        = strip_tags($job->title . ' - ' . $job->company_name);
-        $published_at = strip_tags($job->published_at->format('F j, Y'));
+        $published_at = strip_tags($job->date->format('F j, Y'));
         $description  = substr($published_at . ' - ' . $job->title . ' - ' . $job->company_name . ' - ' . strip_tags($job->description), 0, 155);
 
         return view('jobs.show', compact('job', 'jobs', 'description', 'title'));
@@ -281,7 +281,7 @@ class JobController extends Controller
         $feed->title       = env('APP_NAME');
         $feed->description = 'The best place to find and list ' . env('JOB_TYPE') . ' career opportunities.';
         $feed->link        = url('posts', 'feed');
-        $feed->pubdate     = $jobs->first()->published_at;
+        $feed->pubdate     = $jobs->first()->date;
         $feed->lang        = 'en';
 
         $feed->setDateFormat('datetime');
@@ -290,9 +290,9 @@ class JobController extends Controller
         $feed->setView('vendor.feed.atom');
 
         foreach ($jobs as $job) {
-            $rss_description = substr($job->published_at->format('F j, Y') . ' - ' . $job->title . ' - ' . $job->company_name . ' - ' . strip_tags($job->description), 0, 155);
+            $rss_description = substr($job->date->format('F j, Y') . ' - ' . $job->title . ' - ' . $job->company_name . ' - ' . strip_tags($job->description), 0, 155);
 
-            $feed->add("$job->title - $job->company_name", env('ADMIN_EMAIL'), url('jobs', $job->slug), $job->published_at, $rss_description, $job->description);
+            $feed->add("$job->title - $job->company_name", env('ADMIN_EMAIL'), url('jobs', $job->slug), $job->date, $rss_description, $job->description);
         }
 
         return $feed->render('atom');
