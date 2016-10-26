@@ -1,8 +1,13 @@
 @extends('new_home')
 @section('content')
     <h1 class="text-center">Contact Us</h1>
+    <div class="text-center col-sm-6 col-md-offset-3">
+      Thanks for your interest in {{env('APP_NAME')}}. Please
+      use this form to send us a message and we'll get back
+      to you as soon as possible.
+    </div>
 
-    <div class="panel panel-default col-sm-12 col-md-8 col-md-offset-2">
+    <div class="panel panel-default col-sm-12 col-md-6 col-md-offset-3">
         <form
             action="/contact/submit"
             method="POST"
@@ -18,7 +23,7 @@
             <input type="text" class="form-control" id="name" name="name">
           </div>
           <div class="form-group">
-            <label for="email">Return email address*</label>
+            <label for="email">Email address*</label>
             @foreach($errors->get('email') as $error)
               <div class="text-danger">{{ $error }}</div>
             @endforeach
