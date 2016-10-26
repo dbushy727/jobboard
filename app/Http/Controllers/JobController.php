@@ -273,7 +273,6 @@ class JobController extends Controller
     {
         $jobs = Job::active()
             ->current()
-            ->orderBy('is_featured', 'desc')
             ->orderBy('published_at', 'desc')
             ->take(20)
             ->get();
