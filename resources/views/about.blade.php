@@ -7,7 +7,11 @@
             <h1>About</h1>
             <hr>
             <div>
-                This website was created by a {{ env('JOB_TYPE') }} professional <i>for</i> {{ env('JOB_TYPE') }} professionals, as well as to make it easier for organizations to reach {{ env('JOB_TYPE') }} people. Each opportunity goes through a review process prior to being listed here.
+                This website was created by a {{ env('JOB_TYPE') }} professional <i>for</i> {{ env('JOB_TYPE') }} professionals, as well as to make it easier for organizations to reach {{ env('JOB_TYPE') }} people. Each post goes through a review process prior to being listed here.
+            </div>
+            <br>
+            <div>
+                Want to get in touch? Contact us <a href="/contact">here</a>.
             </div>
         </div>
     </div>
