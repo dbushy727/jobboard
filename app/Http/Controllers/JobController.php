@@ -20,7 +20,7 @@ class JobController extends Controller
         $jobs = Job::active()
             ->current()
             ->orderBy('is_featured', 'desc')
-            ->orderBy('created_at', 'desc')
+            ->orderBy('published_at', 'desc')
             ->get();
 
         return view('jobs.index', compact('jobs'));
@@ -30,8 +30,8 @@ class JobController extends Controller
     {
         $job          = Job::slug($slug)->first();
         $title        = strip_tags($job->title . ' - ' . $job->company_name);
-        $created_at   = strip_tags($job->created_at->format('F j, Y'));
-        $description  = substr($created_at . ' - ' . $job->title . ' - ' . $job->company_name . ' - ' . strip_tags($job->description), 0, 155);
+        $published_at = strip_tags($job->date->format('F j, Y'));
+        $description  = substr($published_at . ' - ' . $job->title . ' - ' . $job->company_name . ' - ' . strip_tags($job->description), 0, 155);
 
         return view('jobs.show', compact('job', 'jobs', 'description', 'title'));
     }
@@ -127,13 +127,11 @@ class JobController extends Controller
     {
         // Grab currents jobs that haven't been activated yet
         $pending = Job::pending()
-            ->current()
             ->orderBy('is_featured', 'desc')
             ->orderBy('created_at', 'desc')
             ->get();
 
         $replacements = Job::replacements()
-            ->current()
             ->orderBy('is_featured', 'desc')
             ->orderBy('created_at', 'desc')
             ->get();
@@ -276,14 +274,14 @@ class JobController extends Controller
         $jobs = Job::active()
             ->current()
             ->orderBy('is_featured', 'desc')
-            ->orderBy('created_at', 'desc')
+            ->orderBy('published_at', 'desc')
             ->take(20)
             ->get();
 
         $feed->title       = env('APP_NAME');
         $feed->description = 'The best place to find and list ' . env('JOB_TYPE') . ' career opportunities.';
         $feed->link        = url('posts', 'feed');
-        $feed->pubdate     = $jobs->first()->created_at;
+        $feed->pubdate     = $jobs->first()->date;
         $feed->lang        = 'en';
 
         $feed->setDateFormat('datetime');
@@ -292,9 +290,9 @@ class JobController extends Controller
         $feed->setView('vendor.feed.atom');
 
         foreach ($jobs as $job) {
-            $rss_description = substr($job->created_at->format('F j, Y') . ' - ' . $job->title . ' - ' . $job->company_name . ' - ' . strip_tags($job->description), 0, 155);
+            $rss_description = substr($job->date->format('F j, Y') . ' - ' . $job->title . ' - ' . $job->company_name . ' - ' . strip_tags($job->description), 0, 155);
 
-            $feed->add("$job->title - $job->company_name", env('ADMIN_EMAIL'), url('jobs', $job->slug), $job->created_at, $rss_description, $job->description);
+            $feed->add("$job->title - $job->company_name", env('ADMIN_EMAIL'), url('jobs', $job->slug), $job->date, $rss_description, $job->description);
         }
 
         return $feed->render('atom');
@@ -310,7 +308,7 @@ class JobController extends Controller
 
         $jobs = Job::search($term)
             ->orderBy('is_featured', 'desc')
-            ->orderBy('created_at', 'desc')
+            ->orderBy('published_at', 'desc')
             ->get();
 
         return view('jobs.index', compact('jobs', 'term'));
