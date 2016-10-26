@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\Job\JobWasApproved;
 use App\External\Tweet;
 use App\Http\Requests\CreateJobRequest;
 use App\Http\Requests\PaymentRequest;
@@ -119,6 +120,9 @@ class JobController extends Controller
         }
 
         $job->activate();
+
+        // Fire event
+        event(new JobWasApproved($job));
 
         return redirect()->route('show_job', [$slug]);
     }
