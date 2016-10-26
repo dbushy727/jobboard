@@ -12,12 +12,10 @@ class MailMan
         $this->mailer = $mailer;
     }
 
-
     public function sendContactEmail($data, $subject = 'Contact Form')
     {
         return $this->sendMessageToAdmin($subject, $data, 'emails.contact');
     }
-
 
     public function sendJobApprovalEmail(Job $job)
     {
@@ -34,7 +32,6 @@ class MailMan
     protected function sendEmail($to, $subject, $data, $view)
     {
         return $this->mailer->send($view, $data, function ($mail) use ($to, $subject) {
-            $mail->from(env('ADMIN_EMAIL'), env('APP_NAME'));
             $mail->to($to);
             $mail->subject($subject);
         });
