@@ -5,7 +5,7 @@
         <div class="404">
             <div class="text-center">
                 <i class="fa fa-check-circle fa-5x text-success"></i>
-                <h1>Thank you for your submission</h1>
+                <h1>Thank you for your message.</h1>
                 <hr>
             </div>
         </div>
