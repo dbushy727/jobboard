@@ -49,7 +49,9 @@ class JobController extends Controller
 
     public function create()
     {
-        return view('jobs.create');
+        $title = 'Post A Job';
+        $description = 'Post a job to find the best candidate for your company. All jobs get reviewed by our team to ensure only the best jobs make it on to the site.';
+        return view('jobs.create', compact('title', 'description'));
     }
 
     public function store(CreateJobRequest $request)

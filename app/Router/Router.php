@@ -35,12 +35,16 @@ class Router
             'as' => 'thank_you',
             'middleware' => ['web'],
             function () {
-                return view('thank-you');
+                $title = 'Thank You';
+                $description = 'Thank you for your submission.';
+                return view('thank-you', compact('title', 'description'));
             }
         ]);
 
         $this->router->get('/about', ['as' => 'about', function () {
-            return view('about');
+            $title = 'About';
+            $description = 'Find out who we are and why we care so much about ' . env('JOB_TYPE') . ' jobs';
+            return view('about', compact('title', 'description'));
         }]);
     }
 
