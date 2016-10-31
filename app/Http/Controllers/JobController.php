@@ -104,7 +104,9 @@ class JobController extends Controller
             return view('jobs.preview_replacement', compact('job'));
         }
 
-        return view('jobs.preview', compact('job'));
+        $title = 'Preview';
+        $description  = substr($job->title . ' - ' . $job->company_name . ' - ' . strip_tags($job->description), 0, 155);
+        return view('jobs.preview', compact('job', 'title', 'description'));
     }
 
     public function activate($slug, Request $request, Tweet $tweet)
@@ -312,6 +314,8 @@ class JobController extends Controller
             ->orderBy('published_at', 'desc')
             ->get();
 
-        return view('jobs.index', compact('jobs', 'term'));
+        $title = 'Search';
+        $description = 'Search results for the best ' . env('JOB_TYPE') . ' jobs in the marketplace. We ensure all jobs have been vetted to guarantee the best quality jobs in the industry.';
+        return view('jobs.index', compact('jobs', 'term', 'title', 'description'));
     }
 }

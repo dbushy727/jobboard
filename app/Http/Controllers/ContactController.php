@@ -10,7 +10,9 @@ class ContactController extends Controller
 {
     public function index()
     {
-        return view('contact.index');
+        $title = 'Contact';
+        $description = 'Send us a message, we would love to hear it. Just fill our the contact form and we will get back to you as soon as possible.';
+        return view('contact.index', compact('title', 'description'));
     }
 
     public function submit(ContactRequest $request, MailMan $mailer)
@@ -22,6 +24,8 @@ class ContactController extends Controller
 
     public function thankYou()
     {
-        return view('contact.thank-you');
+        $title = 'Contact - Thank You';
+        $description = 'Thank you for your submission. We will get back to you as soon as possible.';
+        return view('contact.thank-you', compact('title', 'description'));
     }
 }
