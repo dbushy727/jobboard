@@ -32,8 +32,9 @@ class JobController extends Controller
         $title        = strip_tags($job->title . ' - ' . $job->company_name);
         $published_at = strip_tags($job->date->format('F j, Y'));
         $description  = substr($published_at . ' - ' . $job->title . ' - ' . $job->company_name . ' - ' . strip_tags($job->description), 0, 155);
+        $logo         = $job->logo;
 
-        return view('jobs.show', compact('job', 'jobs', 'description', 'title'));
+        return view('jobs.show', compact('job', 'jobs', 'description', 'title', 'logo'));
     }
 
     public function approval($slug)
