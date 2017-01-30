@@ -17,14 +17,22 @@
     <meta property="og:url" content="{{$url}}" />
     <meta property="og:description" content="{{$description}}" />
     <meta property="og:site_name" content="{{ env('APP_NAME') }}" />
-    <meta property="og:image" content="{{env('APP_URL')}}/img/1200x1200.png" />
+@if (isset($logo))
+    <meta name="og:image" content="{{ env('S3_BASEPATH') . $logo}}" />
+@else
+    <meta name="og:image" content="{{ env('APP_URL')}}/img/1200x1200.png" />
+@endif
 
     <meta name="twitter:card" value="summary">
     <meta name="twitter:site" content="{{ env('TWITTER_HANDLE') }}">
     <meta name="twitter:title" content="{{$title}} | {{env('APP_NAME')}}">
     <meta name="twitter:description" content="{{$description}}">
     <meta name="twitter:creator" content="{{ env('TWITTER_HANDLE') }}">
-    <meta name="twitter:image" content="{{env('APP_URL')}}/img/1200x1200.png" />
+@if (isset($logo))
+    <meta name="twitter:image" content="{{ env('S3_BASEPATH') . $logo}}" />
+@else
+    <meta name="twitter:image" content="{{ env('APP_URL')}}/img/1200x1200.png" />
+@endif
 
     <!-- Icons -->
     <link rel="apple-touch-icon" sizes="180x180" href="/img/favicons/apple-touch-icon.png?v=GvJBvwNAXW">
