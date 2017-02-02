@@ -27,7 +27,7 @@
         <div class="panel-body">
             <div class="job-posting-section tight col-sm-12">
                 <h1>{{$job->title}}</h1>
-                <p class="secondary-text">POSTED {{ $job->date->format('M d Y') }}</p>
+                <p class="secondary-text">POSTED <span>{{ $job->date->format('M d Y') }}</span></p>
                 @if ($job->logo)
                     <div class="company-logo webfeedsFeaturedVisual">
                         <img src="{{ env('S3_BASEPATH') . $job->logo}}" class="job-posting-logo" alt="{{$job->company_name}} Logo">
@@ -35,7 +35,12 @@
                 @endif
                 <div class="company-info">
                     <div for="company"><span class="company-icon"><i class="fa fa-users"></i></span> <span>{{ $job->company_name}}</span></div>
-                    <div for="location"><span class="company-icon"><i class="fa fa-map-marker"></i></span> <span>{{ $job->location}}</span></div>
+                    <div for="location">
+                        <span class="company-icon">
+                            <i class="fa fa-map-marker"></i>
+                        </span>
+                        <span>{{ $job->location}}</span>
+                    </div>
                     @if($job->url)
                         @if(strpos($job->url, '://') !== false)
                             <div for="url" class="job-link"><span class="company-icon"><i class="fa fa-external-link-square"></i></span> <span><a href="{{$job->url}}">{{ explode('://', $job->url)[1] }}</a></span></div>
@@ -80,3 +85,22 @@
 <div class="col-sm-3 mobile-recommend-bar">
     @include('jobs.partials.mini-list')
 </div>
+
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "JobPosting",
+  "datePosted": "{{ $job->date->toDateString() }}",
+  "description": "{!! preg_replace('#<[^>]+>#', ' ',($job->description)) !!}",
+  "industry": "DevOps",
+  "jobLocation": {
+    "@type": "Place",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "{{ $job->location }}"
+    }
+  },
+  "occupationalCategory": "15-1133.00 Software Developers, Systems Software",
+  "title": "{{ $job->title }}"
+}
+</script>
